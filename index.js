@@ -25,5 +25,5 @@ app.use('/', loginRouter);
 app.use('/patient', patientRouter);
 
 app.listen(port, () => {
-    console.log('App listenning on port 3000')
+    console.log('App listenning on port ' + port.toString())
 });
