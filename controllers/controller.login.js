@@ -4,10 +4,11 @@ var express = require('express');
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'password',
+    password: 'tf110500',
     database: 'hms'
 })
 connection.connect();
+
 module.exports.index = function(req, res){
 	res.render('index');
 	res.end();
@@ -24,8 +25,8 @@ module.exports.login = function(req, res){
 				req.session.loggedin = true;
 				req.session.username = results[0].NAME;
 				req.session.userid = results[0].ID;
-				//res.redirect('/patient/' + req.session.userid);
-				res.send("Hello" + req.session.username);
+				res.redirect('/patient/' + req.session.userid);
+				//res.send("Hello" + req.session.username);
 			} else {
 				res.send('Incorrect Username and/or Password!');
 			}		
@@ -35,4 +36,5 @@ module.exports.login = function(req, res){
 		res.send('Please enter Username and Password!');
 		res.end();
 	}
+	res.cookie('fakeCookie', 115);
 };
