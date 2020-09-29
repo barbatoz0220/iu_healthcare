@@ -4,10 +4,10 @@ var express = require('express');
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'tf110500',
+    password: '8472135huy',
     database: 'hms'
 })
-
+connection.connect();
 module.exports.index = function(req, res){
 	res.render('index');
 	res.end();
