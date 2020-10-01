@@ -1,8 +1,16 @@
+// import node package
 const express = require('express');
-const router = express.Router();
+
+// import controller
 const controller = require('../controllers/controller.login');
 
+// set up router
+const router = express.Router();
+
+// GET
 router.get('/', controller.index);
+
+// POST
 router.post('/auth', controller.login);
 
 module.exports = router;
