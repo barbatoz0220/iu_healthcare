@@ -14,7 +14,9 @@ module.exports.login = function(req, res) {
 				req.session.username = results[0].NAME;
 				req.session.userid = results[0].ID;
 				
-				res.cookie('fakeCookie', 0);
+				res.cookie('fakeCookie', 0, {
+					path: '/patient'
+				});
 
 				res.redirect("/patient");
 				res.end();
@@ -26,7 +28,9 @@ module.exports.login = function(req, res) {
 				req.session.username = results[0].NAME;
 				req.session.userid = results[0].ID;
 				
-				res.cookie('fakeCookie', 1);
+				res.cookie('fakeCookie', 1, {
+					path: '/doctor'
+				});
 
 				res.redirect("/doctor");
 				res.end();
