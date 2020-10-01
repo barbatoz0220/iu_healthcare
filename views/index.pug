@@ -1,8 +1,27 @@
-html
+doctype html
+html(lang = 'en')
   head
-    link(rel="stylesheet", href="/styles/app.css")
+    meta(charset='UTF-8')
+    meta(name="viewport" content="width=device-width, initial-scales=1.0")
+    title HMS25 - Software Engineering Project
+    link(rel="stylesheet", href="/styles/index.css")
+    link(rel="javascript", href="/scripts/jquery.js")
+  
   body
-    .login-form
+    nav
+      ul.menu
+        li.hmsLogo
+          a(href="#logo") HMS 25
+        li.item
+          a(href="#home") Home
+        li.item
+          a(href="#about") About
+        li.item
+          a(href="#contact") Contacts
+        li.toggle
+            span.bars
+    
+    div.login-form
       h1 Login Form
       form(action='auth', method='POST')
         input(type='text', name='username', placeholder='Username', required='')
