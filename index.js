@@ -27,7 +27,6 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-
 // set up middleware
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());								// fetch data from view
@@ -41,7 +40,3 @@ app.use('/doctor', authMiddleware.requireAuth, doctorRouter);
 app.listen(port, () => {
     console.log('App listenning on port ' + port.toString())
 });
-
-app.get('/styles/app.css', function(req, res) {
-	res.send('Hello');
-})

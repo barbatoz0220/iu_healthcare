@@ -5,10 +5,12 @@ const express = require('express');
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '123',
+    password: 'tf110500',
     database: 'hms'
 })
 
-connection.connect();
+connection.connect(function(error) {
+    if(error) throw error;
+});
 
 module.exports = connection;

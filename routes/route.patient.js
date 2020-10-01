@@ -9,7 +9,6 @@ const router = express.Router();
 
 // GET
 router.get('/', controller.index);
-router.get('/:id', controller.menu);
-router.get('/:id/information', controller.information);
+router.get('/get', controller.get);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 var mysql = require('mysql');
 var express = require('express');
+var connection = require('../models/dbconnection');
 
 module.exports.index = function(req, res) {
     res.render('patients/index', {
@@ -8,12 +9,12 @@ module.exports.index = function(req, res) {
     });
 };
 
-module.exports.menu = function(req, res) {
-    res.render("patients/menu.pug", {
-        id: req.session.userid
-    });
-}
 
-module.exports.information = function(req, res) {
-    res.send(req.session.username + req.session.userid);
+module.exports.get = function(req, res) {
+    connection.query('select * from patient where id = ?', [req.session.userid], function(err, result) {
+        res.render('patients/get', {
+            name: result[0].NAME,
+            id: result[0].ID
+        })
+    })
 }
