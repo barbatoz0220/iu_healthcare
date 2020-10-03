@@ -3,6 +3,8 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 
+var path = require('path');
+
 // import middleware
 const authMiddleware = require('./middlewares/auth.middleware');
 
@@ -38,6 +40,7 @@ app.use('/', loginRouter);
 app.use('/patient', authMiddleware.requireAuth, patientRouter);
 app.use('/doctor', authMiddleware.requireAuth, doctorRouter);
 
+app.use( '/public', express.static(path.join(__dirname, 'public')));
 app.listen(port, () => {
     console.log('App listenning on port ' + port.toString())
 });

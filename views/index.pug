@@ -5,7 +5,7 @@ html(lang = 'en')
     meta(name="viewport" content="width=device-width, initial-scales=1.0")
     title HMS25 - Software Engineering Project
     link(rel="stylesheet", href="/styles/index.css")
-    link(rel="javascript", href="/scripts/jquery.js")
+    script(src='jquery.js')
   
   body
     nav
@@ -20,7 +20,46 @@ html(lang = 'en')
           a(href="#contact") Contacts
         li.toggle
             span.bars
+  
+    // picture  
+    div.slider
+      // container for images
+      div.slides
+        input(type="radio" value="radio1")
+        input(type="radio" value="radio2")
+        input(type="radio" value="radio3")
+        input(type="radio" value="radio4")
+        input(type="radio" value="radio5")
+
+        // images in slider
+        div.slideFirst
+          img(src="/public/images/pic0.jpg" alt="" width="480" height="360")
+        div.slide
+          img(src="/public/images/pic1.jpg" alt="" width="480")
+        div.slide
+          img(src="/public/images/pic2.jpg" alt="" width="480")
+        div.slide
+          img(src="/public/images/pic3.jpg" alt="" width="480")
+        div.slide
+          img(src="/public/images/pic4.jpg" alt="" width="480")
+
+        // navigation automatically of sliders
+        div.navigation-auto
+          div.auto-btn1
+          div.auto-btn2
+          div.auto-btn3
+          div.auto-btn4
+          div.auto-btn5
+      
+      // navigation manually
+      div.navigation-manual
+        label.manual-btn(for="radio1")
+        label.manual-btn(for="radio2")
+        label.manual-btn(for="radio3")
+        label.manual-btn(for="radio4")
+        label.manual-btn(for="radio5")
     
+    // login form
     div.login-form
       h1 Login Form
       form(action='auth', method='POST')
