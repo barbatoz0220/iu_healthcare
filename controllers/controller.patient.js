@@ -9,15 +9,6 @@ module.exports.index = function(req, res) {
     });
 };
 
-<<<<<<< HEAD
-=======
-module.exports.menu = function(req, res) {
-    res.render("patients/menu", {
-        id: req.session.userid
-    });
-}
->>>>>>> NamAnh
-
 module.exports.get = function(req, res) {
     connection.query('select * from patient where id = ?', [req.session.userid], function(err, result) {
         res.render('patients/get', {
