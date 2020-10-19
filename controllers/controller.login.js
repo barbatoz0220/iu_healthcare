@@ -38,3 +38,7 @@ module.exports.login = function(req, res) {
 		})
 	}	
 }
+
+module.exports.emergency = function(req, res) {
+	res.render('patients/menu.pug');
+}

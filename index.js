@@ -13,6 +13,7 @@ const loginRouter = require('./routes/route.login');
 const patientRouter = require('./routes/route.patient');
 const doctorRouter = require('./routes/route.doctor');
 const cookieParser = require('cookie-parser');
+const { response } = require('express');
 
 // set up app and port
 const app = new express();
@@ -48,3 +49,5 @@ app.listen(port, () => {
 app.get('/styles/app.css', function(req, res) {
 	res.send('Hello');
 })
+
+// coi absolute link, url
