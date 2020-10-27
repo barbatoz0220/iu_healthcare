@@ -19,20 +19,13 @@ html(lang = 'en')
             $(".item").animate({transition: "0.5s"});
           }
         })
-
-        $('.slider').slick({
-          appendArrows: $('footer > div')
-        })
       })
-    // slick script
-    script(type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js")
-
+    
   body
     // navigation bar
     nav 
       ul.menu
-        li.hmsLogo
-          a(href="#logo") HMS 25
+        a.hmsLogo(href="#logo") HMS 25
         li.item
           a(href="#home") Home
         li.item
@@ -40,45 +33,45 @@ html(lang = 'en')
         li.item
           a(href="#contact") Contacts
         li.item.button
-          a(href="emergency") Emergency
+          a.emergency(href="emergency") Emergency
         li.toggle
           span.bars
     
-    // picture  
-    div.slider
-      // container for images
-      div.slider__slide.slider__slide--1
-        div.slider__lead.bold OUR HOSPITAL
-        div.slider__heading.bold Facilities
-        div.slider__text.bold Facilities
-          div
-            p We have the greatest facilities possible
-      div.slider__slide.slider__slide--2
-        div.slider__lead.bold OUR HOSPITAL
-        div.slider__heading.bold Facilities
-        div.slider__text.bold Services
-          div
-            p We offer you the best of our abilities
-      div.slider__slide.slider__slide--3
-        div.slider__lead.bold OUR HOSPITAL
-        div.slider__heading.bold Staff
-        div.slider__text.bold Professionalism
-          div
-            p Our team is professional with cutting-edge technology
-      div.slider__slide.slider__slide--4
-        div.slider__lead.bold OUR HOSPITAL
-        div.slider__heading.bold Staff
-        div.slider__text.bold Moments
-          div
-            p We care for your every moment
-    
-    // login form
-    div.login-form
-      h1 Login Form
-      form(action='auth', method='POST')
-        input(type='text', name='username', placeholder='Username', required='')
-        input(type='password', name='password', placeholder='Password', required='')
-        input(type='submit' value="Submit")
+    div.main
+      // login form
+      div.login-form
+        h1 Login Form
+        form(action='auth', method='POST')
+          input(type='text', name='username', placeholder='Username', required='')
+          input(type='password', name='password', placeholder='Password', required='')
+          input(type='submit' value="Submit")
 
-    footer
-      div
+      // picture  
+      div.slider
+        // container for images
+        div.slider__item
+          img.slider__image(src="/public/images/pic1.jpg")
+          div.slider__text
+            h5 Facilities
+            p We have the greatest facilities possible
+          
+        
+        div.slider__item
+          img.slider__image(src="/public/images/pic2.jpg")
+          div.slider__text
+            h5 Staff
+            p We offer you the best of our abilities
+          
+        
+        div.slider__item
+          img.slider__image(src="/public/images/pic3.jpg")
+          div.slider__text
+            h5 Professionalism
+            p Our team is professional with cutting-edge technology
+          
+
+        div.slider__item
+          img.slider__image(src="/public/images/pic4.jpg")
+          div.slider__text
+            h5 Care
+            p We care for your every moment

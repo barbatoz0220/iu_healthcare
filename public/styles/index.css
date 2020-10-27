@@ -3,27 +3,38 @@
   box-sizing: border-box;
 }
 body {
+  background-color: #1e2124;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
 }
 nav {
   overflow: hidden;
   background: #1e2124;
   padding: 5px 20px;
+  font-weight: 1000;
 }
 ul {
   list-style-type: none;
 }
 a {
-  background: -webkit-linear-gradient(#05fdc7, #00c4e6, #008cff);
+  background: white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
 }
 a:hover {
-  -webkit-text-fill-color: #05fdc7;
+  -webkit-text-fill-color: #00cff3;
 }
 .hmsLogo {
-  font-size: 24px;
+  font-size: 30px;
+  background: #00cff3;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hmsLogo:hover {
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .menu li {
   font-size: 16px;
@@ -108,8 +119,21 @@ a:hover {
     transition: all .25s;
   }
 }
-
-
+@media screen and (max-width: 720px) {
+  .slider__text {
+    max-width: 100%;
+    padding: 0;
+    top: initial;
+    bottom: 0;
+    transform: initial;
+  }
+  .slider__text h5 {
+    font-size: 0.5rem;
+  }
+  .slider__text p {
+    font-size: 0.25rem;
+  }
+}
 /* Desktop Menu View */
 @media all and (min-width: 720px) {
   .item {
@@ -135,36 +159,108 @@ a:hover {
     padding-right: 0;
   }
 }
+@media screen and (max-width: 1080px) {
+  .slider__text {
+    max-width: 70%;
+    padding: 0.5rem 0.5rem;
+  }
+  .slider__text h5 {
+    font-size: 1rem;
+  }
+  .slider__text p {
+    font-size: 0.5rem;
+  }
+  .login-form {
+    max-width: 50%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
 
 /* Background slider */
 .slider {
-  text-align: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
+  position: relative;
   width: 100%;
-  z-index: -1;
+  height: 100vh;
+  overflow: hidden;
 }
-.slider__slide {
-  display: flex !important;
-  flex-direction: column;
-  justify-content: center;
-  background-size: cover;
-  background-image: image("/public/images/pic0.jpg");
-  background-position: 50%;
-  height: auto;
-  width: auto;
-  padding: 25px;
+.slider__item {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  opacity: 0;
+  animation: cycleImages 41s infinite;
 }
+@keyframes cycleImages {
+  25% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+}
+@keyframes zoom {
+  100% {
+    transform: scale(2);
+  }
+}
+.slider__item:nth-child(1),
+.slider__item:nth-child(1) img{
+  animation-delay: 0s;
+}
+.slider__item:nth-child(2),
+.slider__item:nth-child(2) img{
+  animation-delay: 10s;
+}
+.slider__item:nth-child(3),
+.slider__item:nth-child(3) img {
+  animation-delay: 20s;
+}
+.slider__item:nth-child(4),
+.slider__item:nth-child(4) img {
+  animation-delay: 30s;
+}
+.slider__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: zoom 41s infinite;
+}
+.slider__text {
+  max-width: 50%;
+  position: absolute;
+  top: 20%;
+  left: 0;
+  transform: translateY(50%);
+  background-color: rgba(0, 0, 0, .8);
+  color: white;
+  padding: 2rem 1rem;
+}
+.slider__text h5 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 1.5rem;
+}
+.slider__text p {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
 /* Login Form */
 .login-form {
   width: 300px;
-  margin: 0 auto;
+  position: absolute;
+  left: 60vw;
+  top: 40vh;
+  padding: 2rem;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, .8);
 }
 .login-form h1 {
   text-align: center;
-  color: #4d4d4d;
+  color: white;
   font-size: 24px;
   padding: 20px 0 20px 0;
 }
@@ -186,5 +282,6 @@ a:hover {
   color: #ffffff;
 }
 .login-form input[type="submit"]:hover {
-  background-color: #1e2124;
+  background-color: #00cff3;
+  transition: 0.5s;
 }
