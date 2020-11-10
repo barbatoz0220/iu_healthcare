@@ -1,0 +1,148 @@
+/* Mobile Menu View */
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #1e2124;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+nav {
+  overflow: hidden;
+  background: #1e2124;
+  padding: 5px 20px;
+  font-weight: 1000;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  -webkit-text-fill-color: #00cff3;
+}
+.hmsLogo {
+  font-size: 30px;
+  background: #00cff3;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hmsLogo:hover {
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.menu li {
+  font-size: 16px;
+  padding: 5px 5px;
+}
+.menu li a {
+  display: block;
+}
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.toggle {
+  cursor: pointer;
+  order: 1;
+}
+.item.button {
+  order: 2;
+}
+.item {
+  width: 100%;
+  text-align: center;
+  order: 3;
+  display: none;
+  transition: 0.5s;
+  background: red;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+.item.active {
+  display: block;
+}
+.bars {
+  background: -webkit-linear-gradient(#05fdc7, #00c4e6, #008cff);
+  display: inline-block;
+  height: 2px;
+  position: relative;
+  width: 18px;
+}
+.bars::before,
+.bars::after {
+  background: -webkit-linear-gradient(#05fdc7, #00c4e6, #008cff);
+  content: "";
+  display: inline-block;
+  height: 2px;
+  position: absolute;
+  width: 18px;
+}
+.bars::before {
+  top: 5px;
+}
+.bars::after {
+  top: -5px;
+}
+
+/* Tablet Menu View */
+@media all and (min-width: 480px) {
+  .menu {
+    justify-content: center;
+  }
+  .hmsLogo {
+    flex: 1;
+  }
+  .item.button {
+    width: auto;
+    order: 1;
+    display: block;
+  }
+  .toggle {
+    order: 2;
+  }
+  .button a {
+    padding: 7px 15px;
+    background: transparent;
+    border: 1px solid red;
+    border-radius: 50cm;
+  }
+  .button a:hover {
+    background: darkred;
+    transition: all 0.25s;
+  }
+}
+
+/* Desktop Menu View */
+@media all and (min-width: 720px) {
+  .item {
+    display: block;
+    width: auto;
+  }
+  .toggle {
+    display: none;
+  }
+  .hmsLogo {
+    order: 0;
+  }
+  .item {
+    order: 1;
+  }
+  .button {
+    order: 2;
+  }
+  .menu li {
+    padding: 5px 10px;
+  }
+  .menu li.button {
+    padding-right: 0;
+  }
+}
