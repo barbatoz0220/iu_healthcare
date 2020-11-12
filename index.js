@@ -12,6 +12,7 @@ const authMiddleware = require('./middlewares/auth.middleware');
 const loginRouter = require('./routes/route.login');
 const patientRouter = require('./routes/route.patient');
 const doctorRouter = require('./routes/route.doctor');
+const adminRouter = require('./routes/route.admin');
 const cookieParser = require('cookie-parser');
 
 // set up app and port
@@ -26,7 +27,8 @@ app.set('view engine', 'pug');
 app.use(session({
 	secret: 'secret',
 	resave: true,
-	saveUninitialized: true
+	saveUninitialized: true,
+	cookie: {secure: false}
 }));
 
 // set up middleware
@@ -38,6 +40,7 @@ app.use(express.static('public'));
 app.use('/', loginRouter);
 app.use('/patient', authMiddleware.requireAuth, patientRouter);
 app.use('/doctor', authMiddleware.requireAuth, doctorRouter);
+app.use('/admin', authMiddleware.requireAuth, adminRouter);
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.listen(port, () => {

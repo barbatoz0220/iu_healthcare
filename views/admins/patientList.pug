@@ -1,0 +1,37 @@
+doctype html
+html(lang='en')
+   head
+      title Homepage
+      link(rel="stylesheet", href="/styles/form.css")
+   body
+      ul
+        each patient in patients
+            li
+               input(type='text', name='name', value = patient.NAME, required='', readonly=true)
+               input(type='text', name='dob', value = patient.DOB, required='', readonly=true)
+               input(type='text', name='gender', value = patient.GENDER, required='', readonly=true)
+               input(type='text', name='phone', value = patient.PHONE, required='', readonly=true)
+               form(action="patient-list/delete/" + patient.ID, method="POST")
+                  input(type="submit" value="Delete")
+               button(type="button" id="update-button") Update
+               form(id="update-form", action="patient-list/update/" + patient.ID, method="POST")
+                  input(type='text', name='name', required='')
+                  input(type='text', name='dob', required='')
+                  input(type='text', name='gender', required='')
+                  input(type='text', name='phone', required='')
+                  input(type="submit" value="Done")
+      button(type="button" id="insert-button") Add patient
+      script(src="https://code.jquery.com/jquery-3.5.1.min.js")
+      script.
+         $("#insert-button").click(function(){
+            $("#insert-form").toggle();
+         });
+          $("#update-button").click(function(){
+            $("#update-form").toggle();
+         });
+      form(id="insert-form", action="patient-list/insert", method="POST")
+         input(type='text', name='name', required='')
+         input(type='text', name='dob', required='')
+         input(type='text', name='gender', required='')
+         input(type='text', name='phone', required='')
+         input(type="submit" value="Add")

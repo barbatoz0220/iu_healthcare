@@ -8,7 +8,6 @@ const controller = require('../controllers/controller.doctor');
 const router = express.Router();
 
 // GET
-router.get('/', controller.index);
-router.get('/:id', controller.menu);
+router.get('/', controller.index);  
 
 module.exports = router;
