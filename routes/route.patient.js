@@ -9,12 +9,8 @@ const router = express.Router();
 
 // GET
 router.get('/', controller.index);
-<<<<<<< HEAD
-router.get('/get', controller.get);
-=======
 router.get('/information', controller.information)
 router.get('/doctor', controller.doctor)
 router.get('/visit', controller.visit);
->>>>>>> NamAnh
 
 module.exports = router;

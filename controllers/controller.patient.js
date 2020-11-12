@@ -1,10 +1,7 @@
 var mysql = require('mysql');
 var express = require('express');
 var connection = require('../models/dbconnection');
-<<<<<<< HEAD
-=======
 const session = require('express-session');
->>>>>>> NamAnh
 
 module.exports.index = function(req, res) {
     res.render('patients/patientHome', {
@@ -12,16 +9,6 @@ module.exports.index = function(req, res) {
     });
 };
 
-<<<<<<< HEAD
-module.exports.get = function(req, res) {
-    connection.query('select * from patient where id = ?', [req.session.userid], function(err, result) {
-        res.render('patients/get', {
-            name: result[0].NAME,
-            id: result[0].ID
-        })
-    })
-}
-=======
 module.exports.information = function(req, res) {
     connection.query("SELECT * FROM PATIENT WHERE ID = ?", [req.session.userid], function(error, results, fields) {
         res.render("patients/information", {
@@ -45,4 +32,3 @@ module.exports.visit = function(req, res) {
         });
     })
 }
->>>>>>> NamAnh
