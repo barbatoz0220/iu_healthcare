@@ -1,7 +1,7 @@
 const connection = require('../models/dbconnection')
 
 module.exports.index = function(req, res){
-	res.render('index');
+	res.render('index.pug');
 };
 
 module.exports.login = function(req, res) {
@@ -39,6 +39,22 @@ module.exports.login = function(req, res) {
 	}	
 }
 
+module.exports.logo = function(req, res) {
+	res.render('index.pug');
+}
+
+module.exports.home = function(req, res) {
+	res.render('index.pug');
+}
+
+module.exports.about = function(req, res) {
+	res.render('about.pug');
+}
+
+module.exports.contacts = function(req, res) {
+	res.render('contacts.pug');
+}
+
 module.exports.emergency = function(req, res) {
-	res.render('patients/menu.pug');
+	res.render('emergency.pug');
 }

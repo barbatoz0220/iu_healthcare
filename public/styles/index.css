@@ -1,11 +1,8 @@
 /* Mobile Menu View */
-* {
-  box-sizing: border-box;
-}
-body {
-  background-color: #1e2124;
+html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   overflow: hidden;
+  background-color: #3c4053;
 }
 /* Tablet Menu View */
 @media screen and (max-width: 720px) {
