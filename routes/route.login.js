@@ -10,6 +10,16 @@ const router = express.Router();
 // GET
 router.get('/', controller.index);
 
+router.get('/emergency', controller.emergency);
+
+router.get('/about', controller.about);
+
+router.get('/home', controller.home);
+
+router.get('/contacts', controller.contacts);
+
+router.get('/logo', controller.logo);
+
 // POST
 router.post('/auth', controller.login);
 

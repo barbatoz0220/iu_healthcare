@@ -14,10 +14,11 @@ const patientRouter = require('./routes/route.patient');
 const doctorRouter = require('./routes/route.doctor');
 const adminRouter = require('./routes/route.admin');
 const cookieParser = require('cookie-parser');
+const { response } = require('express');
 
 // set up app and port
 const app = new express();
-const port = 3000;
+const port = 4000;
 
 // set up view engine
 app.set('views', './views');
