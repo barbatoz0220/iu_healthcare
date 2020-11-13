@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1e2124;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    text-align: center;
+}
+
+h3 {
+    color: white;
+}
+
+.btn {
+    background-color: #da190b;
+    border: none;
+    color: white; 
+    padding: 14px 28px; 
+    cursor: pointer; 
+    display: block;
+    margin: 15px auto;
+    width: 200px;
+}
+
+.emergency {background-color: #f44336;} 
+.emergency:hover {background: #da190b;}
+
+.fas {
+    padding: 2%;
+}
+
+.emerNumber {
+    background-color: #2698D6;
+}
