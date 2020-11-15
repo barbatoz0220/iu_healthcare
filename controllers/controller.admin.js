@@ -16,18 +16,21 @@ module.exports.doctorList = function(req, res) {
     connection.query("SELECT * FROM DOCTOR", function(error, results, fields) {
         res.render("admins/doctorList", {
             doctors: results
-        })
-    })
+        });
+    });
 }
 
 module.exports.delete = function(req, res) {
-    connection.query("DELETE FROM PATIENT WHERE ID = ?", [req.params.id]);
-    res.redirect("/admin/patient-list");
+    connection.query("DELETE FROM PATIENT WHERE ID = ?", [req.params.id], function(error, results, fields) {;
+        res.redirect("/admin/patient-list");
+    });
 }
 
 module.exports.insert = function(req, res) {
-    connection.query("INSERT INTO PATIENT(NAME, GENDER, DOB, PHONE) VALUES (?, ?, ?, ?)", [req.body.name, req.body.gender, req.body.dob, req.body.phone]);
-    res.redirect("/admin/patient-list");
+    connection.query("INSERT INTO PATIENT(NAME, GENDER, DOB, PHONE) VALUES (?, ?, ?, ?)", [req.body.name, req.body.gender, req.body.dob, req.body.phone], function(error, results, fields) {
+        res.redirect("/admin/patient-list");
+    });
+ 
 }
 
 module.exports.update = function(req, res) {
@@ -42,6 +45,7 @@ module.exports.update = function(req, res) {
     var gender = req.body.gender != null ? req.body.gender : patient.gender
     var dob = req.body.dob != null ? req.body.dob : patient.dob
     var phone = req.body.phone != null ? req.body.phone : patient.phone
-    connection.query("UPDATE PATIENT SET NAME=?, GENDER=?, DOB=?, PHONE=? WHERE ID=?", [name, gender, dob, phone, req.params.id]);
-    res.redirect("/admin/patient-list");
+    connection.query("UPDATE PATIENT SET NAME=?, GENDER=?, DOB=?, PHONE=? WHERE ID=?", [name, gender, dob, phone, req.params.id], function(error, results, fields) {
+        res.redirect("/admin/patient-list");
+    });
 }

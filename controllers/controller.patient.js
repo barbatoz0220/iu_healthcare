@@ -11,6 +11,7 @@ module.exports.index = function(req, res) {
 
 module.exports.information = function(req, res) {
     connection.query("SELECT * FROM PATIENT WHERE ID = ?", [req.session.userid], function(error, results, fields) {
+        console.log(results);
         res.render("patients/information", {
             patients: results
         });
