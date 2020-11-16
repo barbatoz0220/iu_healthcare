@@ -1,3 +1,12 @@
+/* Scrollbar UI */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: -webkit-linear-gradient(#05fdc7, #00c4e6, #008cff);
+}
+
 /* Mobile Menu View */
 *,
 *::before,
@@ -22,9 +31,14 @@ a.navBar, a.emergency {
   -webkit-text-fill-color: transparent;
   text-decoration: none;
 }
-a.navBar:hover , a.emergency:hover {
+a.navBar:hover {
   -webkit-text-fill-color: #00cff3;
 }
+
+a.emergency:hover {
+  -webkit-text-fill-color: white;
+}
+
 .hmsLogo {
   font-size: 30px;
   background: #00cff3;
@@ -116,8 +130,8 @@ a.navBar:hover , a.emergency:hover {
     border-radius: 50cm;
   }
   .button a:hover {
-    background: darkred;
-    transition: all 0.25s;
+    background: rgb(221, 0, 0);
+    transition: all 0.5s;
   }
 }
 

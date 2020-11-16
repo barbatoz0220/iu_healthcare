@@ -42,7 +42,7 @@ module.exports.login = function(req, res) {
 				req.session.username = results[0].NAME;
 				req.session.userid = results[0].ID;
 				res.cookie('fakeCookie', 0, {
-					path: '/patient'
+					path: '/patient', path: '/about', path: '/contact' // Please fix this hu hu @HelloImTri
 				});
 				res.redirect("/patient");
 				res.end();
