@@ -12,6 +12,7 @@ const authMiddleware = require('./middlewares/auth.middleware');
 const loginRouter = require('./routes/route.login');
 const patientRouter = require('./routes/route.patient');
 const doctorRouter = require('./routes/route.doctor');
+const adminRouter = require('./routes/route.admin');
 const cookieParser = require('cookie-parser');
 const { response } = require('express');
 
@@ -27,9 +28,9 @@ app.set('view engine', 'pug');
 app.use(session({
 	secret: 'secret',
 	resave: true,
-	saveUninitialized: true
+	saveUninitialized: true,
+	cookie: {secure: false}
 }));
-
 
 // set up middleware
 app.use(bodyParser.urlencoded({extended : true}));
@@ -40,14 +41,9 @@ app.use(express.static('public'));
 app.use('/', loginRouter);
 app.use('/patient', authMiddleware.requireAuth, patientRouter);
 app.use('/doctor', authMiddleware.requireAuth, doctorRouter);
+app.use('/admin', authMiddleware.requireAuth, adminRouter);
 
-app.use( '/public', express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 app.listen(port, () => {
     console.log('App listenning on port ' + port.toString())
 });
-
-app.get('/styles/app.css', function(req, res) {
-	res.send('Hello');
-})
-
-// coi absolute link, url

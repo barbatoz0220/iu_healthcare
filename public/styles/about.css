@@ -1,0 +1,94 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  font-size: 10px;
+  background-color: #3c4053;
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 100rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.accordion_item {
+  background-color: #283042;
+  border-radius: 0.4rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  box-shadow: 0.5rem 2px 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+a.accordion_link {
+  text-decoration: none;
+  font-size: 1.6rem;
+  text-decoration: none;
+  color:  #00cff3;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fas {
+  color: #00cff3;
+  padding: 0.5rem;
+}
+
+.accordion_link .fa-minus-square {
+  display: none;
+}
+
+.accordion_answer {
+  max-height: 0;
+  overflow: hidden;
+  position: relative;
+  background-color: #1e2124;
+  transition: max-height 650ms;
+}
+
+.accordion_answer::before {
+  content: "";
+  position: absolute;
+  width: 0.6rem;
+  height: 90%;
+  background-color: #00cff3;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.accordion_answer p, ul {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  padding: 2rem;
+}
+
+.accordion_item:target .accordion_answer {
+  max-height: 20rem;
+}
+
+.accordion_item:target .accordion_link .fa-plus-square {
+  display: none;
+}
+
+.accordion_item:target .accordion_link .fa-minus-square {
+  display: block;
+}

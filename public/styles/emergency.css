@@ -1,16 +1,5 @@
-* {
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #1e2124;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
-    text-align: center;
-}
-
-h3 {
-    color: white;
+h1 {
+    color: black;
 }
 
 .btn {
@@ -21,7 +10,9 @@ h3 {
     cursor: pointer; 
     display: block;
     margin: 15px auto;
-    width: 200px;
+    width: 50vw;
+    height: 25vh;
+    font-size: 1.5rem;
 }
 
 .emergency {background-color: #f44336;} 

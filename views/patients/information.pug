@@ -1,0 +1,14 @@
+doctype html
+html(lang='en')
+head
+    title Homepage
+body
+    each patient in patients
+        h1 Welcome back
+        span= patient.NAME
+        br
+        span= patient.GENDER
+        br
+        span= patient.DOB
+        br
+        span= patient.PHONE
