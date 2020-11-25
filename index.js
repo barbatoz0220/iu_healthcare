@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 
 var path = require('path');
 
+const logoutController = require('./controllers/logout');
+
 // import middleware
 const authMiddleware = require('./middlewares/auth.middleware');
 
@@ -41,6 +43,7 @@ app.use('/', loginRouter);
 app.use('/patient', authMiddleware.checkPatientLoggedin, patientRouter);
 app.use('/doctor', authMiddleware.checkDoctorLoggedin, doctorRouter);
 app.use('/admin', adminRouter);
+app.use('/logout', logoutController);
 app.use('*', function(req, res) { 
 	 res.render('404page');
 });

@@ -1,7 +1,4 @@
-var mysql = require('mysql');
-var express = require('express');
 var connection = require('../models/dbconnection');
-const session = require('express-session');
 
 module.exports.index = function(req, res) {
     res.render('patients/patientHome', {
