@@ -1,7 +1,7 @@
 const connection = require('../models/dbconnection');
 
 module.exports.checkPatientLoggedin = function(req, res, next) {
-    if(req.session.patientLoggedin == false) {
+    if(!req.session.patientLoggedin) {
         res.redirect('/');
         return;
     }
