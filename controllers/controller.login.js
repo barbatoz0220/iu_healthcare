@@ -33,17 +33,13 @@ module.exports.login = function (req, res) {
 			});
 			res.redirect("/admin");;
 		}
+
 		connection.query('SELECT * FROM ACCOUNT A, PATIENT P WHERE A.ID = P.ACCOUNT_ID and USERNAME = ?', [username], function (error, results, fields) {
-			console.log(results[0].PASSWORD);
-			console.log(md5(password));
 			if (results.length > 0) {
 					if (results[0].PASSWORD == md5(password)) {
-						req.session.loggedin = true;
+						req.session.patientLoggedin = true;
 						req.session.username = results[0].NAME;
 						req.session.userid = results[0].ID;
-						res.cookie('fakeCookie', 0, {
-							path: '/patient'
-						});
 						res.redirect("/patient");
 						res.end();
 					}
@@ -53,12 +49,9 @@ module.exports.login = function (req, res) {
 
 		connection.query('SELECT * FROM ACCOUNT A, DOCTOR D WHERE A.ID = D.ACCOUNT_ID and USERNAME = ?', [username], function (error, results, fields) {
 			if (results.lenght > 0) {
-					req.session.loggedin = true;
+					req.session.doctorLoggedin = true;
 					req.session.username = results[0].NAME;
 					req.session.userid = results[0].ID;
-					res.cookie('fakeCookie', 1, {
-						path: '/doctor'
-					});
 					res.redirect("/doctor");
 					res.end();
 				}
@@ -71,7 +64,11 @@ module.exports.logo = function (req, res) {
 }
 
 module.exports.home = function (req, res) {
-	res.render('index.pug');
+	if(req.session.patientLoggedin == true) {
+		res.redirect('/patient');
+	} else if (req.session.doctorLoggedin == true) {
+		res.redirect('/doctor');
+	}
 }
 
 module.exports.about = function (req, res) {

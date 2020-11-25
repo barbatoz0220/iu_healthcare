@@ -13,12 +13,10 @@ const loginRouter = require('./routes/route.login');
 const patientRouter = require('./routes/route.patient');
 const doctorRouter = require('./routes/route.doctor');
 const adminRouter = require('./routes/route.admin');
-const cookieParser = require('cookie-parser');
-const { response } = require('express');
 
 // set up app and port
 const app = new express();
-const port = 4000;
+const port = 3000;
 
 // set up view engine
 app.set('views', './views');
@@ -29,19 +27,20 @@ app.use(session({
 	secret: 'secret',
 	resave: true,
 	saveUninitialized: true,
-	cookie: {secure: false}
+	cookie: {
+		secure: false
+	}
 }));
 
 // set up middleware
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());								// fetch data from view
-app.use(cookieParser());								// read request's cookie
 app.use(express.static('public'));
 
 app.use('/', loginRouter);
-app.use('/patient', authMiddleware.requireAuth, patientRouter);
-app.use('/doctor', authMiddleware.requireAuth, doctorRouter);
-app.use('/admin', authMiddleware.requireAuth, adminRouter);
+app.use('/patient', authMiddleware.checkPatientLoggedin, patientRouter);
+app.use('/doctor', authMiddleware.checkDoctorLoggedin, doctorRouter);
+app.use('/admin', adminRouter);
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.listen(port, () => {
