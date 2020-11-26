@@ -1,5 +1,7 @@
 const connection = require('../models/dbconnection');
 const md5 = require('md5');
+//const patientModel = require('../models/Patient');
+
 var admins = [
 	{
 		name: "tri",

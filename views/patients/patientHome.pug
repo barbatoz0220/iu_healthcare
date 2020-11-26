@@ -35,9 +35,28 @@ block navBar
         span.bars
 
 block main
-   h1 Welcome back, #{name}
-   a(href="patient/information") View your profile 
-   br
-   a(href="patient/doctor") View your doctor
-   br
-   a(href="patient/visit") Visit history
+  each patient in patients
+    h1 Personal Information
+      br
+      span= patient.NAME  
+      br
+      span= patient.GENDER
+      br
+      span= patient.DOB
+      br
+      span= patient.PHONE
+  each doctor in doctors
+    h1 Your Doctor
+      br
+      span= doctor.NAME
+      br
+      span= doctor.GENDER
+      br
+      span= doctor.DOB
+      br
+      span= doctor.PHONE
+  ul
+    h1 Your Visits
+    each visit in visits
+      li
+        span= visit.ID
