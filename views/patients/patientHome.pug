@@ -1,12 +1,41 @@
-doctype html
-html(lang='en')
-   head
-      title Homepage
-   
-   body
-      h1 Welcome back, #{name}
-      a(href="patient/information") View your profile 
-      br
-      a(href="patient/doctor") View your doctor
-      br
-      a(href="patient/visit") Visit history
+extends ../index.pug
+
+block metadata
+   meta(charset='UTF-8')
+   meta(name="viewport" content="width=device-width, initial-scales=1.0")
+   // CSS scripts
+   link(rel="stylesheet" href="/styles/navBar.css")
+   link(rel="stylesheet" href="/styles/index.css")
+   link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.15.1/css/all.css', integrity='sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp', crossorigin='anonymous')
+
+
+block navBar
+   nav 
+    ul.menu
+      a.hmsLogo(href="logo") HMS25 
+        i.fas.fa-hospital-symbol
+      li.item
+        a.navBar(href="home") Home
+      li.item
+        a(href="patient/information") View your profile 
+      li.item
+        a(href="patient/visit") Visit history
+      li.item
+        a(href="patient/doctor") View your doctor
+      li.item
+        a.navBar(href="about") About
+      li.item
+        a.navBar(href="contacts") Contacts
+      li.item.button
+        a.emergency(href="emergency") Emergency   
+          i.fas.fa-ambulance
+      li.toggle
+        span.bars
+
+block main
+   h1 Welcome back, #{name}
+   a(href="patient/information") View your profile 
+   br
+   a(href="patient/doctor") View your doctor
+   br
+   a(href="patient/visit") Visit history
