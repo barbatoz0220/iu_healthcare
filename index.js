@@ -35,7 +35,7 @@ app.use(session({
 }));
 
 // set up middleware
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());								// fetch data from view
 app.use(express.static('public'));
 
@@ -44,11 +44,11 @@ app.use('/patient', authMiddleware.checkPatientLoggedin, patientRouter);
 app.use('/doctor', authMiddleware.checkDoctorLoggedin, doctorRouter);
 app.use('/admin', adminRouter);
 app.use('/logout', logoutController);
-app.use('*', function(req, res) { 
-	 res.render('404page');
+app.use('*', (req, res) => {
+	res.render('404page');
 });
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.listen(port, () => {
-    console.log('App listenning on port ' + port.toString())
+	console.log('App listenning on port ' + port.toString())
 });
