@@ -1,6 +1,4 @@
-// import node package
 const mysql = require('mysql');
-const express = require('express');
 
 var connection = mysql.createConnection({
     host: 'sql12.freemysqlhosting.net',
@@ -9,7 +7,7 @@ var connection = mysql.createConnection({
     database: 'sql12375258'
 })
 
-connection.connect(function(error) {
+connection.connect(error => {
     if(error) throw error;
 });
 
