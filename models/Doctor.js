@@ -20,3 +20,10 @@ module.exports.getPatientsByDoctor = userid => {
     });
 }
 
+module.exports.getDoctorAccount = (username) => {
+    return new Promise((resolve, reject) => {
+        connection.query('SELECT * FROM ACCOUNT A, DOCTOR D WHERE A.ID = D.ACCOUNT_ID and USERNAME = ?', [username], (error, result) => {
+            return error ? reject(err) : resolve(result);
+        });
+    });
+}

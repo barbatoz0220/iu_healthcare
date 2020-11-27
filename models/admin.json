@@ -1,0 +1,19 @@
+{
+    "admins": [
+        {
+            "name": "tri",
+            "username": "tdtri",
+            "password": "tdtri"
+        },
+        {
+            "name": "anh",
+            "username": "phnanh",
+            "password": "phnanh"
+        },
+        {
+            "name": "huy",
+            "username": "dnmhuy",
+            "password": "dnmhuy"
+        }
+    ]
+}
