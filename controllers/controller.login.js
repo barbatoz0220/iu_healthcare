@@ -37,7 +37,7 @@ module.exports.login = async (req, res) => {
 				req.session.patientLoggedin = true;
 				req.session.username = doctorAccount[0].NAME;
 				req.session.userid = doctorAccount[0].ID;
-				res.redirect("/doctỏ");
+				res.redirect("/doctor");
 				res.end();
 			}
 		}
