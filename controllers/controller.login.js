@@ -1,26 +1,33 @@
 const md5 = require('md5');
-const { getPatientAccount } = require('../models/Patient');
-const { getDoctorAccount } = require('../models/Doctor');
+const patientModel = require('../models/Patient');
+const doctorModel = require('../models/Doctor');
 
 var fs = require('fs');
 var data = JSON.parse(fs.readFileSync('./models/admin.json', 'utf8'));
 
 
-module.exports.index = function (req, res) {
-	res.render('index.pug');
+module.exports.index = (req, res) => {
+	if (req.session.patientLoggedin == true)
+        res.redirect('/patient');
+    else if (req.session.doctorLoggedin == true)
+        res.redirect('/doctor');
+    else if (req.session.adminLoggedin == true)
+        res.redirect('/admin');
+    else 
+		res.render('index.pug')
 };
 
 module.exports.login = async (req, res) => {
 	var username = req.body.username;
 	var password = req.body.password;
 	if (username && password) {
-
 		var adminLogin = data.admins.filter(admin => admin.username == username && admin.password == password);
 		if (adminLogin.length != 0) {
-			res.redirect("/admin");;
+			req.session.adminLoggedin = true;
+			res.redirect("/admin");
+			res.end();
 		}
-
-		const patientAccount = await getPatientAccount(username);
+		const patientAccount = await patientModel.getPatientAccount(username);
 		if (patientAccount.length > 0) {
 			if (patientAccount[0].PASSWORD == md5(password)) {
 				req.session.patientLoggedin = true;
@@ -30,8 +37,7 @@ module.exports.login = async (req, res) => {
 				res.end();
 			}
 		}
-
-		const doctorAccount = await getDoctorAccount(username)
+		const doctorAccount = await doctorModel.getDoctorAccount(username)
 		if (doctorAccount.length > 0) {
 			if (doctorAccount[0].PASSWORD == md5(password)) {
 				req.session.patientLoggedin = true;
@@ -44,26 +50,10 @@ module.exports.login = async (req, res) => {
 	}
 }
 
-module.exports.logo = function (req, res) {
-	res.render('index.pug');
-}
+module.exports.logo = (req, res) => res.render('index.pug');
 
-module.exports.home = function (req, res) {
-	if (req.session.patientLoggedin == true) {
-		res.redirect('/patient');
-	} else if (req.session.doctorLoggedin == true) {
-		res.redirect('/doctor');
-	}
-}
+module.exports.about = (req, res) => res.render('about.pug');
 
-module.exports.about = function (req, res) {
-	res.render('about.pug');
-}
+module.exports.contacts = (req, res) => res.render('contacts.pug');
 
-module.exports.contacts = function (req, res) {
-	res.render('contacts.pug');
-}
-
-module.exports.emergency = function (req, res) {
-	res.render('emergency.pug');
-}
+module.exports.emergency = (req, res) => res.render('emergency.pug');
