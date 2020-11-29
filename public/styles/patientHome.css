@@ -5,6 +5,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
 }
 
 .sideInfor {
@@ -18,10 +19,58 @@ body {
     overflow-x: hidden;
 }
 
+.avatar {
+    width: 90%;
+    margin-top: 50px;
+    border-radius: 50%;
+    border: 2px solid #00cff3;
+    text-align: center;
+}
+
+.ava {
+    text-align: center;
+}
+
+.infor {
+    color: #fff;
+    text-align: center;
+}
+
+/*--------------Content--------------*/
 .content {
+    display: flex;
     margin-left: 250px;
     padding-left: 20px;
+    background-image: url(../public/images/pic6.jpg);
+    background-size: auto;
 }
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.grid {
+    display: flex;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    border: 2px solid #00cff3;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+ }
+
+ .link {
+    text-decoration: none;
+    color: #fff;
+    margin: auto;
+ }
+
+ .icon {
+     text-align: center;
+ }
 
 @media all and (max-width: 480px) {
     .sideInfor {

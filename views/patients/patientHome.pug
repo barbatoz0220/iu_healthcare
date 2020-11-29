@@ -35,14 +35,21 @@ block navBar
 
 block main
   div.sideInfor
+    div.ava
+      img(src="/public/images/pic1.jpg", alt="avatar" class="avatar")
+    div.infor
+      h2 #{name}
   
   div.content
-    h1 Welcome back, #{name}
-    a(href="patient/information") View your profile 
-    br
-    a(href="patient/doctor") View your doctor
-    br
-    a(href="patient/visit") Visit history
+    div.container
+      div.grid
+        a.link(href="patient/doctor") View your doctor
+          div.icon
+            <i class="fas fa-street-view"></i>
+      div.grid
+        a.link(href="patient/visit") Visit history
+          div.icon
+            <i class="fas fa-history"></i>
 
     
 
