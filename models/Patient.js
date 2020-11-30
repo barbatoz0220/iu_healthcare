@@ -8,7 +8,7 @@ module.exports.getPatientByID = (userid) => {
             }
         );
     });
-}
+};
 
 module.exports.getDoctorByPatient = (userid) => {
     return new Promise((resolve, reject) => {
@@ -18,7 +18,7 @@ module.exports.getDoctorByPatient = (userid) => {
             }
         );
     });
-}
+};
 
 module.exports.getVisitsByPatient = (userid) => {
     return new Promise((resolve, reject) => {
@@ -28,7 +28,7 @@ module.exports.getVisitsByPatient = (userid) => {
             }
         );
     });
-}
+};
 
 module.exports.getPatientAccount = (username) => {
     return new Promise((resolve, reject) => {
@@ -38,7 +38,7 @@ module.exports.getPatientAccount = (username) => {
             }
         );
     });
-}
+};
 
 module.exports.getAllPatient = () => {
     return new Promise((resolve, reject) => {
@@ -48,7 +48,7 @@ module.exports.getAllPatient = () => {
             }
         );
     });
-}
+};
 
 module.exports.deletePatientByID = (userid) => {
     return new Promise((resolve, reject) => {
@@ -58,7 +58,7 @@ module.exports.deletePatientByID = (userid) => {
             }
         );
     });
-}
+};
 
 module.exports.insertPatient = (name, gender, dob, phone) => {
     return new Promise((resolve, reject) => {
@@ -68,7 +68,7 @@ module.exports.insertPatient = (name, gender, dob, phone) => {
             }
         );
     });
-}
+};
 
 module.exports.updatePatientByID = (id, name, gender, dob, phone) => {
     var patient = {};
@@ -77,11 +77,11 @@ module.exports.updatePatientByID = (id, name, gender, dob, phone) => {
             patient.gender = results[0].GENDER,
             patient.dob = results[0].DOB,
             patient.phone = results[0].PHONE
-    })
+    });
     var validName = name != null ? name : patient.name;
     var validGender = gender != null ? gender : patient.gender
     var validDob = dob != null ? dob : patient.dob
     var validPhone = phone != null ? phone : patient.phone
     connection.query("UPDATE PATIENT SET NAME=?, GENDER=?, DOB=?, PHONE=? WHERE ID=?", [validName, validGender, validDob, validPhone, id]);
-}
+};
 

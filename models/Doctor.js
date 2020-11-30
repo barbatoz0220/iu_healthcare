@@ -31,9 +31,44 @@ module.exports.getDoctorAccount = (username) => {
 module.exports.getAllDoctor = () => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT * FROM DOCTOR", (err, result) => {
+            "SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%Y-%m-%d') as DOB FROM DOCTOR", (err, result) => {
                 return err ? reject(err) : resolve(result);
             }
         );
     });
 }
+
+module.exports.deleteDoctorByID = (userid) => {
+    return new Promise((resolve, reject) => {
+        connection.query(
+            "DELETE FROM DOCTOR WHERE ID = ?", [userid], (err, result) => {
+                return err ? reject(err) : resolve(result);
+            }
+        );
+    });
+};
+
+module.exports.insertDoctor = (name, gender, dob, phone) => {
+    return new Promise((resolve, reject) => {
+        connection.query(
+            "INSERT INTO DOCTOR(NAME, GENDER, DOB, PHONE) VALUES (?, ?, ?, ?)", [name, gender, dob, phone], (err, result) => {
+                return err ? reject(err) : resolve(result);
+            }
+        );
+    });
+};
+
+module.exports.updateDoctorByID = (id, name, gender, dob, phone) => {
+    var doctor = {};
+    connection.query("SELECT * FROM DOCTOR WHERE ID = ?", [id], function (error, results, fields) {
+        doctor.name = results[0].NAME,
+        doctor.gender = results[0].GENDER,
+        doctor.dob = results[0].DOB,
+        doctor.phone = results[0].PHONE
+    });
+    var validName = name != null ? name : doctor.name;
+    var validGender = gender != null ? gender : doctor.gender
+    var validDob = dob != null ? dob : doctor.dob
+    var validPhone = phone != null ? phone : doctor.phone
+    connection.query("UPDATE DOCTOR SET NAME=?, GENDER=?, DOB=?, PHONE=? WHERE ID=?", [validName, validGender, validDob, validPhone, id]);
+};
