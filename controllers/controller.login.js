@@ -6,15 +6,17 @@ var fs = require('fs');
 var data = JSON.parse(fs.readFileSync('./models/admin.json', 'utf8'));
 
 
-module.exports.index = (req, res) => {
+module.exports.index = async (req, res) => {
 	if (req.session.patientLoggedin == true)
-        res.redirect('/patient');
-    else if (req.session.doctorLoggedin == true)
-        res.redirect('/doctor');
-    else if (req.session.adminLoggedin == true)
-        res.redirect('/admin');
-    else 
-		res.render('index.pug')
+		res.redirect('/patient');
+	else if (req.session.doctorLoggedin == true)
+		res.redirect('/doctor');
+	else if (req.session.adminLoggedin == true)
+		res.redirect('/admin');
+	else {
+		//await res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+		res.render('index.pug');
+	}
 };
 
 module.exports.login = async (req, res) => {

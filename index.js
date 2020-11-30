@@ -39,6 +39,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());								// fetch data from view
 app.use(express.static('public'));
 
+// disable cache to handle "Back" button of browser - sending request when back
+app.use((req, res, next) => {
+	res.set('Cache-Control', 'no-store');
+	next();
+});
+
 app.use('/', loginRouter);
 app.use('/patient', authMiddleware.checkPatientLoggedin, patientRouter);
 app.use('/doctor', authMiddleware.checkDoctorLoggedin, doctorRouter);
