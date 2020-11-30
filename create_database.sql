@@ -157,20 +157,20 @@ values 	("patient1", "8103cfda42d725cd38e8bdf9610ef9a6"),
         ("doctor4", "doctor4");
 
 insert into DOCTOR (NAME, GENDER, DOB, PHONE, ACCOUNT_ID) 
-values	("Doctor 1", "male", "1968-02-28", 0915754105, 9),
-		("Doctor 2", "female", "1973-07-23", 0915117774, 10),
-		("Doctor 3", "male", "1975-05-20", 0909999999, 11),
-        ("Doctor 4", "male", "1980-03-01", 0948660917, 12);
+values	("Doctor 1", "male", "1968-02-28", "0915754105", 9),
+		("Doctor 2", "female", "1973-07-23", "0915117774", 10),
+		("Doctor 3", "male", "1975-05-20", "0909999999", 11),
+        ("Doctor 4", "male", "1980-03-01", "0948660917", 12);
         
 insert into PATIENT (NAME, GENDER, DOB, PHONE, DOCTOR_ID, ACCOUNT_ID)
-values	("patientA", "male", "2000-05-11", 0912345678, 1, 1),
-		("patientB", "female", "2000-05-12", 0912456780, 2, 2),
-		("patientC", "male", "2000-05-13", 0111245694, 2, 3),
-        ("patientD", "female", "2000-05-14", 094546487, 3, 4),
-        ("patientE", "male", "2000-05-15", 0456789789, 3, 5),
-        ("patientF", "male", "2000-05-16", 0987161456, 3, 6),
-        ("patientG", "male", "2000-05-17", 0987456456, 4, 7),
-        ("patientH", "male", "2000-05-18", 0546123458, 4, 8);
+values	("patientA", "male", "2000-05-11", "0912345678", 1, 1),
+		("patientB", "female", "2000-05-12", "0912456780", 2, 2),
+		("patientC", "male", "2000-05-13", "0111245694", 2, 3),
+        ("patientD", "female", "2000-05-14", "094546487", 3, 4),
+        ("patientE", "male", "2000-05-15", "0456789789", 3, 5),
+        ("patientF", "male", "2000-05-16", "0987161456", 3, 6),
+        ("patientG", "male", "2000-05-17", "0987456456", 4, 7),
+        ("patientH", "male", "2000-05-18", "0546123458", 4, 8);
 
 insert into VISIT (CHECKIN, CHECKOUT, PATIENT_ID) 
 values	("2020-05-01", "2020-05-11", 1),

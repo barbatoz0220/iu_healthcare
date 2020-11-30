@@ -3,22 +3,22 @@ var connection = require('./dbconnection');
 module.exports.getDoctorByID = (userid) => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT * FROM DOCTOR WHERE ID = ?", [userid], (error, result) => {
+            "SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%d-%m-%Y') as DOB FROM DOCTOR WHERE ID = ?", [userid], (error, result) => {
                 return error ? reject(error) : resolve(result);
             }
         );
     });
-}
+};
 
 module.exports.getPatientsByDoctor = (userid) => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT P.NAME, P.GENDER, P.DOB, P.PHONE FROM PATIENT P, DOCTOR D WHERE D.ID = ? AND P.DOCTOR_ID = D.ID", [userid], (error, result) => {
+            "SELECT P.NAME, P.GENDER, DATE_FORMAT(P.DOB,'%d-%m-%Y') as DOB, P.PHONE FROM PATIENT P, DOCTOR D WHERE D.ID = ? AND P.DOCTOR_ID = D.ID", [userid], (error, result) => {
                 return error ? reject(error) : resolve(result);
             }
         );
     });
-}
+};
 
 module.exports.getDoctorAccount = (username) => {
     return new Promise((resolve, reject) => {
@@ -31,12 +31,12 @@ module.exports.getDoctorAccount = (username) => {
 module.exports.getAllDoctor = () => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%Y-%m-%d') as DOB FROM DOCTOR", (err, result) => {
+            "SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%d-%m-%Y') as DOB FROM DOCTOR", (err, result) => {
                 return err ? reject(err) : resolve(result);
             }
         );
     });
-}
+};
 
 module.exports.deleteDoctorByID = (userid) => {
     return new Promise((resolve, reject) => {
@@ -62,9 +62,9 @@ module.exports.updateDoctorByID = (id, name, gender, dob, phone) => {
     var doctor = {};
     connection.query("SELECT * FROM DOCTOR WHERE ID = ?", [id], function (error, results, fields) {
         doctor.name = results[0].NAME,
-        doctor.gender = results[0].GENDER,
-        doctor.dob = results[0].DOB,
-        doctor.phone = results[0].PHONE
+            doctor.gender = results[0].GENDER,
+            doctor.dob = results[0].DOB,
+            doctor.phone = results[0].PHONE
     });
     var validName = name != null ? name : doctor.name;
     var validGender = gender != null ? gender : doctor.gender

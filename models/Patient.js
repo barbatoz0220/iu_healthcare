@@ -3,7 +3,7 @@ const connection = require('./dbconnection');
 module.exports.getPatientByID = (userid) => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT * FROM PATIENT WHERE ID = ?", [userid], (err, result) => {
+            "SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%d-%m-%Y') as DOB FROM PATIENT WHERE ID = ?", [userid], (err, result) => {
                 return err ? reject(err) : resolve(result);
             }
         );
@@ -13,7 +13,7 @@ module.exports.getPatientByID = (userid) => {
 module.exports.getDoctorByPatient = (userid) => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT D.NAME, D.GENDER, D.DOB, D.PHONE FROM PATIENT P, DOCTOR D WHERE P.ID = ? AND P.DOCTOR_ID = D.ID", [userid], (err, result) => {
+            "SELECT D.NAME, D.GENDER, DATE_FORMAT(D.DOB,'%d-%m-%Y') as DOB, D.PHONE FROM PATIENT P, DOCTOR D WHERE P.ID = ? AND P.DOCTOR_ID = D.ID", [userid], (err, result) => {
                 return err ? reject(err) : resolve(result);
             }
         );
@@ -43,7 +43,7 @@ module.exports.getPatientAccount = (username) => {
 module.exports.getAllPatient = () => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%Y-%m-%d') as DOB FROM PATIENT", (err, result) => {
+            "SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%d-%m-%Y') as DOB FROM PATIENT", (err, result) => {
                 return err ? reject(err) : resolve(result);
             }
         );

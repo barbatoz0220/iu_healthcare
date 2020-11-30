@@ -44,6 +44,8 @@ block main
   main
   // login form
   block loginForm
+    if error
+      span= error
     div.login-form
       h1 Login Form
       form(action='auth' method='POST')

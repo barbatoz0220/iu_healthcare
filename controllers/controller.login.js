@@ -13,10 +13,8 @@ module.exports.index = async (req, res) => {
 		res.redirect('/doctor');
 	else if (req.session.adminLoggedin == true)
 		res.redirect('/admin');
-	else {
-		//await res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+	else
 		res.render('index.pug');
-	}
 };
 
 module.exports.login = async (req, res) => {
@@ -49,6 +47,14 @@ module.exports.login = async (req, res) => {
 				res.end();
 			}
 		}
+
+		var error = "Wrong username or password";
+		if(error) {
+			res.render('index', {
+				error: error
+			});
+			return;
+		};
 	}
 }
 

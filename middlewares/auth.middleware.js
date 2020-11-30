@@ -1,6 +1,6 @@
 const connection = require('../models/dbconnection');
 
-module.exports.checkPatientLoggedin = function (req, res, next) {
+module.exports.checkPatientLoggedin = (req, res, next) => {
     if (!req.session.patientLoggedin) {
         res.redirect('/');
         return;
@@ -8,7 +8,7 @@ module.exports.checkPatientLoggedin = function (req, res, next) {
     next();
 }
 
-module.exports.checkDoctorLoggedin = function (req, res, next) {
+module.exports.checkDoctorLoggedin = (req, res, next) => {
     if (!req.session.doctorLoggedin) {
         res.redirect('/');
         return;
