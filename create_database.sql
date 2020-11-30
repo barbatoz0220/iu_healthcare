@@ -143,7 +143,7 @@ values 	("Surgery"),
         ("Laser");
 
 insert into ACCOUNT (USERNAME, PASSWORD)
-values 	("patient1", "patient1"),
+values 	("patient1", "8103cfda42d725cd38e8bdf9610ef9a6"),
 		("patient2", "patient2"),
 		("patient3", "patient3"),
         ("patient4", "patient4"),

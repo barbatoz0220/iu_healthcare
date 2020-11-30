@@ -16,4 +16,8 @@ router.post('/patient-list/delete/:id', controller.delete);
 router.post('/patient-list/insert', controller.insert);
 router.post('/patient-list/update/:id', controller.update);
 
+router.post('/doctor-list/delete/:id', controller.delete);
+router.post('/doctor-list/insert', controller.insert);
+router.post('/doctor-list/update/:id', controller.update);
+
 module.exports = router;
