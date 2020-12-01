@@ -7,8 +7,8 @@ var connection = mysql.createConnection({
     database: 'sql12375258'
 })
 
-connection.connect(error => {
-    if(error) throw error;
+connection.connect((error) => {
+    if (error) throw error;
 });
 
 module.exports = connection;

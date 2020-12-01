@@ -29,7 +29,7 @@ block navBar
       a.hmsLogo(href="logo") HMS25 
         i.fas.fa-hospital-symbol
       li.item
-        a.navBar(href="home") Home
+        a.navBar(href="") Home
       li.item
         a.navBar(href="about") About
       li.item
@@ -44,6 +44,8 @@ block main
   main
   // login form
   block loginForm
+    if error
+      span= error
     div.login-form
       h1 Login Form
       form(action='auth' method='POST')

@@ -14,8 +14,6 @@ router.get('/emergency', controller.emergency);
 
 router.get('/about', controller.about);
 
-router.get('/home', controller.home);
-
 router.get('/contacts', controller.contacts);
 
 router.get('/logo', controller.logo);
