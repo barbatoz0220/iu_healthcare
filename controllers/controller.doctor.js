@@ -1,13 +1,12 @@
-var mysql = require('mysql');
-var express = require('express');
+var doctorModel = require('../models/Doctor');
 
-module.exports.index = function(req, res) {
+module.exports.index = async (req, res) => {
+    const doctor = await doctorModel.getDoctorByID(req.session.userid);
+    const patient = await doctorModel.getPatientsByDoctor(req.session.userid);
+
     res.render('doctors/doctorHome', {
-        id: req.session.userid,
-        name: req.session.username
+        name: req.session.username,
+        doctors: doctor,
+        patients: patient
     });
 };
-
-module.exports.menu = function(req, res) {
-    res.send("Menu");
-}

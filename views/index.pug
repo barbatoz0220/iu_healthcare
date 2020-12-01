@@ -29,7 +29,7 @@ block navBar
       a.hmsLogo(href="logo") HMS25 
         i.fas.fa-hospital-symbol
       li.item
-        a.navBar(href="home") Home
+        a.navBar(href="") Home
       li.item
         a.navBar(href="about") About
       li.item
@@ -44,6 +44,8 @@ block main
   main
   // login form
   block loginForm
+    if error
+      span= error
     div.login-form
       h1 Login Form
       form(action='auth' method='POST')
@@ -56,25 +58,25 @@ block main
     div.slider
       // container for images
       div.slider__item
-        img.slider__image(src="/public/images/pic1.jpg")
+        img.slider__image(src="images/pic1.jpg")
         div.slider__text
           h5 Facilities
           p We have the greatest facilities possible
 
       div.slider__item
-        img.slider__image(src="/public/images/pic2.jpg")
+        img.slider__image(src="images/pic2.jpg")
         div.slider__text
           h5 Staff
           p We offer you the best of our abilities
 
       div.slider__item
-        img.slider__image(src="/public/images/pic3.jpg")
+        img.slider__image(src="images/pic3.jpg")
         div.slider__text
           h5 Professionalism
           p Our team is professional with cutting-edge technology
 
       div.slider__item
-        img.slider__image(src="/public/images/pic4.jpg")
+        img.slider__image(src="images/pic4.jpg")
         div.slider__text
           h5 Care
           p We care for your every moment

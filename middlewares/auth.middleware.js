@@ -1,7 +1,15 @@
 const connection = require('../models/dbconnection');
 
-module.exports.requireAuth = function(req, res, next) {
-    if (!req.cookies.fakeCookie) {
+module.exports.checkPatientLoggedin = (req, res, next) => {
+    if (!req.session.patientLoggedin) {
+        res.redirect('/');
+        return;
+    }
+    next();
+}
+
+module.exports.checkDoctorLoggedin = (req, res, next) => {
+    if (!req.session.doctorLoggedin) {
         res.redirect('/');
         return;
     }
