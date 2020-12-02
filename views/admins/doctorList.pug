@@ -3,23 +3,67 @@ html(lang='en')
    head
       title Homepage
       link(rel="stylesheet", href="/styles/form.css")
+      link(rel="stylesheet", href="/styles/listDoctor.css")
    body
-      ul
-        each doctor in doctors
-            li
-               input(type='text', name='name', value = doctor.NAME, required='', readonly=true)
-               input(type='text', name='dob', value = doctor.DOB, required='', readonly=true)
-               input(type='text', name='gender', value = doctor.GENDER, required='', readonly=true)
-               input(type='text', name='phone', value = doctor.PHONE, required='', readonly=true)
-               form(action="/admin/doctor-list/delete/" + doctor.ID, method="POST")
-                  input(type="submit" value="Delete")
-               button(type="button", class="update-button", onclick='getIndex(' + doctor.ID + ')') Update
-               form(class="update-form" id=doctor.ID action="/admin/doctor-list/update/" + doctor.ID, method="POST")
-                  input(type='text', name='name', required='')
-                  input(type='text', name='dob', required='')
-                  input(type='text', name='gender', required='')
-                  input(type='text', name='phone', required='')
-                  input(type="submit" value="Done")
+      //- ul
+      //-    li
+      //-       h4 Name
+      //-       h4 DOB
+      //-       h4 Gender
+      //-       h4 Phone
+      //-    each doctor in doctors
+      //-       li
+      //-          input(type='text', name='name', value = doctor.NAME, required='', readonly=true)
+      //-          input(type='text', name='dob', value = doctor.DOB, required='', readonly=true)
+      //-          input(type='text', name='gender', value = doctor.GENDER, required='', readonly=true)
+      //-          input(type='text', name='phone', value = doctor.PHONE, required='', readonly=true)
+      //-          form(action="/admin/doctor-list/delete/" + doctor.ID, method="POST")
+      //-             input(type="submit" value="Delete")
+      //-          button(type="button", class="update-button", onclick='getIndex(' + doctor.ID + ')') Update
+      //-          form(class="update-form" id=doctor.ID action="/admin/doctor-list/update/" + doctor.ID, method="POST")
+      //-             input(type='text', name='name', required='')
+      //-             input(type='text', name='dob', required='')
+      //-             input(type='text', name='gender', required='')
+      //-             input(type='text', name='phone', required='')
+      //-             input(type="submit" value="Done")
+      table
+         caption Doctor List
+         thead
+            tr 
+               th Name
+               th DOB
+               th Gender
+               th Phone
+         tbody
+            each doctor in doctors
+               tr
+                  td
+                     input(type='text', name='name', value = doctor.NAME, required='', readonly=true)
+                  td
+                     input(type='text', name='dob', value = doctor.DOB, required='', readonly=true) 
+                  td
+                     input(type='text', name='gender', value = doctor.GENDER, required='', readonly=true)
+                  td
+                     input(type='text', name='phone', value = doctor.PHONE, required='', readonly=true)
+                  td
+               tr
+                  td
+                     form(action="/admin/doctor-list/delete/" + doctor.ID, method="POST")
+                        input(type="submit" value="Delete")
+                     button(type="button", class="update-button", onclick='getIndex(' + doctor.ID + ')') Update
+                     tr(id=doctor.ID, class="update-form")
+                        form(action="/admin/doctor-list/update/" + doctor.ID, method="POST")
+                           td
+                              input(type='text', name='name', required='')
+                           td
+                              input(type='text', name='dob', required='')
+                           td
+                              input(type='text', name='gender', required='')
+                           td
+                              input(type='text', name='phone', required='')
+                           td
+                              input(type="submit" value="Done")   
+
       button(type="button" id="insert-button") Add doctor
       form(id="insert-form", action="/admin/doctor-list/insert", method="POST")
          input(type='text', name='name', required='')

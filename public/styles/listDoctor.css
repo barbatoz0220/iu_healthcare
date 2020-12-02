@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+table {
+    width: 1000px;
+    text-align: left;
+    margin: 100px 200px;
+}
+
+td {
+    border-collapse: collapse;
+}
+
+input[type="text"] {
+    outline: none;
+    padding-left: 36%;
+}
