@@ -23,7 +23,6 @@ const port = 3000;
 // set up view engine
 app.set('views', './views');
 app.set('view engine', 'pug');
-
 // set up session used for login
 app.use(session({
 	secret: 'secret',
