@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+table {
+    width: 700px;
+    text-align: left;
+    margin: 100px auto;
+    border-collapse: collapse;
+}
+
+thead{
+    text-align: center;
+}
+
+input[type='submit'], button[type='button'] {
+    width: 100px;
+}
+
+/* td {
+    border-collapse: collapse;
+}
+
+input[type="text"] {
+    outline: none;
+    padding-left: 36%;
+}
+
+#add-btn{
+    text-align: center;
+    margin: auto;
+} */
