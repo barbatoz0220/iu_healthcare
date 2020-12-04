@@ -48,13 +48,13 @@ module.exports.login = async (req, res) => {
 			}
 		}
 
-		var error = "Wrong username or password";
-		if(error) {
-			res.render('index', {
-				error: error
-			});
-			return;
-		};
+		// var error = "Wrong username or password";
+		// if(error) {
+		// 	res.render('index', {
+		// 		error: error
+		// 	});
+		// 	return;
+		// };
 	}
 }
 
