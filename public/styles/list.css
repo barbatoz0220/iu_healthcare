@@ -14,13 +14,20 @@ table {
 }
 
 thead{
-    text-align: center;
+    text-align: left;
+}
+
+td input[type='text'] {
+    margin-right: 20px;
 }
 
 input[type='submit'], button[type='button'] {
     width: 100px;
 }
 
+.read-only, input[type='text'] {
+    outline: none;  
+}
 /* td {
     border-collapse: collapse;
 }
