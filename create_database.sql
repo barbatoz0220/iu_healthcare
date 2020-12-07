@@ -1,7 +1,8 @@
 -- create database 
 -- drop database HMS;
-create database sql12375258;
-use sql12375258;
+drop schema sql12380579;
+create database sql12380579;
+use sql12380579;
 
 -- create tables
 create table if not exists PATIENT (
@@ -37,6 +38,7 @@ create table if not exists ACCOUNT (
 	ID int not null auto_increment,
     USERNAME varchar(255) not null,
     PASSWORD varchar(255) not null,
+    ROLE varchar(255) not null,
     primary key (ID)
 );
 
@@ -77,6 +79,14 @@ create table if not exists VISIT_TREATMENT (
 	ID int not null auto_increment,
     TREATMENT_ID int not null,
     VISIT_ID int not null,
+    primary key (ID)
+);
+
+create table if not exists REQUEST (
+    ID int not null auto_increment,
+    PATIENT_ID int,
+    DOCTOR_ID int,
+    CONTENT varchar(255),
     primary key (ID)
 );
 
@@ -121,6 +131,14 @@ alter table VISIT_TREATMENT
 add foreign key (TREATMENT_ID) references TREATMENT(ID)
 on delete cascade;
 
+alter table REQUEST
+add foreign key (PATIENT_ID) references PATIENT(ID)
+on delete cascade;
+
+alter table REQUEST
+add foreign key (DOCTOR_ID) references DOCTOR(ID)
+on delete cascade;
+
 -- insert values
 insert into DISEASE (NAME)
 values	("Flu"),
@@ -142,19 +160,22 @@ values 	("Surgery"),
 		("Physical therapy"),
         ("Laser");
 
-insert into ACCOUNT (USERNAME, PASSWORD)
-values 	("patient1", "8103cfda42d725cd38e8bdf9610ef9a6"),
-		("patient2", "patient2"),
-		("patient3", "patient3"),
-        ("patient4", "patient4"),
-        ("patient5", "patient5"),
-        ("patient6", "patient6"),
-        ("patient7", "patient7"),
-        ("patient8", "patient8"),
-        ("doctor1", "doctor1"),
-        ("doctor2", "doctor2"),
-        ("doctor3", "doctor3"),
-        ("doctor4", "doctor4");
+insert into ACCOUNT (USERNAME, PASSWORD, ROLE)
+values 	("patient1", "8103cfda42d725cd38e8bdf9610ef9a6", "patient"),
+		("patient2", "patient2", "patient"),
+		("patient3", "patient3", "patient"),
+        ("patient4", "patient4", "patient"),
+        ("patient5", "patient5", "patient"),
+        ("patient6", "patient6", "patient"),
+        ("patient7", "patient7", "patient"),
+        ("patient8", "patient8", "patient"),
+        ("doctor1", "doctor1", "doctor"),
+        ("doctor2", "doctor2", "doctor"),
+        ("doctor3", "doctor3", "doctor"),
+        ("doctor4", "doctor4", "doctor"),
+        ("tdtri", "tdtri", "admin"),
+        ("phnanh", "phnanh", "admin"),
+        ("dnmhuy", "dnmhuy", "admin");
 
 insert into DOCTOR (NAME, GENDER, DOB, PHONE, ACCOUNT_ID) 
 values	("Doctor 1", "male", "1968-02-28", "0915754105", 9),

@@ -65,3 +65,7 @@ module.exports.about = (req, res) => res.render('about.pug');
 module.exports.contacts = (req, res) => res.render('contacts.pug');
 
 module.exports.emergency = (req, res) => res.render('emergency.pug');
+
+module.exports.request = (req, res) => {
+	
+}

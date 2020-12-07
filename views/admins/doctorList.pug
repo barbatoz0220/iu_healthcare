@@ -5,21 +5,23 @@ html(lang='en')
       link(rel="stylesheet", href="/styles/form.css")
    body
       div(id="container")
-         ul
-         each doctor in doctors
-               li
-                  input(type='text', name='name', value = doctor.NAME, required='', readonly=true)
-                  input(type='text', name='dob', value = doctor.DOB, required='', readonly=true)
-                  input(type='text', name='gender', value = doctor.GENDER, required='', readonly=true)
-                  input(type='text', name='phone', value = doctor.PHONE, required='', readonly=true)
-                  button(type="button" onclick='deleteDoctor('+doctor.ID+')') Delete
-                  button(type="button", class="update-button", onclick='getIndex(' + doctor.ID + ')') Update
-                  form(class="update-form" id=doctor.ID action="/admin/doctor-list/update/" + doctor.ID, method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
-                     input(type='text', name='name', required='')
-                     input(type='text', name='dob', required='')
-                     input(type='text', name='gender', required='')
-                     input(type='text', name='phone', required='')
-                     input(type="submit" value="Done")
+         include ../components/doctorList.pug
+         //- ul
+         //- each doctor in doctors
+         //-       li
+         //-          input(type='text', name='name', value = doctor.NAME, required='', readonly=true)
+         //-          input(type='text', name='dob', value = doctor.DOB, required='', readonly=true)
+         //-          input(type='text', name='gender', value = doctor.GENDER, required='', readonly=true)
+         //-          input(type='text', name='phone', value = doctor.PHONE, required='', readonly=true)
+         //-          button(type="button" onclick='deleteDoctor('+doctor.ID+')') Delete
+         //-          button(type="button", class="update-button", onclick='getIndex(' + doctor.ID + ')') Update
+         //-          form(class="update-form" id=doctor.ID action="/admin/doctor-list/update/" + doctor.ID, method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
+         //-             input(type='text', name='name', required='')
+         //-             input(type='text', name='dob', required='')
+         //-             input(type='text', name='gender', required='')
+         //-             input(type='text', name='phone', required='')
+         //-             input(type="submit" value="Done")
+      div
          button(type="button" id="insert-button") Add doctor
          form(id="insert-form" action="/admin/doctor-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
             input(type='text', name='name', required='')
@@ -36,14 +38,19 @@ html(lang='en')
             $("#insert-form").toggle();
          });
          function deleteDoctor(index) {
-            var req = new XMLHttpRequest();
-            req.open("GET", "/admin/doctor-list/delete/" + index);
-            req.onreadystatechange = function(){
-               if(req.readyState == 4 && req.status == 200){
-                  document.getElementById("container").innerHTML = req.responseText;
-               }
-            }
-            req.send(); 
+            //- var req = new XMLHttpRequest();
+            //- req.open("GET", "/admin/doctor-list/delete/" + index);
+            //- req.onreadystatechange = function(){
+            //-    if(req.readyState == 4 && req.status == 200){
+            //-       document.getElementById("container").innerHTML = req.responseText;
+            //-    }
+            //- }
+            //- req.send(); 
+            fetch("/admin/doctor-list/delete/" + index).then(function(response) {
+               return response.text().then(function(text) {
+                  document.getElementById("container").innerHTML = text;
+               });
+            });
          };
 
          function submitAddForm(form) {

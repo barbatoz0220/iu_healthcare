@@ -1,6 +1,7 @@
 const patientModel = require('../models/Patient');
 const doctorModel = require('../models/Doctor');
 
+
 module.exports.index = (req, res) => res.render("admins/adminHome");
 
 // admin's patient page
@@ -14,7 +15,7 @@ module.exports.patientList = async (req, res) => {
 module.exports.deletePatient = async (req, res) => {
     await patientModel.deletePatientByID(req.params.id);
     var patientList = await patientModel.getAllPatient();
-    res.render("admins/patientList", {
+    res.render("components/patientList", {
         patients: patientList
     });
 };
@@ -46,7 +47,7 @@ module.exports.doctorList = async (req, res) => {
 module.exports.deleteDoctor = async (req, res) => {
     await doctorModel.deleteDoctorByID(req.params.id);
     var doctorList = await doctorModel.getAllDoctor();
-    res.render("admins/doctorList", {
+    res.render("components/doctorList", {
         doctors: doctorList
     });
 };

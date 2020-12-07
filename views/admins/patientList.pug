@@ -5,21 +5,23 @@ html(lang='en')
       link(rel="stylesheet" href="/styles/form.css")
    body
       div(id="container")
-         ul
-         each patient in patients
-            li
-               input(type='text' name='name', value = patient.NAME, required='', readonly=true)
-               input(type='text' name='dob', value = patient.DOB, required='', readonly=true)
-               input(type='text' name='gender', value = patient.GENDER, required='', readonly=true)
-               input(type='text' name='phone', value = patient.PHONE, required='', readonly=true)
-               button(type="button" onclick='deletePatient('+patient.ID+')') Delete
-               button(type="button" class="update-button" onclick='getIndex(' + patient.ID + ')') Update
-               form(class="update-form" id=patient.ID action="/admin/patient-list/update/" + patient.ID, method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
-                  input(type='text' name='name' required='')
-                  input(type='text' name='dob' required='')
-                  input(type='text' name='gender' required='')
-                  input(type='text' name='phone' required='')
-                  input(type="submit" value="Done")
+         include ../components/patientList.pug
+         //- ul
+         //- each patient in patients
+         //-    li
+         //-       input(type='text' name='name', value = patient.NAME, required='', readonly=true)
+         //-       input(type='text' name='dob', value = patient.DOB, required='', readonly=true)
+         //-       input(type='text' name='gender', value = patient.GENDER, required='', readonly=true)
+         //-       input(type='text' name='phone', value = patient.PHONE, required='', readonly=true)
+         //-       button(type="button" onclick='deletePatient('+patient.ID+')') Delete
+         //-       button(type="button" class="update-button" onclick='getIndex(' + patient.ID + ')') Update
+         //-       form(class="update-form" id=patient.ID action="/admin/patient-list/update/" + patient.ID, method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
+         //-          input(type='text' name='name' required='')
+         //-          input(type='text' name='dob' required='')
+         //-          input(type='text' name='gender' required='')
+         //-          input(type='text' name='phone' required='')
+         //-          input(type="submit" value="Done")
+      div   
          button(type="button" id="insert-button") Add patient
          form(id="insert-form" action="/admin/patient-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
             input(type='text' name='name' required='')
@@ -35,17 +37,23 @@ html(lang='en')
          $("#insert-button").click(function(){
             $("#insert-form").toggle();
          });
+         //- function deletePatient(index) {
+         //-    var req = new XMLHttpRequest();
+         //-    req.open("GET", "/admin/patient-list/delete/" + index);
+         //-    req.onreadystatechange = function(){
+         //-       if(req.readyState == 4 && req.status == 200){
+         //-          document.getElementById("container").innerHTML = req.responseText;
+         //-       }
+         //-    }
+         //-    req.send(); 
+         //-  };
          function deletePatient(index) {
-            var req = new XMLHttpRequest();
-            req.open("GET", "/admin/patient-list/delete/" + index);
-            req.onreadystatechange = function(){
-               if(req.readyState == 4 && req.status == 200){
-                  document.getElementById("container").innerHTML = req.responseText;
-               }
-            }
-            req.send(); 
-         };
-
+            fetch("/admin/patient-list/delete/" + index).then(function(response) {
+               return response.text().then(function(text) {
+                  document.getElementById("container").innerHTML = text;
+               });
+            });
+         }
          function submitAddForm(form) {
             var formData = {
                'name'              :     form.name.value,

@@ -18,9 +18,11 @@ router.get('/contacts', controller.contacts);
 
 router.get('/logo', controller.logo);
 
+router.get('/emergency', controller.emergency);
+
 // POST
 router.post('/auth', controller.login);
 
-router.get('/emergency', controller.emergency);
+router.post('/request', controller.request);
 
 module.exports = router;
