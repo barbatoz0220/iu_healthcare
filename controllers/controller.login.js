@@ -58,6 +58,3 @@ module.exports.about = (req, res) => res.render('pages/common/about.pug');
 module.exports.contacts = (req, res) => res.render('pages/common/contacts.pug');
 
 module.exports.emergency = (req, res) => res.render('pages/common/emergency.pug');
-
-module.exports.request = (req, res) => {
-}

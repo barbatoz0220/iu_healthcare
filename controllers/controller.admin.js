@@ -1,10 +1,14 @@
 const patientModel = require('../models/Patient');
 const doctorModel = require('../models/Doctor');
+const requestModel = require('../models/Request');
 
 module.exports = {
 
-    index(req, res) { 
-        res.render("pages/admin/home")
+    async index(req, res) { 
+        var requestList = await requestModel.getUnfinishdeRequest();
+        res.render("pages/admin/home", {
+            noti: requestList[0].values()
+        })
     },
 
     async doctorList(req, res) {

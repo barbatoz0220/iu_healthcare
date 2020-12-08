@@ -1,0 +1,14 @@
+div.grid.doctor  
+    h1.icon View Your Doctor 
+        i.fas.fa-stethoscope
+
+    div.doctorInfo
+        each doctor in doctors
+            br
+            span= doctor.NAME
+            br
+            span= doctor.GENDER
+            br
+            span= doctor.DOB
+            br
+            span= doctor.PHONE

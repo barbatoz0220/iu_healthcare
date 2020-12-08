@@ -86,6 +86,7 @@ create table if not exists REQUEST (
     PATIENT_ID int,
     DOCTOR_ID int,
     CONTENT varchar(255),
+    STATUS int not null,
     primary key (ID)
 );
 

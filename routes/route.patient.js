@@ -9,5 +9,8 @@ const router = express.Router();
 
 // GET
 router.get('/', controller.index);
+router.get('/doctor', controller.getDoctor);
+router.get('/visit', controller.getVisit);
+router.post('/handle-request', controller.handleRequest);
 
 module.exports = router;

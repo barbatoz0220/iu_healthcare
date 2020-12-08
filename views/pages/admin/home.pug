@@ -11,7 +11,8 @@ block navBar
    include ../../components/userNavBar
 block main
    div
-      h1 Welcome back, #{name}
       a(href="admin/doctor-list") Doctor List
       br
       a(href="admin/patient-list") Patient List
+      if(noti)
+      span= noti
