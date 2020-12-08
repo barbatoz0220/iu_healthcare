@@ -1,4 +1,4 @@
-extends ../index.pug
+extends ../structure.pug
 
 block metadata
   meta(charset='UTF-8')
@@ -24,23 +24,7 @@ block metadata
     });
 
 block navBar
-  nav 
-    ul.menu
-      a.hmsLogo(href="logo") HMS25 
-        i.fas.fa-hospital-symbol
-      li.item
-        a.navBar(href="") Home
-      li.item
-        a.navBar(href="about") About
-      li.item
-        a.navBar(href="contacts") Contacts
-      li.item
-        a.navBar(href="logout") Log out
-      li.item.button
-        a.emergency(href="emergency") Emergency   
-          i.fas.fa-ambulance
-      li.toggle
-        span.bars
+  include ../../components/userNavBar
 
 block main
   main.container

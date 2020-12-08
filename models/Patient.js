@@ -30,16 +30,6 @@ module.exports.getVisitsByPatient = (userid) => {
     });
 };
 
-module.exports.getPatientAccount = (username) => {
-    return new Promise((resolve, reject) => {
-        connection.query(
-            "SELECT * FROM ACCOUNT A, PATIENT P WHERE A.ID = P.ACCOUNT_ID and USERNAME = ?", [username], (err, result) => {
-                return err ? reject(err) : resolve(result);
-            }
-        );
-    });
-};
-
 module.exports.getAllPatient = () => {
     return new Promise((resolve, reject) => {
         connection.query(

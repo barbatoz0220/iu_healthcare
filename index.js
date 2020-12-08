@@ -50,7 +50,7 @@ app.use('/doctor', authMiddleware.checkDoctorLoggedin, doctorRouter);
 app.use('/admin', adminRouter);
 app.use('/logout', logoutController);
 app.use('*', (req, res) => {
-	res.render('404page');
+	res.render('pages/common/404page');
 });
 
 app.use('/public', express.static(path.join(__dirname, 'public')));

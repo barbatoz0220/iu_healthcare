@@ -1,13 +1,24 @@
 const patientModel = require('../models/Patient');
 const doctorModel = require('../models/Doctor');
 
+module.exports = {
 
-module.exports.index = (req, res) => res.render("admins/adminHome");
+    index(req, res) { 
+        res.render("pages/admin/home")
+    },
+
+    async doctorList(req, res) {
+        var doctorList = await doctorModel.getAllDoctor();
+        res.render("pages/admin/doctors", {
+            doctors: doctorList
+        });
+    },
+};
 
 // admin's patient page
 module.exports.patientList = async (req, res) => {
     var patientList = await patientModel.getAllPatient();
-    res.render("admins/patientList", {
+    res.render("pages/admin/patients", {
         patients: patientList
     });
 };
@@ -37,12 +48,6 @@ module.exports.updatePatient = async (req, res) => {
 };
 
 // admin's doctor page
-module.exports.doctorList = async (req, res) => {
-    var doctorList = await doctorModel.getAllDoctor();
-    res.render("admins/doctorList", {
-        doctors: doctorList
-    });
-};
 
 module.exports.deleteDoctor = async (req, res) => {
     await doctorModel.deleteDoctorByID(req.params.id);
