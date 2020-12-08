@@ -27,7 +27,7 @@ table
                                 td
                                     input(type='text' name='name' required='')
                                 td
-                                    input(class="datepicker" type='text' name='dob' required='' )
+                                    input(class="datepicker" type='text' name='dob' autocomplete="off" required='' )
                                 td
                                     input(type='text' name='gender' required='')
                                 td
@@ -36,16 +36,17 @@ table
                                     input(type="submit" value="Done")
         tr
             td
-                button(type="button" id="insert-button") Add patient
-                form( action="/admin/patient-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
-                    tr(id="insert-form")
+                button(class="insert-button" onclick="toggleInsertForm()") Add patient
+                form(class="insert-form" action="/admin/patient-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
+                    tr(class="row-insert-form")
                         td
                             input(type='text' name='name' required='')
                         td
-                            input(class="datepicker" type='text' name='dob' required='')
+                            input(class="datepicker" type='text' name='dob' autocomplete="off" required='')
                         td
                             input(type='text' name='gender' required='')
                         td
                             input(type='text' name='phone' required='')
                         td
                             input(type="submit" value="Add")
+

@@ -20,7 +20,7 @@ module.exports.getPatientsByDoctor = (userid) => {
     });
 };
 
-module.exports.getAllDoctor = () => {
+module.exports.getAllDoctor = (limit, offset) => {
     return new Promise((resolve, reject) => {
         connection.query(
             "SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%d-%m-%Y') as DOB FROM DOCTOR", (err, result) => {

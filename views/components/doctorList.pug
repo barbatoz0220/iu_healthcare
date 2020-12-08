@@ -36,9 +36,9 @@ table
                                     input(type="submit" value="Done")   
         tr
             td
-                button(type="button" id="insert-button") Add doctor
+                button(class="insert-button" onclick="toggleInsertForm()") Add doctor
                 form(action="/admin/doctor-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
-                    tr(id="insert-form")
+                    tr(class="insert-form")
                         td
                             input(type='text' name='name' required='')
                         td

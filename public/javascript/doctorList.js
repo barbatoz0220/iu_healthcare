@@ -1,3 +1,11 @@
+function changePage(index) {
+    fetch("/admin/doctor-list/pagination?page=" + index).then(function (response) {
+        return response.text().then(function (text) {
+            document.getElementById("container").innerHTML = text;
+        });
+    });
+}
+
 function deleteDoctor(index) {
     fetch("/admin/doctor-list/delete/" + index).then(function (response) {
         return response.text().then(function (text) {
@@ -13,15 +21,15 @@ function submitAddForm(form) {
         'gender': form.gender.value,
         'phone': form.phone.value
     };
-    var req = new XMLHttpRequest();
-    req.open(form.getAttribute("method"), form.getAttribute("action"), true);
-    req.onreadystatechange = function () {
-        if (req.readyState == 4 && req.status == 200) {
-            document.getElementById("container").innerHTML = req.responseText;
-        }
-    }
-    req.setRequestHeader('Content-Type', 'application/json');
-    req.send(JSON.stringify(formData));
+    fetch(form.getAttribute('action'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    }).then((response) => {
+        return response.text().then((text) => {
+            document.getElementById("container").innerHTML = text;
+        });
+    });
     return false;
 };
 
@@ -32,14 +40,14 @@ function submitUpdateForm(form) {
         'gender': form.gender.value,
         'phone': form.phone.value
     };
-    var req = new XMLHttpRequest();
-    req.open(form.getAttribute("method"), form.getAttribute("action"), true);
-    req.onreadystatechange = function () {
-        if (req.readyState == 4 && req.status == 200) {
-            document.getElementById("container").innerHTML = req.responseText;
-        }
-    }
-    req.setRequestHeader('Content-Type', 'application/json');
-    req.send(JSON.stringify(formData));
+    fetch(form.getAttribute('action'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    }).then((response) => {
+        return response.text().then((text) => {
+            document.getElementById("container").innerHTML = text;
+        });
+    });
     return false;
 };

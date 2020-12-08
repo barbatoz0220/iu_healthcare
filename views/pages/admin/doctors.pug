@@ -13,6 +13,12 @@ block navBar
 block main      
    div#container
       include ../../components/doctorList
+   
+   div#pageNumber
+      - for(var x = 1; x <= page; x++)
+         button(onclick='changePage(' + x + ')') #{x}
+         br
+
 
    script(src="https://code.jquery.com/jquery-3.5.1.min.js")
    script(type="text/javascript" src="/javascript/doctorList.js")
@@ -20,8 +26,11 @@ block main
       function getIndex(index) {
          $("#" + index).toggle();
       };
-      $("#insert-button").click(function(){
-         $("#insert-form").toggle();
-      });
-      
+      //- $('button.insert-button').click(function(){
+      //-     console.log("Hello");
+      //-     $(".insert-form").toggle();
+      //- });
 
+      function toggleInsertForm() {
+         $(".insert-form").toggle();
+      }
