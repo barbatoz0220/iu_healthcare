@@ -51,14 +51,13 @@ module.exports.login = async (req, res) => {
 	} 
 }
 
-module.exports.logo = (req, res) => res.render('index.pug');
+module.exports.logo = (req, res) => res.render('pages/common/index.pug');
 
-module.exports.about = (req, res) => res.render('about.pug');
+module.exports.about = (req, res) => res.render('pages/common/about.pug');
 
-module.exports.contacts = (req, res) => res.render('contacts.pug');
+module.exports.contacts = (req, res) => res.render('pages/common/contacts.pug');
 
-module.exports.emergency = (req, res) => res.render('emergency.pug');
+module.exports.emergency = (req, res) => res.render('pages/common/emergency.pug');
 
 module.exports.request = (req, res) => {
-
 }

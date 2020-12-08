@@ -1,15 +1,51 @@
-ul
-    each patient in patients
-        li
-            input(type='text' name='name', value = patient.NAME, required='', readonly=true)
-            input(type='text' name='dob', value = patient.DOB, required='', readonly=true)
-            input(type='text' name='gender', value = patient.GENDER, required='', readonly=true)
-            input(type='text' name='phone', value = patient.PHONE, required='', readonly=true)
-            button(type="button" onclick='deletePatient('+patient.ID+')') Delete
-            button(type="button" class="update-button" onclick='getIndex(' + patient.ID + ')') Update
-            form(class="update-form" id=patient.ID action="/admin/patient-list/update/" + patient.ID, method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
-                input(type='text' name='name' required='')
-                input(type='text' name='dob' required='')
-                input(type='text' name='gender' required='')
-                input(type='text' name='phone' required='')
-                input(type="submit" value="Done")
+table
+    caption Patient List
+    thead
+        tr 
+            th Name
+            th DOB
+            th Gender
+            th Phone
+    tbody
+        tr
+            each patient in patients
+                tr
+                    td
+                        input(type='text' name='name', value = patient.NAME, required='', readonly=true)
+                    td
+                        input(type='text' name='dob', value = patient.DOB, required='', readonly=true)
+                    td
+                        input(type='text' name='gender', value = patient.GENDER, required='', readonly=true)
+                    td
+                        input(type='text' name='phone', value = patient.PHONE, required='', readonly=true)
+                    td
+                        button(type="button" onclick='deletePatient('+patient.ID+')') Delete
+                    td
+                        button(type="button" class="update-button" onclick='getIndex(' + patient.ID + ')') Update
+                        form(action="/admin/patient-list/update/" + patient.ID, method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
+                            tr(class="update-form" id=patient.ID)
+                                td
+                                    input(type='text' name='name' required='')
+                                td
+                                    input(class="datepicker" type='text' name='dob' required='' )
+                                td
+                                    input(type='text' name='gender' required='')
+                                td
+                                    input(type='text' name='phone' required='')
+                                td
+                                    input(type="submit" value="Done")
+        tr
+            td
+                button(type="button" id="insert-button") Add patient
+                form( action="/admin/patient-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
+                    tr(id="insert-form")
+                        td
+                            input(type='text' name='name' required='')
+                        td
+                            input(class="datepicker" type='text' name='dob' required='')
+                        td
+                            input(type='text' name='gender' required='')
+                        td
+                            input(type='text' name='phone' required='')
+                        td
+                            input(type="submit" value="Add")

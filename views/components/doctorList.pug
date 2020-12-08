@@ -1,15 +1,51 @@
-ul
-    each doctor in doctors
-        li
-            input(type='text' name='name', value = doctor.NAME, required='', readonly=true)
-            input(type='text' name='dob', value = doctor.DOB, required='', readonly=true)
-            input(type='text' name='gender', value = doctor.GENDER, required='', readonly=true)
-            input(type='text' name='phone', value = doctor.PHONE, required='', readonly=true)
-            button(type="button" onclick='deleteDoctor('+doctor.ID+')') Delete
-            button(type="button" class="update-button" onclick='getIndex(' + doctor.ID + ')') Update
-            form(class="update-form" id=doctor.ID action="/admin/doctor-list/update/" + doctor.ID, method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
-                input(type='text' name='name' required='')
-                input(type='text' name='dob' required='')
-                input(type='text' name='gender' required='')
-                input(type='text' name='phone' required='')
-                input(type="submit" value="Done")
+table
+    caption Doctor List
+    thead
+        tr 
+            th Name
+            th DOB
+            th Gender
+            th Phone
+    tbody
+        tr
+            each doctor in doctors
+                tr
+                    td
+                        input(class='read-only' type='text' name='name', value = doctor.NAME, required='', readonly=true)
+                    td
+                        input(class='read-only' type='text' name='dob', value = doctor.DOB, required='', readonly=true) 
+                    td
+                        input(class='read-only' type='text' name='gender', value = doctor.GENDER, required='', readonly=true)
+                    td
+                        input(class='read-only' type='text' name='phone', value = doctor.PHONE, required='', readonly=true)
+                    td
+                        button(type="button" onclick='deleteDoctor('+doctor.ID+')') Delete
+                    td
+                        button(type="button" class="update-button" onclick='getIndex(' + doctor.ID + ')') Update
+                        form(action="/admin/doctor-list/update/" + doctor.ID, method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
+                            tr(id=doctor.ID, class="update-form")
+                                td
+                                    input(type='text' name='name' required='')
+                                td
+                                    input(type='text' name='dob' required='')
+                                td
+                                    input(type='text' name='gender' required='')
+                                td
+                                    input(type='text' name='phone' required='')
+                                td
+                                    input(type="submit" value="Done")   
+        tr
+            td
+                button(type="button" id="insert-button") Add doctor
+                form(action="/admin/doctor-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
+                    tr(id="insert-form")
+                        td
+                            input(type='text' name='name' required='')
+                        td
+                            input(type='text' name='dob' required='')
+                        td
+                            input(type='text' name='gender' required='')
+                        td
+                            input(type='text' name='phone' required='')
+                        td
+                            input(id="add-btn" type="submit" value="Add")
