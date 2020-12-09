@@ -13,11 +13,6 @@ block navBar
 block main      
    div#container
       include ../../components/adminDoctorList
-   
-   div#pageNumber
-      - for(var x = 1; x <= page; x++)
-         button(onclick='changePage(' + x + ')') #{x}
-         br
 
 
    script(src="https://code.jquery.com/jquery-3.5.1.min.js")

@@ -18,7 +18,7 @@ module.exports.getDoctor = async (req, res) => {
     res.render('components/patientDoctorInfor', {
         doctors: doctors
     });
-}
+};
 
 module.exports.getVisit = async (req, res) => {
     var page = parseInt(req.query.page) || 1;
@@ -28,7 +28,7 @@ module.exports.getVisit = async (req, res) => {
         page: Math.round(visits.length / 5),
         visits: visits.slice((page - 1) * perPage, page * perPage)
     });
-}
+};
 
 module.exports.handleRequest = async (req, res) => {
     await request.addPatientRequest(req.session.userid, req.body.content);

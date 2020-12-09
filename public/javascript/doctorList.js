@@ -51,3 +51,23 @@ function submitUpdateForm(form) {
     });
     return false;
 };
+
+function submitSearchForm(form) {
+    console.log("Hello");
+    var formData = {
+        'name': form.name.value,
+        'dob': form.dob.value,
+        'gender': form.gender.value,
+        'phone': form.phone.value
+    };
+    fetch(form.getAttribute('action'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    }).then((response) => {
+        return response.text().then((text) => {
+            document.getElementById("container").innerHTML = text;
+        });
+    });
+    return false;
+};
