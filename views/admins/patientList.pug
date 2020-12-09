@@ -30,9 +30,8 @@ html(lang='en')
       //-       input(type='text' name='gender' required='')
       //-       input(type='text' name='phone' required='')
       //-       input(type="submit" value="Add")
-      input(type="text" id="datepicker")
       div#container
-         table
+         table.content-table
             caption Patient List
             thead
                tr 
@@ -40,6 +39,8 @@ html(lang='en')
                   th DOB
                   th Gender
                   th Phone
+                  th(colspan="2") Option
+                  th
             tbody
                tr
                   each patient in patients
@@ -70,7 +71,7 @@ html(lang='en')
                                     input(type="submit" value="Done")
                tr
                   td
-                     button(type="button" id="insert-button") Add patient
+                     button(type="button" id="insert-button" class='datepicker') Add patient
                      form( action="/admin/patient-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
                         tr(id="insert-form")
                            td
@@ -89,19 +90,14 @@ html(lang='en')
       script.
          function getIndex(index) {
             $("#" + index).toggle();
+            //- $( ".datepicker" ).inputDatePicker();
          };
+         $(function inputDatePicker() {
+            $('.datepicker').datepicker();
+         });
          $("#insert-button").click(function(){
             $("#insert-form").toggle();
          });
-         $( function() {
-            $( "#datepicker" ).datepicker();
-         } );
-         $( function() {
-            $( 'input[name="dob"]' ).datepicker(
-               //- 'format': 'yyyy-mm-dd',
-               //- 'autoclose': true
-            );
-         } );
          function deletePatient(index) {
             var req = new XMLHttpRequest();
             req.open("GET", "/admin/patient-list/delete/" + index);
