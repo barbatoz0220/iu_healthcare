@@ -1,0 +1,14 @@
+#back-button {
+    display: none;
+}
+
+#result {
+    display: none;
+    width: 200px;
+    height: 200px;
+    background-color: white;
+}
+
+#request-form {
+    display: none;
+}

@@ -53,10 +53,11 @@ block main
         button(type="button") Log out
       br
       button(type="button" id="back-button" onclick="back()") Back
-    div(id="result")
-    form(id="request-form" action="/patient/handle-request" method="POST" onsubmit="return handleRequest(this)" enctype="multipart/form-data")
-      input(type="text" name="content" value="content") 
-      input(type="Submit" value="Done")
+      div(id="result")
+          
+      form(id="request-form" action="/patient/handle-request" method="POST" onsubmit="return handleRequest(this)" enctype="multipart/form-data")
+        input(type="text" name="content" value="content") 
+        input(type="Submit" value="Done")
 
   script(type="text/javascript" src="/javascript/patientHome.js")
 

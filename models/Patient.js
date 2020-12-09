@@ -23,7 +23,7 @@ module.exports.getDoctorByPatient = (userid) => {
 module.exports.getVisitsByPatient = (userid) => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT V.ID FROM PATIENT P, VISIT V WHERE P.ID = ? AND V.PATIENT_ID = P.ID", [userid], (err, result) => {
+            "SELECT V.ID, DATE_FORMAT(V.CHECKIN,'%d-%m-%Y') as CHECKIN, DATE_FORMAT(V.CHECKOUT,'%d-%m-%Y') as CHECKOUT FROM PATIENT P, VISIT V WHERE P.ID = ? AND V.PATIENT_ID = P.ID", [userid], (err, result) => {
                 return err ? reject(err) : resolve(result);
             }
         );

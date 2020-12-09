@@ -19,3 +19,13 @@ module.exports.addPatientRequest = (patientid, content) => {
         );
     });
 }
+
+module.exports.addDoctorRequest = (doctorid, content) => {
+    return new Promise((resolve, reject) => {
+        connection.query(
+            "INSERT INTO REQUEST(PATIENT_ID, DOCTOR_ID, CONTENT, STATUS) VALUES(NULL, ?, ?, 0)", [doctorid, content], (error, result) => {
+                return error ? reject(error) : resolve(result);
+            }
+        );
+    });
+}

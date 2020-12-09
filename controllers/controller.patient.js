@@ -21,9 +21,12 @@ module.exports.getDoctor = async (req, res) => {
 }
 
 module.exports.getVisit = async (req, res) => {
+    var page = parseInt(req.query.page) || 1;
+    var perPage = 5;
     const visits = await patientModel.getVisitsByPatient(req.session.userid);
     res.render('components/patientVisitsInfor', {
-        visits: visits
+        page: Math.round(visits.length / 5),
+        visits: visits.slice((page - 1) * perPage, page * perPage)
     });
 }
 

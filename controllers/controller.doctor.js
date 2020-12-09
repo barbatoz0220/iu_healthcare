@@ -1,4 +1,5 @@
 var doctorModel = require('../models/Doctor');
+var request = require('../models/Request');
 
 module.exports.index = async (req, res) => {
     const doctor = await doctorModel.getDoctorByID(req.session.userid);
@@ -10,3 +11,18 @@ module.exports.index = async (req, res) => {
         patients: patient
     });
 };
+
+module.exports.getPatients = async (req, res) => {
+    var page = parseInt(req.query.page) || 1;
+    var perPage = 5;
+    const patients = await doctorModel.getPatientsByDoctor(req.session.userid);
+    res.render('components/doctorPatientsInfor.pug', {
+        page: Math.round(patients.length / 5),
+        patients: patients.slice((page - 1) * perPage, page * perPage)
+    })
+}
+
+module.exports.handleRequest = async (req, res) => {
+    await request.addDoctorRequest(req.session.userid, req.body.content);
+    res.status(200).json();
+}

@@ -3,4 +3,12 @@ div.grid.visit
         i.fas.fa-history
         ul
             each visit in visits
-                li= visit.ID
+                li
+                    tr
+                        td= visit.ID
+                        td= visit.CHECKIN
+                        td= visit.CHECKOUT
+div#pageNumber
+    - for(var x = 1; x <= page; x++)
+        button(onclick='changePage(' + x + ')') #{x}
+        br
