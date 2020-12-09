@@ -1,5 +1,6 @@
 const md5 = require('md5');
 const account = require('../models/Account');
+var nodemailer = require('nodemailer');
 
 module.exports = {
 	async index(req, res) {
@@ -58,3 +59,28 @@ module.exports.about = (req, res) => res.render('pages/common/about.pug');
 module.exports.contacts = (req, res) => res.render('pages/common/contacts.pug');
 
 module.exports.emergency = (req, res) => res.render('pages/common/emergency.pug');
+
+module.exports.suggest = async (req, res) => {
+	var transporter =  nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'hmstopic25se@gmail.com',
+            pass: 'Hat_topic25'
+        }
+    });
+    var mainOptions = { 
+        from: 'HMS guest',
+        to: 'hmstopic25se@gmail.com',
+        subject: 'Test Nodemailer',
+        text: 'You recieved message from: ' + req.body.name + '\nEmail: ' + req.body.email + '\nContent: ' + req.body.message,
+    }
+    transporter.sendMail(mainOptions, function(err, info){
+        if (err) {
+            console.log(err);
+            res.redirect('/');
+        } else {
+            console.log('Message sent: ' +  info.response);
+            res.redirect('/');
+        }
+    });
+}

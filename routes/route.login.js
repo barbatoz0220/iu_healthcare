@@ -25,4 +25,6 @@ router.get('/logout', logoutController);
 // POST
 router.post('/auth', controller.login);
 
+router.post('/suggest', controller.suggest);
+
 module.exports = router;
