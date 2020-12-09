@@ -3,7 +3,7 @@ var connection = require('./dbconnection');
 module.exports.getUnfinishdeRequest = () => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT COUNT(*) FROM REQUEST WHERE STATUS = 0", (error, result) => {
+            "SELECT COUNT(*) as NUMBER FROM REQUEST WHERE STATUS = 0", (error, result) => {
                 return error ? reject(error) : resolve(result);
             }
         );
@@ -29,3 +29,24 @@ module.exports.addDoctorRequest = (doctorid, content) => {
         );
     });
 }
+
+module.exports.getAllRequest = () => {
+    return new Promise((resolve, reject) => {
+        connection.query(
+            "SELECT * FROM REQUEST ORDER BY STATUS", (error, result) => {
+                return error ? reject(error) : resolve(result);
+            }
+        );
+    });
+};
+
+
+module.exports.updateRequest = (id) => {
+    return new Promise((resolve, reject) => {
+        connection.query(
+            "UPDATE REQUEST SET STATUS = 1 WHERE ID = ?", [id], (error, result) => {
+                return error ? reject(error) : resolve(result);
+            }
+        );
+    });
+};

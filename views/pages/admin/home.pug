@@ -14,5 +14,8 @@ block main
       a(href="admin/doctor-list") Doctor List
       br
       a(href="admin/patient-list") Patient List
-      if(noti)
-      span= noti
+      br
+      each reqNo in reqNos
+         span= reqNo.NUMBER
+      br
+      a(href="admin/request-list") Request List

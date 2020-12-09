@@ -23,4 +23,8 @@ router.get('/doctor-list/delete/:id', controller.deleteDoctor);
 router.post('/doctor-list/insert', controller.insertDoctor);
 router.post('/doctor-list/update/:id', controller.updateDoctor);
 
+router.get('/request-list', controller.getRequest);
+router.get('/request-list/pagination', controller.requestPagination);
+router.get('/request-list/done/:id', controller.doneRequest);
+
 module.exports = router;
