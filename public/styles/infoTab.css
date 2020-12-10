@@ -1,0 +1,36 @@
+section.content {
+  margin: 15%;
+  text-align: center;
+  transition: 0.5s;
+}
+div.action-button {
+  display: grid;
+  grid-template-columns: [first] auto [second] auto [third] auto;
+  grid-template-rows: [first] auto [second] auto [third] auto;
+}
+div.action-button > button {
+  padding: 25px;
+  margin: 25px;
+  background: #00cff3;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+div.action-button > button:hover {
+  background: white;
+  color: red;
+  cursor: pointer;
+}
+#back-button {
+  background: white;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+#back-button:hover {
+}
+div.grid {
+    color: red;
+}

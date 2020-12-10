@@ -27,6 +27,7 @@ ul {
 }
 a.navBar, a.emergency {
   background: white;
+  transition: all 0.5s;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
@@ -42,6 +43,7 @@ a.emergency:hover {
 .hmsLogo {
   font-size: 30px;
   background: #00cff3;
+  transition: 0.5s;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -127,11 +129,11 @@ a.emergency:hover {
     padding: 7px 15px;
     background: transparent;
     border: 1px solid red;
+    transition: all 0.5s;
     border-radius: 50cm;
   }
   .button a:hover {
     background: rgb(221, 0, 0);
-    transition: all 0.5s;
   }
 }
 
