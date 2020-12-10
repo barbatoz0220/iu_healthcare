@@ -1,7 +1,11 @@
-#insert-form {
+.insert-form {
   display: none;
 }
 
 .update-form {
+  display: none;
+}
+
+.row-insert-form {
   display: none;
 }

@@ -1,0 +1,14 @@
+div   
+    each patient in patients
+        br
+        span= patient.NAME
+        br
+        span= patient.GENDER
+        br
+        span= patient.DOB
+        br
+        span= patient.PHONE
+div#pageNumber
+    - for(var x = 1; x <= page; x++)
+        button(onclick='changePage(' + x + ')') #{x}
+        br

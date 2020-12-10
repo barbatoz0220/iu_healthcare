@@ -1,0 +1,40 @@
+extends ../structure.pug
+
+block metadata
+  meta(charset='UTF-8')
+  meta(name="viewport" content="width=device-width, initial-scales=1.0")
+  // CSS scripts
+  link(rel="stylesheet" href="/styles/navBar.css")
+  link(rel="stylesheet" href="/styles/index.css")
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.1/css/all.css' integrity='sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp' crossorigin='anonymous')
+  link(rel='stylesheet' href="/styles/doctorHome.css")
+
+block navBar
+  include ../../components/userNavBar
+
+block main
+  each doctor in doctors
+    h1 Personal Information
+      br
+      span= doctor.NAME  
+      br
+      span= doctor.GENDER
+      br
+      span= doctor.DOB
+      br
+      span= doctor.PHONE
+  button(type="button" class="doctor-action" onclick="viewPatients()") View Your Patient
+  br
+  button(type="button" class="doctor-action" onclick="makeRequest()") Make Request
+  br
+  a(href="/logout" class="doctor-action")
+    button(type="button") Log out
+  br
+  button(type="button" id="back-button" onclick="back()") Back
+  div(id="result")
+
+  form(id="request-form" action="/doctor/handle-request" method="POST" onsubmit="return handleRequest(this)" enctype="multipart/form-data")
+    input(type="text" name="content" value="content") 
+    input(type="Submit" value="Done")
+  script(src="https://code.jquery.com/jquery-3.5.1.min.js")
+  script(type="text/javascript" src="/javascript/doctorHome.js")

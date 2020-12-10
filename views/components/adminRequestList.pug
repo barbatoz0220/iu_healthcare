@@ -1,0 +1,24 @@
+table
+    caption Request List
+    thead
+        tr 
+            th PATIENT_ID
+            th DOCTOR_ID
+            th CONTENT
+            th STATUS
+    tbody
+        tr
+            each request in requests
+                tr
+                    td
+                        input(class='read-only' type='text' name='patient_id', value = request.PATIENT_ID, required='', readonly=true)
+                    td
+                        input(class='read-only' type='text' name='doctor_id', value = request.DOCTOR_ID, required='', readonly=true) 
+                    td
+                        input(class='read-only' type='text' name='content', value = request.CONTENT, required='', readonly=true)
+                    td
+                        input(class='read-only' type='text' name='status', value = request.STATUS, required='', readonly=true)
+                    td
+                        button(onclick='doneRequest(' + request.ID + ')') Done
+
+                
