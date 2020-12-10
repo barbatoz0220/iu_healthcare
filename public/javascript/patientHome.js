@@ -63,3 +63,14 @@ function back() {
         $("#request-form").toggle();
     }
 }
+
+function viewVisitDetail(id) {
+    fetch("patient/visit-detail/" + id, {
+        method: 'GET',
+    }).then(function (response) {
+        return response.text().then(function (text) {
+            document.getElementById("visit-detail" + id).innerHTML = text;
+            $('#visit-detail' + id).toggle();
+    })
+})
+}

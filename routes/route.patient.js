@@ -12,5 +12,6 @@ router.get('/', controller.index);
 router.get('/doctor', controller.getDoctor);
 router.get('/visit', controller.getVisit);
 router.post('/handle-request', controller.handleRequest);
+router.get('/visit-detail/:id', controller.getVisitDetail);
 
 module.exports = router;

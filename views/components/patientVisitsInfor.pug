@@ -7,6 +7,8 @@ div.grid.visit
                         td= visit.ID
                         td= visit.CHECKIN
                         td= visit.CHECKOUT
+                button(onclick='viewVisitDetail(' + visit.ID +')') View
+                div(class="visit-detail" id="visit-detail" + visit.ID)
 div#pageNumber
     - for(var x = 1; x <= page; x++)
         button(onclick='changePage(' + x + ')') #{x}

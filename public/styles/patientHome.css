@@ -69,3 +69,7 @@ div.banner {
 #request-form {
   display: none;
 }
+ 
+.visit-detail {
+  display: none;
+}
