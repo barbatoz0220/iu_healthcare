@@ -4,7 +4,6 @@ div.grid.visit
             each visit in visits
                 li
                     tr
-                        td= visit.ID
                         td= visit.CHECKIN
                         td= visit.CHECKOUT
                 button(onclick='viewVisitDetail(' + visit.ID +')') View
