@@ -3,6 +3,8 @@ block metadata
    meta(name="viewport" content="width=device-width, initial-scales=1.0")
    title HMS25 - Software Engineering Project
    // CSS scripts
+   link(rel="stylesheet" href="/javascript/alertify/alertify.min.css")
+   link(rel="stylesheet" href="/javascript/alertify/default.min.css")
    link(rel="stylesheet" href="/styles/navBar.css")
    link(rel="stylesheet" href="/styles/index.css")
    link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.1/css/all.css' integrity='sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp' crossorigin='anonymous')
@@ -16,6 +18,12 @@ block main
       a(href="admin/patient-list") Patient List
       br
       each reqNo in reqNos
-         span= reqNo.NUMBER
-      br
+         span(id="rNo" style="display: none;")= reqNo.NUMBER
       a(href="admin/request-list") Request List
+
+script(type="text/javascript" src="/javascript/alertify/alertify.min.js")
+script.
+   var reqNo = document.getElementById("rNo").textContent;
+   alertify.alert("You have " + reqNo + " requests waiting for process", function() {
+      alertify.message("Confirmed!");
+   }).set({title: "Welcome"});

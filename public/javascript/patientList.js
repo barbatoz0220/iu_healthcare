@@ -1,5 +1,3 @@
-
-
 function changePage(index) {
     fetch("/admin/patient-list/pagination?page=" + index).then(function (response) {
         return response.text().then(function (text) {
@@ -9,12 +7,21 @@ function changePage(index) {
 }
 
 function deletePatient(index) {
-    fetch("/admin/patient-list/delete/" + index).then(function (response) {
-        return response.text().then(function (text) {
-            document.getElementById("container").innerHTML = text;
-        });
-    });
-}
+    alertify.confirm('Do you want to delete the patient?', function () {
+        fetch("/admin/patient-list/delete/" + index).then(function (response) {
+            return response.text().then(function (text) {
+                document.getElementById("container").innerHTML = text;
+                alertify.success("Delete successfully!");
+            });
+        })
+    },
+        function () {
+            alertify.error('Cancel');
+        }
+    ).set({ title: "Be careful" })
+};
+
+
 function submitAddForm() {
     alertify.confirm('Do you want to insert the patient?', function () {
         var formData = {
@@ -32,29 +39,37 @@ function submitAddForm() {
                 document.getElementById("container").innerHTML = text;
                 alertify.success("Insert successfully!");
             });
-            .then()
-        })},
+        })
+    },
         function () {
             alertify.error('Cancel');
         }
-    )};
+    ).set({ title: "Be careful" })
+};
 
 function submitUpdateForm(index) {
-    var formData = {
-        'name': document.getElementById("uname" + index).value,
-        'dob': document.getElementById("udob" + index).value,
-        'gender': document.getElementById("ugender" + index).value,
-        'phone': document.getElementById("uphone" + index).value,
-    };
-    fetch("/admin/patient-list/update/" + index, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-    }).then((response) => {
-        return response.text().then((text) => {
-            document.getElementById("container").innerHTML = text;
-        });
-    });
+    alertify.confirm('Do you want to update?', function () {
+        var formData = {
+            'name': document.getElementById("uname" + index).value,
+            'dob': document.getElementById("udob" + index).value,
+            'gender': document.getElementById("ugender" + index).value,
+            'phone': document.getElementById("uphone" + index).value,
+        };
+        fetch("/admin/patient-list/update/" + index, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        }).then((response) => {
+            return response.text().then((text) => {
+                document.getElementById("container").innerHTML = text;
+                alertify.success("Update successfully!");
+            });
+        })
+    },
+        function () {
+            alertify.error('Cancel');
+        }
+    ).set({ title: "Be careful" })
 };
 
 function submitSearchForm() {
