@@ -1,3 +1,5 @@
+
+
 function changePage(index) {
     fetch("/admin/patient-list/pagination?page=" + index).then(function (response) {
         return response.text().then(function (text) {
@@ -13,24 +15,29 @@ function deletePatient(index) {
         });
     });
 }
-function submitAddForm(form) {
-    var formData = {
-        'name': document.getElementById("iname").value,
-        'dob': document.getElementById("idob").value,
-        'gender': document.getElementById("igender").value,
-        'phone': document.getElementById("iphone").value,
-    };
-    fetch("/admin/patient-list/insert", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-    }).then((response) => {
-        return response.text().then((text) => {
-            document.getElementById("container").innerHTML = text;
-        });
-    });
-    return false;
-};
+function submitAddForm() {
+    alertify.confirm('Do you want to insert the patient?', function () {
+        var formData = {
+            'name': document.getElementById("iname").value,
+            'dob': document.getElementById("idob").value,
+            'gender': document.getElementById("igender").value,
+            'phone': document.getElementById("iphone").value,
+        };
+        fetch("/admin/patient-list/insert", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        }).then((response) => {
+            return response.text().then((text) => {
+                document.getElementById("container").innerHTML = text;
+                alertify.success("Insert successfully!");
+            });
+            .then()
+        })},
+        function () {
+            alertify.error('Cancel');
+        }
+    )};
 
 function submitUpdateForm(index) {
     var formData = {
@@ -48,7 +55,6 @@ function submitUpdateForm(index) {
             document.getElementById("container").innerHTML = text;
         });
     });
-    return false;
 };
 
 function submitSearchForm() {
@@ -67,5 +73,4 @@ function submitSearchForm() {
             document.getElementById("container").innerHTML = text;
         });
     });
-    return false;
 };
