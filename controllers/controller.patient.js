@@ -32,6 +32,7 @@ module.exports.getVisit = async (req, res) => {
 };
 
 module.exports.handleRequest = async (req, res) => {
+    //console.log(req.body.content);
     await request.addPatientRequest(req.session.userid, req.body.content);
     res.status(200).json();
 }

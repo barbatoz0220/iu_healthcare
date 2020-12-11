@@ -63,7 +63,7 @@ block main
           
       form(id="request-form" action="/patient/handle-request" method="POST" onsubmit="return handleRequest(this)" enctype="multipart/form-data")
         h1 Request Form
-        textarea(rows="10" cols="100" type="text" placeholder="Please state your request" value="content") 
+        textarea(id="ta" rows="10" cols="100" type="text" placeholder="Please state your request" value="content")
         input(type="Submit" value="Done")
 
   script(type="text/javascript" src="/javascript/patientHome.js")

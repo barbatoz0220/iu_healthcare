@@ -36,7 +36,7 @@ function makeRequest() {
 
 function handleRequest(form) {
     var formData = {
-        'content': form.content.value,
+        'content': document.getElementById('ta').value,
     };
     fetch("/patient/handle-request", {
         method: 'POST',
