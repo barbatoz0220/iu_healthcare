@@ -22,29 +22,47 @@ table
                         button(type="button" onclick='deleteDoctor('+doctor.ID+')') Delete
                     td
                         button(type="button" class="update-button" onclick='getIndex(' + doctor.ID + ')') Update
-                        form(id=doctor.ID, class="update-form" action="/admin/doctor-list/update/" + doctor.ID, method="POST" onsubmit="return submitUpdateForm(this)" enctype="multipart/form-data")
-                            input(type='text' name='name')
-                            input(type='text' name='dob')
-                            input(type='text' name='gender')
-                            input(type='text' name='phone')
-                            input(type="submit" value="Done")   
+                        //- form(id=doctor.ID, class="update-form" action="/admin/doctor-list/update/" + doctor.ID, method="POST" onsubmit="return submitUpdateForm(this)" enctype="multipart/form-data")
+                        tr(id=doctor.ID, class="update-form")
+                            td
+                                input(id="uname" + doctor.ID type='text' name='name')
+                            td
+                                input(id="udob" + doctor.ID type='text' name='dob')
+                            td                        
+                                input(id="ugender" + doctor.ID type='text' name='gender')
+                            td
+                                input(id="uphone" + doctor.ID type='text' name='phone')
+                            td
+                                button(onclick='submitUpdateForm('+ doctor.ID +')') Done  
         tr
             td
-                form(action="/admin/doctor-list/search" method="POST" onsubmit='return submitSearchForm(this)' enctype="multipart/form-data")  
-                    input(type='text' name='name')
-                    input(type='text' name='dob')
-                    input(type='text' name='gender')
-                    input(type='text' name='phone')
-                    input(type="submit" value="Search")      
+                //- form(action="/admin/doctor-list/search" method="POST" onsubmit='return submitSearchForm(this)' enctype="multipart/form-data")  
+                tr  
+                    td
+                        input(id="sname" type='text' name='name')
+                    td
+                        input(id='sdob' type='text' name='dob')
+                    td
+                        input(id='sgender' type='text' name='gender')
+                    td
+                        input(id='sphone' type='text' name='phone')
+                    td
+                        button(onclick='submitSearchForm()') Search     
         tr
             td
                 button(class="insert-button" onclick="toggleInsertForm()") Add doctor
-                form(class="insert-form" action="/admin/doctor-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
-                    input(type='text' name='name' required='')
-                    input(type='text' name='dob' required='')
-                    input(type='text' name='gender' required='')
-                    input(type='text' name='phone' required='')
-                    input(id="add-btn" type="submit" value="Add")
+                //- form(class="insert-form" action="/admin/doctor-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
+                tr(class="insert-form")
+                    td 
+                        input(id="iname" type='text' name='name' required='')
+                    td
+                        input(id="idob" type='text' name='dob' required='')
+                    td
+                        input(id="igender" type='text' name='gender' required='')
+                    td
+                        input(id="iphone" type='text' name='phone' required='')
+                    td
+                        button(onclick='submitAddForm()') Add  
 
 
 div#pageNumber

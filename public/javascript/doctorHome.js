@@ -25,7 +25,7 @@ function makeRequest() {
 
 function handleRequest(form) {
     var formData = {
-        'content': form.content.value,
+        'content': document.getElementById('ta').value,
     };
     fetch("/doctor/handle-request", {
         method: 'POST',

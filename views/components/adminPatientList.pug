@@ -22,27 +22,45 @@ table
                         button(type="button" onclick='deletePatient('+patient.ID+')') Delete
                     td
                         button(type="button" class="update-button" onclick='getIndex(' + patient.ID + ')') Update
-                        form(class="update-form" id=patient.ID action="/admin/patient-list/update/" + patient.ID, method="POST" onsubmit="return submitUpdateForm(this)" enctype="multipart/form-data")
-                            input(type='text' name='name')
-                            input(class="datepicker" type='text' name='dob' autocomplete="off")
-                            input(type='text' name='gender')
-                            input(type='text' name='phone')
-                            input(type="submit" value="Done")
+                        //- form(class="update-form" id=patient.ID action="/admin/patient-list/update/" + patient.ID, method="POST" onsubmit="return submitUpdateForm(this)" enctype="multipart/form-data")
+                        tr(id=patient.ID, class="update-form")
+                            td
+                                input(id="uname" + patient.ID type='text' name='name')
+                            td
+                                input(id="udob" + patient.ID type='text' name='dob')
+                            td                        
+                                input(id="ugender" + patient.ID type='text' name='gender')
+                            td
+                                input(id="uphone" + patient.ID type='text' name='phone')
+                            td
+                                button(onclick='submitUpdateForm('+ patient.ID +')') Done 
         tr
             td
-                form(action="/admin/patient-list/search" method="POST" onsubmit='return submitSearchForm(this)' enctype="multipart/form-data")  
-                    input(type='text' name='name')
-                    input(type='text' name='dob')
-                    input(type='text' name='gender')
-                    input(type='text' name='phone')
-                    input(type="submit" value="Search")    
+                //- form(action="/admin/patient-list/search" method="POST" onsubmit='return submitSearchForm(this)' enctype="multipart/form-data")  
+                tr  
+                    td
+                        input(id="sname" type='text' name='name')
+                    td
+                        input(id='sdob' type='text' name='dob')
+                    td
+                        input(id='sgender' type='text' name='gender')
+                    td
+                        input(id='sphone' type='text' name='phone')
+                    td
+                        button(onclick='submitSearchForm()') Search      
         tr
             td
                 button(class="insert-button" onclick="toggleInsertForm()") Add patient
-                form(class="row-insert-form" class="insert-form" action="/admin/patient-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
-                    input(type='text' name='name')
-                    input(class="datepicker" type='text' name='dob' autocomplete="off")
-                    input(type='text' name='gender')
-                    input(type='text' name='phone')
-                    input(type="submit" value="Add")
+                //- form(class="row-insert-form" class="insert-form" action="/admin/patient-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
+                tr(class="row-insert-form" class="insert-form")
+                    td 
+                        input(id="iname" type='text' name='name' required='')
+                    td
+                        input(id="idob" type='text' name='dob' required='')
+                    td
+                        input(id="igender" type='text' name='gender' required='')
+                    td
+                        input(id="iphone" type='text' name='phone' required='')
+                    td
+                        button(onclick='submitAddForm()') Add  
 

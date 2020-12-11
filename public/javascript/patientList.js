@@ -15,12 +15,12 @@ function deletePatient(index) {
 }
 function submitAddForm(form) {
     var formData = {
-        'name': form.name.value,
-        'dob': form.dob.value,
-        'gender': form.gender.value,
-        'phone': form.phone.value
+        'name': document.getElementById("iname").value,
+        'dob': document.getElementById("idob").value,
+        'gender': document.getElementById("igender").value,
+        'phone': document.getElementById("iphone").value,
     };
-    fetch(form.getAttribute('action'), {
+    fetch("/admin/patient-list/insert", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -32,14 +32,14 @@ function submitAddForm(form) {
     return false;
 };
 
-function submitUpdateForm(form) {
+function submitUpdateForm(index) {
     var formData = {
-        'name': form.name.value,
-        'dob': form.dob.value,
-        'gender': form.gender.value,
-        'phone': form.phone.value
+        'name': document.getElementById("uname" + index).value,
+        'dob': document.getElementById("udob" + index).value,
+        'gender': document.getElementById("ugender" + index).value,
+        'phone': document.getElementById("uphone" + index).value,
     };
-    fetch(form.getAttribute('action'), {
+    fetch("/admin/patient-list/update/" + index, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -51,14 +51,14 @@ function submitUpdateForm(form) {
     return false;
 };
 
-function submitSearchForm(form) {
+function submitSearchForm() {
     var formData = {
-        'name': form.name.value,
-        'dob': form.dob.value,
-        'gender': form.gender.value,
-        'phone': form.phone.value
+        'name': document.getElementById("sname").value,
+        'dob': document.getElementById("sdob").value,
+        'gender': document.getElementById("sgender").value,
+        'phone': document.getElementById("sphone").value,
     };
-    fetch(form.getAttribute('action'), {
+    fetch("/admin/patient-list/search", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
