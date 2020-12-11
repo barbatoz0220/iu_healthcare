@@ -51,6 +51,7 @@ app.use('*', (req, res) => {
 });
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
+
 app.listen(port, () => {
 	console.log('App listenning on port ' + port.toString())
 });
