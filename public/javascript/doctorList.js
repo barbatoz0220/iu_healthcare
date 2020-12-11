@@ -18,7 +18,7 @@ function deleteDoctor(index) {
         function () {
             alertify.error('Cancel');
         }
-    ).set({ title: "Be careful" })
+    ).set({ title: "Be careful" }).set('closable', false);
 };
 
 function submitAddForm() {
