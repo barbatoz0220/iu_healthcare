@@ -123,3 +123,7 @@ a.accordion_link:hover {
 .accordion_item:target .accordion_link .fa-minus-square {
   display: block;
 }
+
+.accordion_answer {
+  display: none;
+}

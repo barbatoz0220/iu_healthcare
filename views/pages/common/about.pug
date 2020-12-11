@@ -7,7 +7,7 @@ block metadata
     // CSS scripts
     link(rel="stylesheet" href="/styles/navBar.css")
     link(rel="stylesheet" href="/styles/about.css")
-    
+
     // Icon scripts
     script(src='https://kit.fontawesome.com/981d34ebcc.js' crossorigin='anonymous')
 
@@ -15,16 +15,23 @@ block metadata
     script(src="https://code.jquery.com/jquery-3.5.1.min.js")
     script.
         $(function(){
-            $(".toggle").on("click", function(){
-                if($(".item").hasClass("active")){
-                    $(".item").removeClass("active");
-                } else {
-                    $(".item").addClass("active");
-                    $(".item").animate({transition: "0.5s"});
-                }
-            })
+            $("#tab1").on("click", function(){
+                $('#2, #3, #4').slideUp("slow");
+                $('#1').slideToggle("slow");
+            });
+            $("#tab2").on("click", function(){
+                $('#1, #3, #4').slideUp("slow");
+                $('#2').slideToggle("slow");
+            });
+            $("#tab3").on("click", function(){
+                $('#1, #2, #4').slideUp("slow");
+                $('#3').slideToggle("slow");
+            });
+            $("#tab4").on("click", function(){
+                $('#1, #2, #3').slideUp("slow");
+                $('#4').slideToggle("slow");
+            });
         })
-
 block main
     section.container
         div.content
@@ -41,7 +48,7 @@ block main
                     i.fas.fa-plus-square
                     i.fas.fa-minus-square
 
-                div.accordion_answer
+                div.accordion_answer#1
                     p
                         | Hospital 25 is an imaginary hospital founded by team HMS25
                         | for an SE class' project. Located only in the minds of its
@@ -56,7 +63,7 @@ block main
                     i.fas.fa-plus-square
                     i.fas.fa-minus-square
 
-                div.accordion_answer
+                div.accordion_answer#2
                     p
                         | The hospital belongs to an international group of students,
                         | called team HAT, who are currently studying at International
@@ -69,7 +76,7 @@ block main
                     i.fas.fa-plus-square
                     i.fas.fa-minus-square
 
-                div.accordion_answer
+                div.accordion_answer#3
                     p To be the unreal Medical Service Provider people nobody expects
 
             div.accordion_item#tab4
@@ -77,7 +84,7 @@ block main
                     i.fas.fa-plus-square
                     i.fas.fa-minus-square
 
-                div.accordion_answer
+                div.accordion_answer#4
                     ul
                         li You and your money are always our top priority
                         li We are highly unskilled and unethical professionals
