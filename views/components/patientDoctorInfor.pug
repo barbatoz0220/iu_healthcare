@@ -1,12 +1,14 @@
-div.grid.doctor  
-    h1.icon View Your Doctor 
+div.content-header
+    h1.content-header Your Supervisory Doctor
+div.content-grid.doctor-grid
+    div.headlines
+        h2 Name
+        h2 Gender
+        h2 Date of Birth
+        h2 Phone Number
     div.doctorInfo
         each doctor in doctors
-            br
             span= doctor.NAME
-            br
             span= doctor.GENDER
-            br
             span= doctor.DOB
-            br
             span= doctor.PHONE

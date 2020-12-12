@@ -45,9 +45,9 @@ block main
     section.content#main
       div.banner
         each patient in patients
-          h1.name #{patient.NAME} Personal Profile
-          p This is your personal profile. Please select one of the following
-          | options to check your personal information.
+          h1.name Dear #{patient.NAME},
+          p This is your personal health record. Please select one of the following 
+            | options to view your own information.
       div.action-button
         button(type="button" class="patient-action" onclick="viewDoctor()") View Your Doctor 
           i.fas.fa-stethoscope
@@ -57,14 +57,18 @@ block main
           i.far.fa-copy
 
       a(href="/logout" class="patient-action")
-        button(type="button") Log out
+        button#logout(type="button") Log out
+      
       button(type="button" id="back-button" onclick="back()") Back
+      
       div(id="result")
-          
+
       form(id="request-form" action="/patient/handle-request" method="POST" onsubmit="return handleRequest(this)" enctype="multipart/form-data")
         h1 Request Form
-        textarea(id="ta" rows="10" cols="100" type="text" placeholder="Please state your request" value="content")
-        input(type="Submit" value="Done")
+        div.reqForm
+          textarea(id="ta" rows="20" cols="100" type="text" placeholder="Please state all of your requests right here in details." value="content")
+          div.submit
+            input(id="submit-button" type="Submit" value="Done")
 
   script(type="text/javascript" src="/javascript/patientHome.js")
 

@@ -71,6 +71,6 @@ function viewVisitDetail(id) {
         return response.text().then(function (text) {
             document.getElementById("visit-detail" + id).innerHTML = text;
             $('#visit-detail' + id).toggle();
+        })
     })
-})
 }
