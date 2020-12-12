@@ -31,7 +31,7 @@ block main
   main.container
     section.sidebar
       div.profile
-        img.avatar(src="images/patient.jpg" alt="Avatar")
+        img.avatar(src="images/patient.png" alt="Avatar")
         each patient in patients
           h1.name #{patient.NAME}
 
@@ -68,7 +68,7 @@ block main
       form(id="request-form" action="/patient/handle-request" method="POST" onsubmit="return handleRequest(this)" enctype="multipart/form-data")
         h1 Request Form
         div.reqForm
-          textarea(id="ta" rows="20" cols="100" type="text" placeholder="Please state all of your requests right here in details." value="content")
+          textarea(id="ta" rows="10" cols="100" type="text" placeholder="Please state all of your requests right here in details." value="content")
           div.submit
             input(id="submit-button" type="Submit" value="Done")
 
