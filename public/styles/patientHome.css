@@ -2,6 +2,7 @@ html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 10px;
   background-color: #3c4053;
+  scroll-behavior: smooth;
 }
 main.container {
   display: grid;
@@ -99,9 +100,14 @@ div.headlines {
   text-align: center;
   grid-template-columns: [first] 10% [second] 10% [third] 30% [fourth] 40%;
 }
+div.doctor-grid > div.headlines {
+  grid-template-columns: [first] 25% [second] 25% [third] 25% [fourth] 25%;
+  justify-content: space-evenly;
+}
 div.visit {
   display: grid;
   color: white;
+  margin-top: 5%;
   border-radius: 20px;
   padding: 20px;
   grid-template-columns: [first] 10% [second] 10% [third] 30% [fourth] 40%;
@@ -111,6 +117,7 @@ div.visit {
 }
 div.visit:hover {
   background-color: #1e2124;
+  transform: scale(1.1)
 }
 div.visit > button {
   outline: none;
@@ -149,7 +156,7 @@ div.doctorInfo {
   display: grid;
   color: white;
   border-radius: 20px;
-  grid-template-columns: [first] 10% [second] 10% [third] 30% [fourth] 40%;
+  grid-template-columns: [first] 25% [second] 25% [third] 25% [fourth] 25%;
   transition: 0.5s;
   font-size: 16px;
   text-align: center;

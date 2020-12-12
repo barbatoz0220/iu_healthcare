@@ -10,7 +10,7 @@ div.action-button {
   grid-template-rows: [first] auto [second] auto [third] auto;
   border-radius: 20px;
   background-color: #283042;
-  margin-top: 2%;
+  margin-top: 10%;
 }
 div.action-button > button {
   padding: 25px;
@@ -24,6 +24,7 @@ div.action-button > button:hover {
   background: white;
   color: red;
   cursor: pointer;
+  transform: scale(1.1)
 }
 button#logout,
 button#back-button,
