@@ -1,7 +1,7 @@
 /* Mobile Menu View */
 html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #3c4053;
 }
 /* Tablet Menu View */
