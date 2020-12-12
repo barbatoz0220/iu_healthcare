@@ -1,14 +1,19 @@
-div.grid.visit 
-    h1.icon Your Visit History 
-        i.fas.fa-history
-        ul
-            each visit in visits
-                li
-                    tr
-                        td= visit.ID
-                        td= visit.CHECKIN
-                        td= visit.CHECKOUT
-div#pageNumber
+div#pageNumber Page: 
     - for(var x = 1; x <= page; x++)
-        button(onclick='changePage(' + x + ')') #{x}
-        br
+        button.pageNum(onclick='changePage(' + x + ')') #{x}
+div.content-header
+    h1 Your Visit History
+div.content-grid.visit-grid
+    div.headlines
+        h2 Checkin
+        h2 Checkout
+        h2 
+        h2 Contents
+    div.visitInfo
+    each visit in visits
+        div.visit
+            span= visit.CHECKIN
+            span= visit.CHECKOUT
+            button(onclick='viewVisitDetail(' + visit.ID +')') Specific Information
+            div.visit-specific
+                div(class="visit-detail" id="visit-detail" + visit.ID)

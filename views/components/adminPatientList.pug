@@ -40,31 +40,66 @@ table.content-table
                             td    
                                     input(type="submit" value="Done")
         tr
+            each patient in patients
+                tr
+                    td
+                        input(type='text' name='name', value = patient.NAME, required='', readonly=true)
+                    td
+                        input(type='text' name='dob', value = patient.DOB, required='', readonly=true)
+                    td
+                        input(type='text' name='gender', value = patient.GENDER, required='', readonly=true)
+                    td
+                        input(type='text' name='phone', value = patient.PHONE, required='', readonly=true)
+                    td
+                        button(type="button" onclick='deletePatient('+patient.ID+')') Delete
+                    td
+                        button(type="button" class="update-button" onclick='getIndex(' + patient.ID + ')') Update
+                        //- form(class="update-form" id=patient.ID action="/admin/patient-list/update/" + patient.ID, method="POST" onsubmit="return submitUpdateForm(this)" enctype="multipart/form-data")
+                        tr(id=patient.ID, class="update-form")
+                            td
+                                input(id="uname" + patient.ID type='text' name='name')
+                            td
+                                input(id="udob" + patient.ID type='text' name='dob')
+                            td                        
+                                input(id="ugender" + patient.ID type='text' name='gender')
+                            td
+                                input(id="uphone" + patient.ID type='text' name='phone')
+                            td
+                                button(onclick='submitUpdateForm('+ patient.ID +')') Done 
+        tr
             td
-                form(action="/admin/patient-list/search" method="POST" onsubmit='return submitSearchForm(this)' enctype="multipart/form-data")  
-                    tr
-                        td
-                            input(type='text' name='name')
-                        td
-                            input(type='text' name='dob')
-                        td
-                            input(type='text' name='gender')
-                        td
-                            input(type='text' name='phone')
-                        td
-                            input(type="submit" value="Search")    
+                //- form(action="/admin/patient-list/search" method="POST" onsubmit='return submitSearchForm(this)' enctype="multipart/form-data")  
+                tr  
+                    td
+                        input(id="sname" type='text' name='name')
+                    td
+                        input(id='sdob' type='text' name='dob')
+                    td
+                        input(id='sgender' type='text' name='gender')
+                    td
+                        input(id='sphone' type='text' name='phone')
+                    td
+                        button(onclick='submitSearchForm()') Search      
         tr
             td
                 button(class="insert-button" onclick="toggleInsertForm()") Add patient
-                form( class="insert-form" action="/admin/patient-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
-                    tr(class="row-insert-form")
-                        td
-                            input(type='text' name='name')
-                        td
-                            input(class="datepicker" type='text' name='dob' autocomplete="off")
-                        td
-                            input(type='text' name='gender')
-                        td
-                            input(type='text' name='phone')
-                        td
-                            input(type="submit" value="Add")
+                //- form(class="row-insert-form" class="insert-form" action="/admin/patient-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
+                tr(class="row-insert-form" class="insert-form")
+                    td 
+                        input(id="iname" type='text' name='name' required='')
+                    td
+                        input(id="idob" type='text' name='dob' required='' autocomplete="off")
+                    td
+                        input(id="igender" type='text' name='gender' required='')
+                    td
+                        input(id="iphone" type='text' name='phone' required='')
+                    td
+                        button(onclick='submitAddForm()') Add  
+
+div#pageNumber
+    - for(var x = 1; x <= page; x++)
+        button(onclick='changePage(' + x + ')') #{x}
+        br
+
+    
+

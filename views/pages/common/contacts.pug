@@ -46,16 +46,16 @@ block main
 
             // Contact Form
             div.contactForm
-                form Suggestion Form
-
+                form(action="/suggest", method="POST") Suggestion Form
                     div.inputForm
-                        input(type='text' required='required')
+                        input(type='text' required='required' name="name")
                         span Full Name
                     div.inputForm
-                        input(type='email, text' required='required')
+                        input(type='email, text' required='required' name="email")
                         span Email
                     div.inputForm
-                        textarea(required='required' rows="3" cols="50")
+                        textarea(required='required' rows="3" cols="50" name="message")
                         span Your message
                     div.inputForm
                         input(type='submit' value='Submit Your Answer')
+

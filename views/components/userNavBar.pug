@@ -9,9 +9,19 @@ nav
         li.item
             a.navBar(href="/contacts") Contacts
         li.item
-            a.navBar(href="/logout") Log out
+            a.navBar(href="javascript: logout()") Log out
         li.item.button
             a.emergency(href="/emergency") Emergency   
                 i.fas.fa-ambulance
         li.toggle
             span.bars
+
+script(type="text/javascript" src="/javascript/alertify/alertify.min.js")
+script.
+    function logout(a) {
+        alertify.confirm('Do you want to log out?', function () {
+            window.location="/logout";
+        }, function() {
+            alertify.error('Canceled');
+        }).set({ title: "CONFIRMATION" }).set('closable', false);
+    }

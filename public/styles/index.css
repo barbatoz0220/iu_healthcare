@@ -1,7 +1,10 @@
 /* Mobile Menu View */
 html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+<<<<<<< HEAD
   /* overflow: hidden; */
+=======
+>>>>>>> DucTri
   background-color: #3c4053;
 }
 /* Tablet Menu View */
@@ -43,7 +46,7 @@ html {
 .slider {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 93vh;
   overflow: hidden;
 }
 .slider__item {

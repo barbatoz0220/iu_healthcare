@@ -36,7 +36,7 @@ function makeRequest() {
 
 function handleRequest(form) {
     var formData = {
-        'content': form.content.value,
+        'content': document.getElementById('ta').value,
     };
     fetch("/patient/handle-request", {
         method: 'POST',
@@ -62,4 +62,15 @@ function back() {
     if (reqform.style.display === "block") {
         $("#request-form").toggle();
     }
+}
+
+function viewVisitDetail(id) {
+    fetch("patient/visit-detail/" + id, {
+        method: 'GET',
+    }).then(function (response) {
+        return response.text().then(function (text) {
+            document.getElementById("visit-detail" + id).innerHTML = text;
+            $('#visit-detail' + id).toggle();
+        })
+    })
 }

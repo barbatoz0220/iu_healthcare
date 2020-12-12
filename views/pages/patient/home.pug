@@ -4,9 +4,11 @@ block metadata
   meta(charset='UTF-8')
   meta(name="viewport" content="width=device-width, initial-scales=1.0")
   // CSS scripts
+  link(rel="stylesheet" href="/javascript/alertify/alertify.min.css")
+  link(rel="stylesheet" href="/javascript/alertify/default.min.css")
   link(rel="stylesheet" href="/styles/navBar.css")
-  //link(rel="stylesheet" href="/styles/index.css")
   link(rel="stylesheet" href="/styles/patientHome.css")
+  link(rel="stylesheet" href="/styles/infoTab.css")
   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.1/css/all.css' integrity='sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp' crossorigin='anonymous')
 
   script(src="https://code.jquery.com/jquery-3.5.1.min.js")
@@ -29,11 +31,11 @@ block main
   main.container
     section.sidebar
       div.profile
-        img.avatar(src="images/patient1.jpg" alt="Avatar")
+        img.avatar(src="images/patient.jpg" alt="Avatar")
         each patient in patients
           h1.name #{patient.NAME}
 
-      div.grid.patientInfo
+      div.info
         each patient in patients
           h2.field_name Gender:
           span.field= patient.GENDER
@@ -43,21 +45,32 @@ block main
           span.field= patient.PHONE
 
     section.content#main
-      button(type="button" class="patient-action" onclick="viewDoctor()") View Your Doctor
-      br
-      button(type="button" class="patient-action" onclick="viewVisits()") View Your Visits
-      br
-      button(type="button" class="patient-action" onclick="makeRequest()") Make Request
-      br
+      div.banner
+        each patient in patients
+          h1.name Dear #{patient.NAME},
+          p This is your personal health record. Please select one of the following 
+            | options to view your own information.
+      div.action-button
+        button(type="button" class="patient-action" onclick="viewDoctor()") View Your Doctor 
+          i.fas.fa-stethoscope
+        button(type="button" class="patient-action" onclick="viewVisits()") View Your Visits 
+          i.fas.fa-history
+        button(type="button" class="patient-action" onclick="makeRequest()") Make Request 
+          i.far.fa-copy
+
       a(href="/logout" class="patient-action")
-        button(type="button") Log out
-      br
+        button#logout(type="button") Log out
+      
       button(type="button" id="back-button" onclick="back()") Back
+      
       div(id="result")
-          
+
       form(id="request-form" action="/patient/handle-request" method="POST" onsubmit="return handleRequest(this)" enctype="multipart/form-data")
-        input(type="text" name="content" value="content") 
-        input(type="Submit" value="Done")
+        h1 Request Form
+        div.reqForm
+          textarea(id="ta" rows="20" cols="100" type="text" placeholder="Please state all of your requests right here in details." value="content")
+          div.submit
+            input(id="submit-button" type="Submit" value="Done")
 
   script(type="text/javascript" src="/javascript/patientHome.js")
 

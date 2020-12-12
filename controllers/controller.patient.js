@@ -1,5 +1,6 @@
 var patientModel = require('../models/Patient');
 var request = require('../models/Request');
+var visit = require('../models/Visit');
 
 module.exports.index = async (req, res) => {
     const patient = await patientModel.getPatientByID(req.session.userid);
@@ -31,6 +32,18 @@ module.exports.getVisit = async (req, res) => {
 };
 
 module.exports.handleRequest = async (req, res) => {
+    //console.log(req.body.content);
     await request.addPatientRequest(req.session.userid, req.body.content);
     res.status(200).json();
+}
+
+module.exports.getVisitDetail = async (req, res) => {
+    var diseases = await visit.getDisease(req.params.id);
+    var treatments = await visit.getTreatment(req.params.id);
+    var rooms = await visit.getRoom(req.params.id);
+    res.render("components/visitInformation", {
+        diseases: diseases,
+        treatments: treatments,
+        rooms: rooms
+    })
 }
