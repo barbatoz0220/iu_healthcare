@@ -71,8 +71,8 @@ block main
 
   script(type="text/javascript" src="/javascript/alertify/alertify.min.js")
   script.
-    var error = document.getElementById("error").textContent;
-    if(error != null) {
+    if(document.getElementById("error") != null) {
+      var error = document.getElementById("error").textContent;
       alertify.alert(error, function() {
         alertify.message("Please login again!");
       }).set({title: "Login failed!"}).set('closable', false);

@@ -16,7 +16,7 @@ function deleteDoctor(index) {
         })
     },
         function () {
-            alertify.error('Cancel');
+            alertify.error('Canceled');
         }
     ).set({ title: "Be careful" }).set('closable', false);
 };
@@ -41,7 +41,7 @@ function submitAddForm() {
         })
     },
         function () {
-            alertify.error('Cancel');
+            alertify.error('Canceled');
         }
     ).set({ title: "Be careful" })
 };
@@ -65,7 +65,7 @@ function submitUpdateForm(index) {
         })
     },
         function () {
-            alertify.error('Cancel');
+            alertify.error('Canceled');
         }
     ).set({ title: "Be careful" })
 };
