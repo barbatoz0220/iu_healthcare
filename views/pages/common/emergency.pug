@@ -1,12 +1,27 @@
 extends index.pug
 
 block append metadata
+    link(rel="stylesheet" href="/javascript/alertify/alertify.min.css")
+    link(rel="stylesheet" href="/javascript/alertify/default.min.css")
     script(src='https://kit.fontawesome.com/981d34ebcc.js' crossorigin='anonymous')
     link(rel='stylesheet' href='/styles/emergency.css')
 block main
     div.container
         h1 This is the emergency site
-        button.btn.emergency
+        button.btn.emergency(onclick="call()")
             i.fas.fa-ambulance
             | Emergency call
-        button.btn.emerNumber 0707353818
+        button.btn.emerNumber(onclick="call()") 0707353818
+
+
+    script(type="text/javascript" src="/javascript/alertify/alertify.min.js")
+    script.
+        function call() {
+            alertify.confirm("You have reached our emergency hotline. Please remain stationary and you will soon be connected with our supporters.",
+                function(){
+                    alertify.success('Please wait');
+                },
+                function(){
+                    alertify.error('Canceled');
+            });
+        }
