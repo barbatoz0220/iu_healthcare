@@ -33,7 +33,7 @@ module.exports.addDoctorRequest = (doctorid, content) => {
 module.exports.getAllRequest = () => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT * FROM REQUEST ORDER BY STATUS", (error, result) => {
+            "SELECT * FROM REQUEST ORDER BY STATUS, ID DESC", (error, result) => {
                 return error ? reject(error) : resolve(result);
             }
         );
