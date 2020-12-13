@@ -14,10 +14,10 @@ module.exports.index = async (req, res) => {
 
 module.exports.getPatients = async (req, res) => {
     var page = parseInt(req.query.page) || 1;
-    var perPage = 2;
+    var perPage = 5;
     const patients = await doctorModel.getPatientsByDoctor(req.session.userid);
     res.render('components/doctorPatientsInfor.pug', {
-        page: Math.round(patients.length / 2),
+        page: Math.round(patients.length / 5),
         patients: patients.slice((page - 1) * perPage, page * perPage)
     })
 }
