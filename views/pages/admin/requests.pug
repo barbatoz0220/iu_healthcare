@@ -14,13 +14,13 @@ block navBar
    include ../../components/userNavBar
 
 block main
-    div#container
-        include ../../components/adminRequestList
+   div#container
+      include ../../components/adminRequestList
 
-    div#pageNumber
+   div#pageNumber
       - for(var x = 1; x <= page; x++)
-         button(onclick='changePage(' + x + ')') #{x}
+         button.pageNum(onclick='changePage(' + x + ')') #{x}
          br
 
-    script(src="https://code.jquery.com/jquery-3.5.1.min.js")
-    script(type="text/javascript" src="/javascript/requestList.js")
+   script(src="https://code.jquery.com/jquery-3.5.1.min.js")
+   script(type="text/javascript" src="/javascript/requestList.js")

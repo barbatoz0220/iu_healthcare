@@ -87,5 +87,4 @@ function submitSearchForm() {
             document.getElementById("container").innerHTML = text;
         });
     });
-    return false;
 };

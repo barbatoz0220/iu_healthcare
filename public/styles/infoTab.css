@@ -4,13 +4,10 @@ div#result {
   background-color: #283042;
 }
 div.action-button {
-  display: grid;
   outline: none;
-  grid-template-columns: [first] auto [second] auto [third] auto;
-  grid-template-rows: [first] auto [second] auto [third] auto;
   border-radius: 20px;
   background-color: #283042;
-  margin-top: 10%;
+  margin-top: 2%;
 }
 div.action-button > button {
   padding: 25px;
@@ -24,7 +21,6 @@ div.action-button > button:hover {
   background: white;
   color: red;
   cursor: pointer;
-  transform: scale(1.1)
 }
 button#logout,
 button#back-button,
@@ -40,6 +36,7 @@ div.submit > input#submit-button {
   border-radius: 20px;
   text-decoration: none;
   transition: 0.5s;
+  cursor: pointer;
 }
 button#logout:hover,
 button#back-button:hover,
@@ -67,6 +64,7 @@ div.reqForm > textarea#ta {
   color: white;
   padding: 25px;
   background-color: #1e2124;
+  caret-color: #00cff3;
 }
 div.reqForm > textarea#ta::placeholder {
   text-align: center;

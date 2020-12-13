@@ -17,8 +17,9 @@ block main
       br
       a(href="admin/patient-list") Patient List
       br
-      each reqNo in reqNos
-         span(id="rNo" style="display: none;")= reqNo.NUMBER
+      if reqNos
+         each reqNo in reqNos
+            span(id="rNo" style="display: none;")= reqNo.NUMBER
       a(href="admin/request-list") Request List
 
 script(type="text/javascript" src="/javascript/alertify/alertify.min.js")

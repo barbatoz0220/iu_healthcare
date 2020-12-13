@@ -29,9 +29,11 @@ function viewVisits() {
 }
 
 function makeRequest() {
+    console.log("Hello");
     $(".patient-action").toggle();
     $("#back-button").toggle();
     $("#request-form").toggle();
+    $('#ta').val("");
 }
 
 function handleRequest(form) {
@@ -43,7 +45,7 @@ function handleRequest(form) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
     }).then(response => {
-        document.getElementById("result").innerHTML = "Send successfully";
+        document.getElementById("result").innerHTML = "Sent successfully";
         $("#request-form").toggle();
         $("#result").toggle();
     })
