@@ -73,6 +73,15 @@ input[type='submit'], button[type='button'] {
     border-radius: 5px;
 }
 
-#pageNumber {
-    display: inline-block;
+select[type='text'] {
+    width: 100%;
+    outline: none;
 }
+
+#pageNumber {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+

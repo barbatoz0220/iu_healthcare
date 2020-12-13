@@ -31,7 +31,10 @@ table.content-table
                         td
                             input(id="udob" + patient.ID type='text' name='dob')
                         td                        
-                            input(id="ugender" + patient.ID type='text' name='gender')
+                            select(id="ugender" + patient.ID type='text' name='gender')
+                                option(value='male') Male
+                                option(value='female') Female
+                            //- input(id="ugender" + patient.ID type='text' name='gender')
                         td
                             input(id="uphone" + patient.ID type='text' name='phone')
                         td
