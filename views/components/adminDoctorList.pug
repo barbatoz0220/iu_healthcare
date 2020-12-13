@@ -68,7 +68,59 @@ section.doctor-list
 
     section.control-page
         h1 Control Board
-        div#pageNumber
-            - for(var x = 1; x <= page; x++)
+        span(id="total-page" style="display: none")= page
+        div#pageNumber      
+            if (at <= 4)
+                - for(var x = 1; x <= 4; x++)
+                    div.one-page
+                        button.pageNum(onclick='changePage(' + x + ')') #{x}
+                button.show-next(onclick='showNext('+ at +')') >>
+            if (at > 4)
+                button.show-prev(onclick='showPrev('+ at +')') <<
                 div.one-page
-                    button.pageNum(onclick='changePage(' + x + ')') #{x}
+                    button.pageNum(onclick='changePage(' + (Math.floor(at/5)*5) + ')') #{(Math.floor(at/5)*5)}
+                div.one-page
+                    button.pageNum(onclick='changePage(' + (Math.floor(at/5)*5+1) + ')') #{(Math.floor(at/5)*5+1)}
+                div.one-page
+                    button.pageNum(onclick='changePage(' + (Math.floor(at/5)*5+2) + ')') #{(Math.floor(at/5)*5+2)}
+                div.one-page
+                    button.pageNum(onclick='changePage(' + (Math.floor(at/5)*5+3) + ')') #{(Math.floor(at/5)*5+3)}
+                div.one-page
+                    button.pageNum(onclick='changePage(' + (Math.floor(at/5)*5+4) + ')') #{(Math.floor(at/5)*5+4)}
+                button.show-next(onclick='showNext('+ at +')') >>
+script.
+    function showNext(index) {
+        var point = (Math.floor(index/5) + 1)*5;
+        var point1 = point;
+        var point2 = point + 1;
+        var point3 = point + 2;
+        var point4 = point + 3;
+        var point5 = point + 4;
+        var totalPage = document.getElementById("total-page").textContent;
+        if (index > totalPage - 10) {
+            point = totalPage;
+            point1 = totalPage - 4;
+            point2 = totalPage - 3;
+            point3 = totalPage - 2;
+            point4 = totalPage - 1;
+            point5 = totalPage;
+            document.getElementById("pageNumber").innerHTML = "<button class='show-prev' onclick='showPrev(" + point + ")'><<</button><div class='one-page'><button class='pageNum' onclick='changePage(" + (point1) + ")'>" + point1 +"</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point2)+")'>" + point2 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point3)+")'>" + point3 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point4)+")'>" + point4 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point5)+")'>" + point5 + "</button></div>";
+        } else {
+            document.getElementById("pageNumber").innerHTML = "<button class='show-prev' onclick='showPrev(" + point + ")'><<</button><div class='one-page'><button class='pageNum' onclick='changePage(" + (point1) + ")'>" + point1 +"</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point2)+")'>" + point2 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point3)+")'>" + point3 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point4)+")'>" + point4 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point5)+")'>" + point5 + "</button></div><button class='show-next' onclick='showNext("+(point)+")'>>></button>";
+        }
+    }
+
+    function showPrev(index) {
+        var point = Math.floor(index/5)*5 - 1;
+        var point1 = point;
+        var point2 = point - 1;
+        var point3 = point - 2;
+        var point4 = point - 3;
+        var point5 = point - 4;
+        var totalPage = document.getElementById("total-page").textContent;
+        if (index < 10) {
+            document.getElementById("pageNumber").innerHTML = "<div class='one-page'><button class='pageNum' onclick='changePage("+(1)+")'>" + 1 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(2)+")'>" + 2 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(3)+")'>" + 3 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(4)+")'>" + 4 + "</button></div><button class='show-next' onclick='showNext("+(4)+")'>>></button>";
+        } else if (index >= 10){
+            document.getElementById("pageNumber").innerHTML = "<button class='show-prev' onclick='showPrev(" + point2 + ")'><<</button><div class='one-page'><button class='pageNum' onclick='changePage(" + (point5) + ")'>" + point5 +"</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point4)+")'>" + point4 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point3)+")'>" + point3 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point2)+")'>" + point2 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point1)+")'>" + point1 + "</button></div><button class='show-next' onclick='showNext("+(point1)+")'>>></button>";
+        }
+    }
