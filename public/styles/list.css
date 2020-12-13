@@ -54,11 +54,6 @@ tbody .data-row:nth-child(4n-1) input[type='text'] {
     background-color:  #414e6b;
 }
 
-
-/* thead{
-    text-align: left;
-} */
-
 td  input[type='text'] {
     color: #fff;
     margin-right: 20px;
@@ -77,16 +72,6 @@ input[type='submit'], button[type='button'] {
     outline: none;
     border-radius: 5px;
 }
-
-/* .read-only, input[type='text'] {
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: groove;
-    background-color: #eee;
-    border-width: 0px; 
-} */
-
 
 #pageNumber {
     display: inline-block;
