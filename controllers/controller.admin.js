@@ -6,9 +6,13 @@ module.exports = {
 
     async index(req, res) {
         var requestList = await requestModel.getUnfinishdeRequest();
-        res.render("pages/admin/home", {
-            reqNos: requestList
-        })
+        if (req.session.count == 1) {
+            res.render("pages/admin/home", {
+                reqNos: requestList
+            })
+        } else {
+            res.render("pages/admin/home")
+        }
     },
 
     // handle patient requests
@@ -62,7 +66,7 @@ module.exports = {
             patients: patientList.slice((page - 1) * perPage, page * perPage)
         });
     },
-    
+
     async updatePatient(req, res) {
         var page = parseInt(req.query.page) || 1;
         var perPage = 10;
@@ -83,7 +87,7 @@ module.exports = {
             page: Math.round(doctorList.length / 10),
             doctors: doctorList.slice((page - 1) * perPage, page * perPage)
         });
-    },   
+    },
 
     async updateDoctor(req, res) {
         var page = parseInt(req.query.page) || 1;
