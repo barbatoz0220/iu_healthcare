@@ -12,6 +12,7 @@ block metadata
    link(rel="stylesheet" href="/styles/form.css")
    link(rel="stylesheet" href="/styles/list.css")
    link(rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
+   //- link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity= "sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
 block navBar
    include ../../components/userNavBar
 
@@ -28,6 +29,7 @@ block main
    script.
       function getIndex(index) {
          $("#" + index).toggle();
+         inputDatePicker();
       };
       //- $(".insert-button").click(function(){
       //-    $(".insert-form").toggle();
@@ -36,15 +38,12 @@ block main
       
       function toggleInsertForm() {
          $(".row-insert-form").toggle();
+         inputDatePicker();
       }
 
-      $( function() {
-         $("#datepicker").datepicker({dateFormat: 'yy-mm-dd'});
-      } );
-      $( function() {
-         $( 'input[name="dob"]' ).datepicker(
-            { dateFormat: 'yy-mm-dd' }
-            //- 'format': 'yyyy-mm-dd',
-            //- 'autoclose': true
-         );
-      } );
+      function inputDatePicker() {
+         $(".datepicker").datepicker({
+            dateFormat: 'yy-mm-dd',
+            autoclose: true
+            });
+      };
