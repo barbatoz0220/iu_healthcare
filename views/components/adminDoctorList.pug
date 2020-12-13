@@ -30,11 +30,14 @@ table.content-table
                         td
                             input(id="udob" + doctor.ID type='text' name='dob')
                         td                        
-                            input(id="ugender" + doctor.ID type='text' name='gender')
+                            select(id="ugender" + doctor.ID type='text' name='gender')
+                                option(value='male') Male
+                                option(value='female') Female
+                            //- input(id="ugender" + doctor.ID type='text' name='gender')
                         td
                             input(id="uphone" + doctor.ID type='text' name='phone')
                         td
-                            button(onclick='submitUpdateForm('+ doctor.ID +')') Done  
+                            button(type='button' onclick='submitUpdateForm('+ doctor.ID +')') Done  
         tr
             td
                 //- form(action="/admin/doctor-list/search" method="POST" onsubmit='return submitSearchForm(this)' enctype="multipart/form-data")  
@@ -44,14 +47,17 @@ table.content-table
                     td
                         input(id='sdob' type='text' name='dob')
                     td
-                        input(id='sgender' type='text' name='gender')
+                        select(id="sgender" type='text' name='gender')
+                            option(value='male') Male
+                            option(value='female') Female
+                        //- input(id='sgender' type='text' name='gender')
                     td
                         input(id='sphone' type='text' name='phone')
                     td
-                        button(onclick='submitSearchForm()') Search     
+                        button(type='button' onclick='submitSearchForm()') Search     
         tr
             td
-                button(class="insert-button" onclick="toggleInsertForm()") Add doctor
+                button(type='button' class="insert-button" onclick="toggleInsertForm()") Add doctor
                 //- form(class="insert-form" action="/admin/doctor-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
                 tr(class="insert-form")
                     td 
@@ -59,11 +65,14 @@ table.content-table
                     td
                         input(id="idob" type='text' name='dob' required='' autocomplete="off")
                     td
-                        input(id="igender" type='text' name='gender' required='')
+                        select(id="igender" type='text' name='gender' required='')
+                            option(value='male') Male
+                            option(value='female') Female
+                        //- input(id="igender" type='text' name='gender' required='')
                     td
                         input(id="iphone" type='text' name='phone' required='')
                     td
-                        button(onclick='submitAddForm()') Add  
+                        button(type='button' onclick='submitAddForm()') Add  
 
 
 div#pageNumber

@@ -47,7 +47,10 @@ table.content-table
             td
                 input(id='sdob' type='text' name='dob')
             td
-                input(id='sgender' type='text' name='gender')
+                select(id="sgender" type='text' name='gender')
+                    option(value='male') Male
+                    option(value='female') Female
+                //- input(id='sgender' type='text' name='gender')
             td
                 input(id='sphone' type='text' name='phone')
             td
@@ -62,7 +65,10 @@ table.content-table
                     td
                         input(id="idob" type='text' name='dob' required='' autocomplete="off")
                     td
-                        input(id="igender" type='text' name='gender' required='')
+                        select(id="igender" type='text' name='gender' required='')
+                            option(value='male') Male
+                            option(value='female') Female
+                        //- input(id="igender" type='text' name='gender' required='')
                     td
                         input(id="iphone" type='text' name='phone' required='')
                     td

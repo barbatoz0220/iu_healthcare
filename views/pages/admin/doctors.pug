@@ -30,6 +30,15 @@ block main
 
       function toggleInsertForm() {
          $(".insert-form").toggle();
-      }
+      };
 
+      function addActiveButton(index) {
+         $(document).ready(function(){
+            $("#"+ index).click(function(){
+               $(this).addClass('active');
+               $('.pagination').find('.pageNumber.active').removeClass('active');
+            })
+         })
+         
+      };
    

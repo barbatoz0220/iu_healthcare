@@ -80,8 +80,9 @@ input[type='submit']:hover, button[type='button']:hover {
 }
 
 select[type='text'] {
-    width: 100%;
+    width: 90%;
     outline: none;
+    margin-left: -20px;
 }
 
 
