@@ -10,11 +10,14 @@ html {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: #3c4053;
 }
-
+section.doctor-list, section.patient-list {
+    display: flex;
+    justify-content: center;
+}
 .content-table {
     width: 700px;
     /* text-align: left; */
-    margin: 50px auto;
+    margin: 2% auto;
     border-collapse: collapse;
     background-color: #283042;
     color: #fff;
@@ -47,11 +50,12 @@ tbody .data-row:nth-child(4n+1) {
 }
 
 tbody .data-row:nth-child(4n-1) {
-    background-color: #414e6b;
+    background-color: #283042;
 }
 
 tbody .data-row:nth-child(4n-1) input[type='text'] {
-    background-color:  #414e6b;
+    background-color: #283042;
+
 }
 
 td  input[type='text'] {
@@ -65,12 +69,19 @@ td  input[type='text'] {
     background-color: #283042;
 }
 
-input[type='submit'], button[type='button'] {
+input[type='submit'], button[type='method-button'] {
     width: 100px;
+    padding: 5px;
+    border-radius: 20px;
     color: #000;
     background-color:  #00cff3;
     outline: none;
-    border-radius: 5px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+input[type='submit']:hover, button[type='method-button']:hover {
+    color: red;
+    background-color: white;
 }
 
 select[type='text'] {
@@ -78,10 +89,36 @@ select[type='text'] {
     outline: none;
 }
 
-#pageNumber {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+/* Control Board */
+section.control-page {
+    margin: 2% auto;
+    background-color: #283042;
+    text-align: center;
 }
-
+section.control-page > h1 {
+    font-size: 16px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #1e2124;
+}
+#pageNumber {
+    display: grid;
+    width: auto;
+    padding: 20px;
+    grid-template-columns: [one] 20% [two] 20% [three] 20% [four] 20% [five] 20% ;
+}
+button.pageNum {
+    width: 50px;
+    background-color: #00cff3;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.5s;
+  }
+  button.pageNum:hover {
+    color: red;
+    background-color: white;
+    transform: scale(1.5);
+  }
