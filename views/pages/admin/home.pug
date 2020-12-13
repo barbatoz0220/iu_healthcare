@@ -13,14 +13,15 @@ block navBar
    include ../../components/userNavBar
 block main
    div
-      a(href="admin/doctor-list") Doctor List
-      br
-      a(href="admin/patient-list") Patient List
-      br
+      button
+         a(href="admin/doctor-list") Doctor List
+      button
+         a(href="admin/patient-list") Patient List
       if reqNos
          each reqNo in reqNos
             span(id="rNo" style="display: none;")= reqNo.NUMBER
-      a(href="admin/request-list") Request List
+      button
+         a(href="admin/request-list") Request List
 
 script(type="text/javascript" src="/javascript/alertify/alertify.min.js")
 script.
