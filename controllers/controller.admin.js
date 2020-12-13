@@ -158,6 +158,7 @@ module.exports = {
         var perPage = 10;
         var requestList = await requestModel.getAllRequest();
         res.render("components/adminRequestList", {
+            page: Math.round(requestList.length / 10),
             requests: requestList.slice((page - 1) * perPage, page * perPage)
         });
     },
@@ -168,6 +169,7 @@ module.exports = {
         var perPage = 10;
         var requestList = await requestModel.getAllRequest();
         res.render("components/adminRequestList", {
+            page: Math.round(requestList.length / 10),
             requests: requestList.slice((page - 1) * perPage, page * perPage)
         });
     },

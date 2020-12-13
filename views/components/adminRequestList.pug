@@ -22,3 +22,7 @@ table.content-table
                     td
                         button(type='button' onclick='doneRequest(' + request.ID + ')') Done
 
+div#pageNumber
+    - for(var x = 1; x <= page; x++)
+        button.pageNum(onclick='changePage(' + x + ')') #{x}
+        br
