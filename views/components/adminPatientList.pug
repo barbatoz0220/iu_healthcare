@@ -29,7 +29,7 @@ table.content-table
                         td
                             input(id="uname" + patient.ID type='text' name='name')
                         td
-                            input(id="udob" + patient.ID type='text' name='dob')
+                            input(class='datepicker' id="udob" + patient.ID type='text' name='dob')
                         td                        
                             select(id="ugender" + patient.ID type='text' name='gender')
                                 option(value='male') Male
@@ -45,7 +45,7 @@ table.content-table
             td
                 input(id="sname" type='text' name='name')
             td
-                input(id='sdob' type='text' name='dob')
+                input(class='datepicker' id='sdob' type='text' name='dob')
             td
                 select(id="sgender" type='text' name='gender')
                     option(value='male') Male
@@ -63,7 +63,7 @@ table.content-table
                     td 
                         input(id="iname" type='text' name='name' required='')
                     td
-                        input(id="idob" type='text' name='dob' required='' autocomplete="off")
+                        input(class='datepicker' id="idob" type='text' name='dob' required='' autocomplete="off")
                     td
                         select(id="igender" type='text' name='gender' required='')
                             option(value='male') Male

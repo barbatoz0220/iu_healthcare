@@ -30,15 +30,13 @@ block main
 
       function toggleInsertForm() {
          $(".insert-form").toggle();
+         inputDatePicker();
       };
 
-      function addActiveButton(index) {
-         $(document).ready(function(){
-            $("#"+ index).click(function(){
-               $(this).addClass('active');
-               $('.pagination').find('.pageNumber.active').removeClass('active');
-            })
-         })
-         
+      function inputDatePicker() {
+         $(".datepicker").datepicker({
+            dateFormat: 'yy-mm-dd',
+            autoclose: true
+            });
       };
    
