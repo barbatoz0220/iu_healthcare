@@ -1,0 +1,38 @@
+block metadata
+   meta(charset='UTF-8')
+   meta(name="viewport" content="width=device-width, initial-scales=1.0")
+   title HMS25 - Software Engineering Project
+   // CSS scripts
+   link(rel="stylesheet" href="/javascript/alertify/alertify.min.css")
+   link(rel="stylesheet" href="/javascript/alertify/default.min.css")
+   link(rel="stylesheet" href="/styles/navBar.css")
+   link(rel="stylesheet" href="/styles/index.css")
+   link(rel="stylesheet" href="/styles/adminHome.css")
+   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.1/css/all.css' integrity='sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp' crossorigin='anonymous')
+
+block navBar
+   include ../../components/userNavBar
+block main
+   section.container
+      div.banner
+         h1 Dear Admin,
+         p Select one of the following options to conduct your duties.
+      div.admin-option
+         button
+            a(href="admin/doctor-list") Doctor List
+         button
+            a(href="admin/patient-list") Patient List
+         if reqNos
+            each reqNo in reqNos
+               span(id="rNo" style="display: none;")= reqNo.NUMBER
+         button
+            a(href="admin/request-list") Request List
+
+script(type="text/javascript" src="/javascript/alertify/alertify.min.js")
+script.
+   if (document.getElementById("rNo") != null) {
+      var reqNo = document.getElementById("rNo").textContent;
+      alertify.alert("You have " + reqNo + " requests waiting for process", function() {
+         alertify.message("Confirmed!");
+      }).set({title: "Welcome"});
+   }

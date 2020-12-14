@@ -1,0 +1,75 @@
+div#result {
+  padding: 25px;
+  border-radius: 20px;
+  background-color: #283042;
+}
+div.action-button {
+  outline: none;
+  border-radius: 20px;
+  background-color: #283042;
+  margin-top: 2%;
+}
+div.action-button > button {
+  padding: 25px;
+  margin: 25px;
+  outline: none;
+  background: #00cff3;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+div.action-button > button:hover {
+  background: white;
+  color: red;
+  cursor: pointer;
+}
+button#logout,
+button#back-button,
+div.submit > input#submit-button {
+  width: 100px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background: white;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: 0.5s;
+  cursor: pointer;
+}
+button#logout:hover,
+button#back-button:hover,
+div.submit > input#submit-button:hover {
+  color: red;
+}
+
+/*Request Form*/
+form#request-form {
+  background-color: #283042;
+  text-align: center;
+  padding: 25px;
+  border-radius: 20px;
+}
+form#request-form > h1 {
+  padding: 25px;
+}
+div.reqForm {
+  display: flex;
+  flex-direction: column;
+}
+div.reqForm > textarea#ta {
+  resize: none;
+  outline: none;
+  color: white;
+  padding: 25px;
+  background-color: #1e2124;
+  caret-color: #00cff3;
+}
+div.reqForm > textarea#ta::placeholder {
+  text-align: center;
+  color: #00cff3;
+}
+div.reqForm > div.submit {
+  text-align: center;
+}

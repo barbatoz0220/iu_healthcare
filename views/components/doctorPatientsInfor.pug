@@ -1,0 +1,35 @@
+div#pageNumber Patients Groups: 
+    - for(var x = 1; x <= page; x++)
+        button.pageNum(onclick='changePage(' + x + ')') #{x}
+
+div.content-header
+    h1.content-header Your Patients
+
+div.content-grid.patient-grid
+    div.headlines
+        h2 Name
+        h2 Gender
+        h2 Date of Birth
+        h2 Phone Number
+
+    div.patientsList
+        each patient in patients
+            div.patientInfo
+                span= patient.NAME
+                span= patient.GENDER
+                span= patient.DOB
+                span= patient.PHONE
+
+script.
+    $(document).ready(function() {
+        var offset = $('#pageNumber button').length;
+        $('#pageNumbers').endlessScroll({
+            fireOnce: false,
+            fireDelay: false,
+            loader: '',
+            insertAfter: '#pageNumber button:last',
+            content: function(i) {
+                return '<button(class="pageNum")>' + (i + offset) + '</button>';
+            }
+        });
+    });

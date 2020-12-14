@@ -1,0 +1,132 @@
+section.doctor-list
+    table.content-table
+        caption Doctor List
+        thead
+            tr 
+                th Name
+                th DOB
+                th Gender
+                th Phone
+                th Options
+                th
+        tbody
+            each doctor in doctors
+                tr
+                    td
+                        input(class='read-only' type='text' name='name', value = doctor.NAME, required='', readonly=true)
+                    td
+                        input(class='read-only' type='text' name='dob', value = doctor.DOB, required='', readonly=true) 
+                    td
+                        input(class='read-only' type='text' name='gender', value = doctor.GENDER, required='', readonly=true)
+                    td
+                        input(class='read-only' type='text' name='phone', value = doctor.PHONE, required='', readonly=true)
+                    td
+                        button(type="method-button" onclick='deleteDoctor('+doctor.ID+')') Delete
+                    td
+                        button(type="method-button" class="update-button" onclick='getIndex(' + doctor.ID + ')') Update
+                        tr(id=doctor.ID, class="update-form")
+                            td
+                                input(id="uname" + doctor.ID type='text' name='name')
+                            td
+                                input(class="datepicker" autocomplete='off' id="udob" + doctor.ID type='text' name='dob')
+                            td                        
+                                select(id="ugender" + doctor.ID type='text' name='gender' required='')
+                                    option(value='Male') Male
+                                    option(value='Female') Female
+                            td
+                                input(id="uphone" + doctor.ID type='text' name='phone')
+                            td
+                                button(type="method-button" onclick='submitUpdateForm('+ doctor.ID +')') Done  
+            tr
+                td
+                    tr  
+                        td
+                            input(id="sname" type='text' name='name')
+                        td
+                            input(class='datepicker' id="sdob" type='text' name='dob' required='' autocomplete="off")
+                        td
+                            select(id="sgender" type='text' name='gender' required='')
+                                option(value='male') Male
+                                option(value='female') Female
+                                option(value='none') None
+                        td
+                            input(id='sphone' type='text' name='phone')
+                        td
+                            button(type="method-button" onclick='submitSearchForm()') Search     
+            tr
+                td
+                    button(class="insert-button" type="method-button" onclick="toggleInsertForm()") Add doctor
+                    tr(class="insert-form")
+                        td 
+                            input(id="iname" type='text' name='name')
+                        td
+                            input(class='datepicker' id="idob" type='text' name='dob' autocomplete="off")
+                        td
+                            select(id="igender" type='text' name='gender')
+                                option(value='male') Male
+                                option(value='female') Female
+                        td
+                            input(id="iphone" type='text' name='phone')
+                        td
+                            button(type='method-button' onclick='submitAddForm()') Add   
+            tr
+                td
+                    if back
+                        button(onclick='returnPageList()' type="method-button") Back
+    section.control-page
+        span(id="total-page" style="display: none")= page
+        div#pageNumber      
+            if (at <= 4)
+                - for(var x = 1; x <= 4; x++)
+                    div.one-page
+                        button.pageNum(onclick='changePage(' + x + ')') #{x}
+                button.show-next(onclick='showNext('+ at +')') >>
+            if (at > 4)
+                button.show-prev(onclick='showPrev('+ at +')') <<
+                div.one-page
+                    button.pageNum(onclick='changePage(' + (Math.floor(at/5)*5) + ')') #{(Math.floor(at/5)*5)}
+                div.one-page
+                    button.pageNum(onclick='changePage(' + (Math.floor(at/5)*5+1) + ')') #{(Math.floor(at/5)*5+1)}
+                div.one-page
+                    button.pageNum(onclick='changePage(' + (Math.floor(at/5)*5+2) + ')') #{(Math.floor(at/5)*5+2)}
+                div.one-page
+                    button.pageNum(onclick='changePage(' + (Math.floor(at/5)*5+3) + ')') #{(Math.floor(at/5)*5+3)}
+                div.one-page
+                    button.pageNum(onclick='changePage(' + (Math.floor(at/5)*5+4) + ')') #{(Math.floor(at/5)*5+4)}
+                button.show-next(onclick='showNext('+ at +')') >>
+script.
+    function showNext(index) {
+        var point = (Math.floor(index/5) + 1)*5;
+        var point1 = point;
+        var point2 = point + 1;
+        var point3 = point + 2;
+        var point4 = point + 3;
+        var point5 = point + 4;
+        var totalPage = document.getElementById("total-page").textContent;
+        if (index > totalPage - 10) {
+            point = totalPage;
+            point1 = totalPage - 4;
+            point2 = totalPage - 3;
+            point3 = totalPage - 2;
+            point4 = totalPage - 1;
+            point5 = totalPage;
+            document.getElementById("pageNumber").innerHTML = "<button class='show-prev' onclick='showPrev(" + point + ")'><<</button><div class='one-page'><button class='pageNum' onclick='changePage(" + (point1) + ")'>" + point1 +"</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point2)+")'>" + point2 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point3)+")'>" + point3 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point4)+")'>" + point4 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point5)+")'>" + point5 + "</button></div>";
+        } else {
+            document.getElementById("pageNumber").innerHTML = "<button class='show-prev' onclick='showPrev(" + point + ")'><<</button><div class='one-page'><button class='pageNum' onclick='changePage(" + (point1) + ")'>" + point1 +"</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point2)+")'>" + point2 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point3)+")'>" + point3 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point4)+")'>" + point4 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point5)+")'>" + point5 + "</button></div><button class='show-next' onclick='showNext("+(point)+")'>>></button>";
+        }
+    }
+
+    function showPrev(index) {
+        var point = Math.floor(index/5)*5 - 1;
+        var point1 = point;
+        var point2 = point - 1;
+        var point3 = point - 2;
+        var point4 = point - 3;
+        var point5 = point - 4;
+        var totalPage = document.getElementById("total-page").textContent;
+        if (index < 10) {
+            document.getElementById("pageNumber").innerHTML = "<div class='one-page'><button class='pageNum' onclick='changePage("+(1)+")'>" + 1 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(2)+")'>" + 2 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(3)+")'>" + 3 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(4)+")'>" + 4 + "</button></div><button class='show-next' onclick='showNext("+(4)+")'>>></button>";
+        } else if (index >= 10){
+            document.getElementById("pageNumber").innerHTML = "<button class='show-prev' onclick='showPrev(" + point2 + ")'><<</button><div class='one-page'><button class='pageNum' onclick='changePage(" + (point5) + ")'>" + point5 +"</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point4)+")'>" + point4 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point3)+")'>" + point3 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point2)+")'>" + point2 + "</button></div><div class='one-page'><button class='pageNum' onclick='changePage("+(point1)+")'>" + point1 + "</button></div><button class='show-next' onclick='showNext("+(point1)+")'>>></button>";
+        }
+    }

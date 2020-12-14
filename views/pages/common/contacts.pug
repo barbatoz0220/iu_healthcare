@@ -1,0 +1,61 @@
+extends index.pug
+
+block metadata
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial scale=1.0')
+    title Contact Us
+
+    //CSS script
+    script(src='https://kit.fontawesome.com/981d34ebcc.js' crossorigin='anonymous')
+    link(rel='stylesheet' href='/styles/contacts.css')
+    link(rel="stylesheet" href="/styles/navBar.css")
+
+
+block main
+    section.contact
+        div.content
+            h1 Contact Us
+            p
+                | This is HMS 25's contact site. Should there be anything we can do for you,
+                br
+                |  please let us know by leaving your message in the following form.
+                br
+                strong Your opinion is very much appreciated.
+            
+        section.container
+            // Contact Info
+            div.contactInfo
+                div.box
+                    div.icon
+                        i.fa.fa-map-marker(aria-hidden='true')
+                    div.text
+                        h2 Address
+                        p Khu ph&#x1ED1; 6, P. Linh Trung, Q. Th&#x1EE7; &Dstrok;&#x1EE9;c, TP.HCM
+                div.box
+                    div.icon
+                        i.fa.fa-phone(aria-hidden='true')
+                    div.text
+                        h2 Tel
+                        p (+84) 842 711 327
+                div.box
+                    div.icon
+                        i.fa.fa-envelope-o(aria-hidden='true')
+                    div.text
+                        h2 Email
+                        p HAT_hospital@gmail.com
+
+            // Contact Form
+            div.contactForm
+                form(action="/suggest", method="POST") Suggestion Form
+                    div.inputForm
+                        input(autocomplete="off" type='text' required='required' name="name")
+                        span Full Name
+                    div.inputForm
+                        input(autocomplete="off" type='email, text' required='required' name="email")
+                        span Email
+                    div.inputForm
+                        textarea(autocomplete="off" required='required' rows="3" cols="50" name="message")
+                        span Your message
+                    div.inputForm
+                        input(type='submit' value='Submit Your Answer')
+

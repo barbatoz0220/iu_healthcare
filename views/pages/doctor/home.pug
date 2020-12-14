@@ -1,0 +1,62 @@
+extends ../structure.pug
+
+block metadata
+  meta(charset='UTF-8')
+  meta(name="viewport" content="width=device-width, initial-scales=1.0")
+  // CSS scripts
+  link(rel="stylesheet" href="/styles/navBar.css")
+  link(rel="stylesheet" href="/styles/index.css")
+  link(rel='stylesheet' href="/styles/doctorHome.css")
+  link(rel='stylesheet' href="/styles/infoTab.css")
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.1/css/all.css' integrity='sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp' crossorigin='anonymous')
+  link(rel="stylesheet" href="/javascript/alertify/alertify.min.css")
+  link(rel="stylesheet" href="/javascript/alertify/default.min.css")
+
+block navBar
+  include ../../components/userNavBar
+
+block main
+  main.container
+    section.sidebar
+      div.profile
+        img.avatar(src="images/doctor.png" alt="Avatar")
+        each doctor in doctors
+          h1.name #{doctor.NAME}
+
+      div.info
+        each doctor in doctors
+          h2.field_name Gender:
+          span.field= doctor.GENDER
+          h2.field_name Date of Birth:
+          span.field= doctor.DOB
+          h2.field_name Telephone:
+          span.field= doctor.PHONE
+    
+    section.content#main
+      div.banner
+        each doctor in doctors
+          h1.name Dear Dr.#{doctor.NAME},
+          p This is your personal profile. Please select one of the following 
+            | options to view your own information.
+      div.action-button
+        button(type="button" class="doctor-action" onclick="viewPatients()") View Your Patient 
+          i.fas.fa-hospital-user
+        button(type="button" class="doctor-action" onclick="makeRequest()") Make Request 
+          i.far.fa-copy
+
+      a(href="/logout" class="doctor-action")
+        button#logout(type="button") Log out
+
+      button(type="button" id="back-button" onclick="back()") Back
+      
+      div(id="result")
+
+      form(id="request-form" action="/doctor/handle-request" method="POST" onsubmit="return handleRequest(this)" enctype="multipart/form-data")
+        h1 Request Form
+        div.reqForm
+          textarea(id="ta" rows="10" cols="100" type="text" placeholder="Please state all of your requests right here in details." value="content")
+          div.submit
+            input(id="submit-button" type="Submit" value="Done")
+
+    script(src="https://code.jquery.com/jquery-3.5.1.min.js")
+    script(type="text/javascript" src="/javascript/doctorHome.js")

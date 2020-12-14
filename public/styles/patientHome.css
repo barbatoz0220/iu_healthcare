@@ -1,0 +1,186 @@
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 10px;
+  background-color: #3c4053;
+  scroll-behavior: smooth;
+}
+main.container {
+  display: grid;
+  grid-template-columns: [sidebar] 20% [main_content] 80%;
+  justify-items: center;
+}
+button {
+  outline: none;
+}
+/* Sidebar profile */
+section.sidebar {
+  font-size: 12px;
+  color: white;
+  background-color: #283042;
+  padding: 1em 2em;
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100%;
+}
+div.profile {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 25%;
+  text-align: center;
+}
+img.avatar {
+  width: 50%;
+  height: auto;
+  border-radius: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+.info {
+  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+span.field {
+  text-align: center;
+  background-color: #00cff3;
+  color: #1e2124;
+  padding: 10px;
+  border: 5px;
+  border-radius: 50cm;
+  margin-bottom: 2em;
+  transition: 0.5s;
+}
+span.field:hover {
+  color: red;
+  background-color: white;
+}
+
+/* Main content */
+section.content {
+  font-size: 14px;
+  color: white;
+  margin-top: 10%;
+  max-width: 80vw;
+  width: 1080px;
+  height: auto;
+}
+div.banner {
+  font-size: 20px;
+}
+h1 {
+  color: #00cff3;
+}
+#back-button {
+  display: none;
+}
+#result {
+  display: none;
+}
+#request-form {
+  display: none;
+}
+.visit-detail {
+  display: none;
+}
+div.action-button {
+  display: grid;
+  grid-template-columns: [first] auto [second] auto [third] auto;
+  grid-template-rows: [first] auto [second] auto [third] auto;
+}
+div.action-button > button {
+  font-size: 20px;
+}
+div.action-button > button:hover {
+  transform: scale(1.1)
+}
+
+/* View Visit History */
+div.content-header {
+  text-align: center;
+  color: #00cff3;
+}
+div.content-grid {
+  display: flex;
+  flex-direction: column;
+}
+div.headlines {
+  display: grid;
+  text-align: center;
+  margin-top: 2%;
+  grid-template-columns: [first] 10% [second] 10% [third] 30% [fourth] 40%;
+}
+div.doctor-grid > div.headlines {
+  grid-template-columns: [first] 25% [second] 25% [third] 25% [fourth] 25%;
+  justify-content: space-evenly;
+}
+div.visit {
+  display: grid;
+  color: white;
+  margin-top: 5%;
+  border-radius: 20px;
+  padding: 20px;
+  grid-template-columns: [first] 10% [second] 10% [third] 30% [fourth] 40%;
+  grid-column-gap: 10px;
+  transition: 0.5s;
+  font-size: 16px;
+}
+div.visit:hover {
+  background-color: #1e2124;
+  transform: scale(1.1)
+}
+div.visit > button {
+  outline: none;
+  width: 200px;
+  height: 50px;
+  background-color: #00cff3;
+  border-radius: 20px;
+  transition: 0.5s;
+  text-decoration: none;
+  cursor: pointer;
+}
+div.visit > button:hover {
+  color: red;
+  background-color: white;
+}
+button.pageNum {
+  font-size: 20px;
+  width: 50px;
+  border: none;
+  outline: none;
+  margin: 1%;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+button.pageNum:hover {
+  color: red;
+  background-color: white;
+  transform: scale(1.1);
+}
+div.visit-record {
+  display: grid;
+  grid-template-rows: [first] auto [second] auto [third] auto;
+}
+.record-disease, .record-treatment, .record-room {
+  padding: 10px;
+}
+
+/*View Doctor Info*/
+div.doctorInfo {
+  display: grid;
+  color: white;
+  border-radius: 20px;
+  grid-template-columns: [first] 25% [second] 25% [third] 25% [fourth] 25%;
+  transition: 0.5s;
+  font-size: 16px;
+  text-align: center;
+  padding: 20px;
+  margin-top: 2%;
+}
+.doctorInfo:hover {
+  background-color: #1e2124;
+  transform: scale(1.1);
+}
