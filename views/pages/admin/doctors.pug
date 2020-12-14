@@ -18,10 +18,13 @@ block main
 
    script(type="text/javascript" src="/javascript/alertify/alertify.min.js")
    script(src="https://code.jquery.com/jquery-3.5.1.min.js")
+   script(src="https://code.jquery.com/jquery-3.5.1.min.js")
+   script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
    script(type="text/javascript" src="/javascript/doctorList.js")
    script.
       function getIndex(index) {
          $("#" + index).toggle();
+         inputDatePicker();
       };
       //- $('button.insert-button').click(function(){
       //-     console.log("Hello");
