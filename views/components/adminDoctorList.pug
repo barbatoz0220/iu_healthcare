@@ -30,9 +30,9 @@ section.doctor-list
                             td
                                 input(class="datepicker" autocomplete='off' id="udob" + doctor.ID type='text' name='dob')
                             td                        
-                                select(id="ugender" type='text' name='gender' required='')
-                                    option(value='male') Male
-                                    option(value='female') Female
+                                select(id="ugender" + doctor.ID type='text' name='gender' required='')
+                                    option(value='Male') Male
+                                    option(value='Female') Female
                             td
                                 input(id="uphone" + doctor.ID type='text' name='phone')
                             td
@@ -48,6 +48,7 @@ section.doctor-list
                             select(id="sgender" type='text' name='gender' required='')
                                 option(value='male') Male
                                 option(value='female') Female
+                                option(value='none') None
                         td
                             input(id='sphone' type='text' name='phone')
                         td
@@ -57,18 +58,21 @@ section.doctor-list
                     button(class="insert-button" type="method-button" onclick="toggleInsertForm()") Add doctor
                     tr(class="insert-form")
                         td 
-                            input(id="iname" type='text' name='name' required='')
+                            input(id="iname" type='text' name='name')
                         td
-                            input(class='datepicker' id="idob" type='text' name='dob' required='' autocomplete="off")
+                            input(class='datepicker' id="idob" type='text' name='dob' autocomplete="off")
                         td
-                            select(id="igender" type='text' name='gender' required='')
+                            select(id="igender" type='text' name='gender')
                                 option(value='male') Male
                                 option(value='female') Female
                         td
-                            input(id="iphone" type='text' name='phone' required='')
+                            input(id="iphone" type='text' name='phone')
                         td
-                            button(type='button' onclick='submitAddForm()') Add   
-
+                            button(type='method-button' onclick='submitAddForm()') Add   
+            tr
+                td
+                    if back
+                        button(onclick='returnPageList()' type="method-button") Back
     section.control-page
         span(id="total-page" style="display: none")= page
         div#pageNumber      

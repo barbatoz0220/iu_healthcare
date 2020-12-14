@@ -52,7 +52,7 @@ module.exports.insertDoctor = (name, gender, dob, phone) => {
 
 module.exports.searchDoctor = (name, gender, dob, phone) => {
     var validName = name != '' ? name : "%%";
-    var validGender = gender != '' ? gender : "%%";
+    var validGender = gender != 'none' ? gender : "%%";
     var validDob = dob != '' ? dob : "%%";
     var validPhone = phone != '' ? phone : "%%";
     return new Promise((resolve, reject) => {

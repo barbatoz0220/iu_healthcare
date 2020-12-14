@@ -51,6 +51,7 @@ section.patient-list
                     select(id="sgender" type='text' name='gender')
                         option(value='male') Male
                         option(value='female') Female
+                        option(value='none') None
                 td
                     input(id='sphone' type='text' name='phone')
                 td
@@ -58,21 +59,23 @@ section.patient-list
             tr
                 td
                     button(class="insert-button" onclick="toggleInsertForm()" type="method-button") Add patient
-                    //- form(class="row-insert-form" class="insert-form" action="/admin/patient-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
                     tr(class="row-insert-form" class="insert-form")
                         td 
-                            input(id="iname" type='text' name='name' required='')
+                            input(id="iname" type='text' name='name')
                         td
                             input(class='datepicker' id="idob" type='text' name='dob' autocomplete="off")
                         td                        
                             select(id="igender" type='text' name='gender')
                                 option(value='male') Male
                                 option(value='female') Female
-                            //- input(id="ugender" + patient.ID type='text' name='gender')
                         td
-                            input(id="iphone" type='text' name='phone' required='')
+                            input(id="iphone" type='text' name='phone')
                         td
-                            button(onclick='submitAddForm()' type="method-button") Add  
+                            button(onclick='submitAddForm()' type="method-button") Add
+            tr
+                td
+                    if back
+                        button(onclick='returnPageList()' type="method-button") Back
 
     section.control-page
         span(id="total-page" style="display: none")= page
