@@ -88,6 +88,8 @@ a.accordion_link:hover {
 
 .accordion_answer {
   max-height: 0;
+  font-size: 20px;
+  text-align: justify;
   overflow: hidden;
   position: relative;
   background-color: #1e2124;
@@ -107,7 +109,6 @@ a.accordion_link:hover {
 .accordion_answer p,
 .accordion_answer ul {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
   padding: 2rem;
 }
 
