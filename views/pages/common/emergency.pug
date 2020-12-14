@@ -5,14 +5,27 @@ block append metadata
     link(rel="stylesheet" href="/javascript/alertify/default.min.css")
     script(src='https://kit.fontawesome.com/981d34ebcc.js' crossorigin='anonymous')
     link(rel='stylesheet' href='/styles/emergency.css')
-block main
-    div.container
-        h1 This is the emergency site
-        button.btn.emergency(onclick="call()")
-            i.fas.fa-ambulance
-            | Emergency call
-        button.btn.emerNumber(onclick="call()") 0707353818
 
+block navBar
+    include ../../components/homeNavBar
+
+block main
+    section.container
+        div.banner
+            h1.name Dear User,
+            p This is our hospital's emergency hotline.
+
+        div.option
+            button.btn.option1
+                h1 Option #1:
+                    h2 0707353818 
+                        i.fas.fa-phone-square-
+            button.btn.option2(onclick="call()")
+                h1 Option #2:
+                    h2 Emergency call 
+                        i.fas.fa-ambulance
+            p.message If the situation allows, please select to contact us immediately.
+            p.message Otherwise, select and our support team will try to reach you ASAP.
 
     script(type="text/javascript" src="/javascript/alertify/alertify.min.js")
     script.

@@ -4,7 +4,7 @@ block metadata
    link(rel="stylesheet" href="/javascript/alertify/alertify.min.css")
    link(rel="stylesheet" href="/javascript/alertify/default.min.css")
    link(rel="stylesheet" href="/styles/form.css")
-   link(rel="stylesheet" href="/styles/list.css")
+   link(rel="stylesheet" href="/styles/usersList.css")
    link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.1/css/all.css' integrity='sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp' crossorigin='anonymous')
    link(rel="stylesheet" href="/styles/navBar.css")
    link(rel="stylesheet" href="/styles/index.css")
@@ -18,7 +18,6 @@ block main
 
    script(type="text/javascript" src="/javascript/alertify/alertify.min.js")
    script(src="https://code.jquery.com/jquery-3.5.1.min.js")
-   script(src="https://code.jquery.com/jquery-3.5.1.min.js")
    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
    script(type="text/javascript" src="/javascript/doctorList.js")
    script.
@@ -26,10 +25,6 @@ block main
          $("#" + index).toggle();
          inputDatePicker();
       };
-      //- $('button.insert-button').click(function(){
-      //-     console.log("Hello");
-      //-     $(".insert-form").toggle();
-      //- });
 
       function toggleInsertForm() {
          $(".insert-form").toggle();
@@ -39,7 +34,10 @@ block main
       function inputDatePicker() {
          $(".datepicker").datepicker({
             dateFormat: 'yy-mm-dd',
-            autoclose: true
+            autoclose: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: '1800:2020'
             });
       };
    

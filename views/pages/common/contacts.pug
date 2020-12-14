@@ -48,13 +48,13 @@ block main
             div.contactForm
                 form(action="/suggest", method="POST") Suggestion Form
                     div.inputForm
-                        input(type='text' required='required' name="name")
+                        input(autocomplete="off" type='text' required='required' name="name")
                         span Full Name
                     div.inputForm
-                        input(type='email, text' required='required' name="email")
+                        input(autocomplete="off" type='email, text' required='required' name="email")
                         span Email
                     div.inputForm
-                        textarea(required='required' rows="3" cols="50" name="message")
+                        textarea(autocomplete="off" required='required' rows="3" cols="50" name="message")
                         span Your message
                     div.inputForm
                         input(type='submit' value='Submit Your Answer')

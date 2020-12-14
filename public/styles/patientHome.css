@@ -68,7 +68,7 @@ section.content {
   height: auto;
 }
 div.banner {
-  font-size: 16px;
+  font-size: 20px;
 }
 h1 {
   color: #00cff3;
@@ -89,6 +89,9 @@ div.action-button {
   display: grid;
   grid-template-columns: [first] auto [second] auto [third] auto;
   grid-template-rows: [first] auto [second] auto [third] auto;
+}
+div.action-button > button {
+  font-size: 20px;
 }
 div.action-button > button:hover {
   transform: scale(1.1)

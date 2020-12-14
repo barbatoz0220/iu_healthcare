@@ -42,7 +42,8 @@ html {
 .slider {
   position: relative;
   width: 100%;
-  height: 93vh;
+  height: 93.5vh;
+  max-height: 100%;
   overflow: hidden;
 }
 .slider__item {

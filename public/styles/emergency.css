@@ -1,27 +1,57 @@
-h1 {
-    color: black;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+.container {
+  color: white;
+  text-align: center;
+  font-size: 20px;
 }
-
+div.option {
+  display: grid;
+  grid-template-columns: [first] auto [second] auto;
+  grid-template-rows: [first] auto [second] auto;
+}
+div.banner {
+  font-size: 20px;
+  margin: 2% auto;
+  background-color: #283042;
+  padding: 1em;
+  width: 100vw;
+  text-align: center;
+}
+div.banner > h1 {
+  color: #00cff3;
+}
 .btn {
-    background-color: #da190b;
-    border: none;
-    color: white; 
-    padding: 14px 28px; 
-    cursor: pointer; 
-    display: block;
-    margin: 15px auto;
-    width: 50vw;
-    height: 25vh;
-    font-size: 1.5rem;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  cursor: pointer;
+  display: block;
+  margin: 15px auto;
+  width: 40rem;
+  height: 10rem;
+  border-radius: 10rem;
+}
+.message {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 2% auto;
+  width: 40%;
+  transition: 0.5s ease;
 }
 
-.emergency {background-color: #f44336;} 
-.emergency:hover {background: #da190b;}
-
-.fas {
-    padding: 2%;
+.option2 {
+  background-color: #ff0000;
+  transition: 0.5s;
 }
-
-.emerNumber {
-    background-color: #2698D6;
+.option2:hover {
+  background: #ce0000;
+}
+.option1 {
+  background-color: #00cff3;
+  transition: 0.5s;
+}
+.option1:hover {
+  background-color: #2698d6;
 }
