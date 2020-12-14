@@ -146,15 +146,19 @@ div.visit > button:hover {
   background-color: white;
 }
 button.pageNum {
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: white;
+  font-size: 20px;
+  width: 50px;
+  border: none;
+  outline: none;
+  margin: 1%;
+  cursor: pointer;
+  border-radius: 20px;
   transition: 0.5s;
 }
 button.pageNum:hover {
   color: red;
-  background-color: rgb(245, 245, 245);
-  cursor: pointer;
+  background-color: white;
+  transform: scale(1.1);
 }
 div.visit-record {
   display: grid;
@@ -173,5 +177,10 @@ div.doctorInfo {
   transition: 0.5s;
   font-size: 16px;
   text-align: center;
+  padding: 20px;
   margin-top: 2%;
+}
+.doctorInfo:hover {
+  background-color: #1e2124;
+  transform: scale(1.1);
 }

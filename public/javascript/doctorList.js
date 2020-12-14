@@ -7,7 +7,7 @@ function changePage(index) {
 }
 
 function deleteDoctor(index) {
-    alertify.confirm('Do you want to delete the patient?', function () {
+    alertify.confirm('Do you want to delete the doctor?', function () {
         fetch("/admin/doctor-list/delete/" + index).then(function (response) {
             return response.text().then(function (text) {
                 document.getElementById("container").innerHTML = text;
@@ -27,7 +27,7 @@ function submitAddForm() {
             alertify.message('OK');
         }).set({title: "Failed"}).set('closable', false);
     } else {
-        alertify.confirm('Do you want to insert the patient?', function () {
+        alertify.confirm('Do you want to insert the doctor?', function () {
             var formData = {
                 'name': document.getElementById("iname").value,
                 'dob': document.getElementById("idob").value,
