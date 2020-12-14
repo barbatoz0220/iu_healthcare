@@ -91,20 +91,6 @@ button[type="method-button"]:hover {
   background-color: white;
 }
 
-input[type="submit"]:hover,
-button[type="button"]:hover {
-  color: #fff;
-  background-color: #008ea7;
-  transition: 0.3s;
-}
-
-input[type="submit"]:hover,
-button[type="button"]:hover {
-  color: #fff;
-  background-color: #008ea7;
-  transition: 0.3s;
-}
-
 select[type="text"] {
   width: 90%;
   outline: none;
