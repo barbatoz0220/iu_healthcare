@@ -91,16 +91,24 @@ button[type="method-button"]:hover {
   background-color: white;
 }
 
-input[type='submit']:hover, button[type='button']:hover {
-    color: #fff;
-    background-color: #008ea7;
-    transition: 0.3s;
+input[type="submit"]:hover,
+button[type="button"]:hover {
+  color: #fff;
+  background-color: #008ea7;
+  transition: 0.3s;
 }
 
-select[type='text'] {
-    width: 90%;
-    outline: none;
-    margin-left: -20px;
+input[type="submit"]:hover,
+button[type="button"]:hover {
+  color: #fff;
+  background-color: #008ea7;
+  transition: 0.3s;
+}
+
+select[type="text"] {
+  width: 90%;
+  outline: none;
+  margin-left: -20px;
 }
 
 /* Control Board */
@@ -121,7 +129,7 @@ button.pageNum {
   color: white;
   border: none;
   outline: none;
-  background-color:  #1e2124;
+  background-color: #1e2124;
   margin-left: 10px;
   margin-right: 10px;
   cursor: pointer;
@@ -150,8 +158,8 @@ button.show-next:hover {
   background-color: #00cff3;
   transform: scale(1.5);
 }
-  button.pageNum:hover {
-    color: red;
-    background-color: white;
-    transform: scale(1.5);
-  }
+button.pageNum:hover {
+  color: red;
+  background-color: white;
+  transform: scale(1.5);
+}
