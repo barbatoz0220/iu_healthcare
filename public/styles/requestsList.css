@@ -7,116 +7,118 @@
 }
 
 html {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #3c4053;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #3c4053;
 }
 section.request-list {
-    display: flex;
-    text-align: center;
-    margin: 2% auto;
-    padding: 50px;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
 }
 section.request-list > table.content-table {
-    width: 1000px;
-    border-collapse: collapse;
-    background-color: #283042;
-    color: #fff;
-    margin-right: 2%;
+  width: 1000px;
+  margin: 0% auto;
+  border-collapse: collapse;
+  background-color: #283042;
+  color: #fff;
 }
 
 .content-table caption {
-    background-color: #1e2124;
-    color: #fff;
-    font-weight: bold;
-    padding: 12px 15px;
+  background-color: #1e2124;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 15px;
 }
 
 .content-table thead tr {
-    background-color: #fff;
-    color: #000;
-    text-align: left;
-    font-weight: bold;
+  background-color: #fff;
+  color: #000;
+  text-align: left;
+  font-weight: bold;
 }
 
-.content-table th, .content-table td {
-    text-align: center;
-    padding: 6px 10px;
+.content-table th,
+.content-table td {
+  text-align: center;
+  padding: 6px 10px;
 }
 
-tbody .data-row:nth-child(4n+1) {
-    background-color: #283042;
+tbody .data-row:nth-child(4n + 1) {
+  background-color: #283042;
 }
 
 tbody .data-row:nth-child(4n-1) {
-    background-color: #283042;
+  background-color: #283042;
 }
 
-tbody .data-row:nth-child(4n-1) input[type='text'] {
-    background-color: #283042;
-
+tbody .data-row:nth-child(4n-1) input[type="text"] {
+  background-color: #283042;
 }
 
-td  input[type='text'] {
-    color: #fff;
-    margin-right: 20px;
-    outline: none;
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: groove;
-    background-color: #283042;
+td input[type="text"] {
+  color: #fff;
+  margin-right: 20px;
+  outline: none;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background-color: #283042;
 }
 
-input[type='submit'], button[type='method-button'] {
-    width: 100px;
-    padding: 5px;
-    border-radius: 20px;
-    color: #000;
-    background-color:  #00cff3;
-    outline: none;
-    transition: 0.5s;
-    cursor: pointer;
+input[type="submit"],
+button[type="method-button"] {
+  width: 100px;
+  padding: 5px;
+  border-radius: 20px;
+  color: #000;
+  background-color: #00cff3;
+  outline: none;
+  transition: 0.5s;
+  cursor: pointer;
 }
-input[type='submit']:hover, button[type='method-button']:hover {
-    color: red;
-    background-color: white;
+input[type="submit"]:hover,
+button[type="method-button"]:hover {
+  color: red;
+  background-color: white;
 }
 
-select[type='text'] {
-    width: 100%;
-    outline: none;
+select[type="text"] {
+  width: 100%;
+  outline: none;
 }
 
 /* Control Board */
 section.control-page {
-    margin: 2% auto;
-    background-color: #283042;
-    text-align: center;
+  margin: 2% auto;
+  background-color: #283042;
+  text-align: center;
 }
 section.control-page > h1 {
-    font-size: 16px;
-    color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #1e2124;
+  font-size: 16px;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #1e2124;
 }
 #pageNumber {
-    display: grid;
-    width: auto;
-    padding: 20px;
-    grid-template-columns: [one] 20% [two] 20% [three] 20% [four] 20% [five] 20% ;
+  display: grid;
+  width: auto;
+  padding: 20px;
+  grid-template-columns: [one] 20% [two] 20% [three] 20% [four] 20% [five] 20%;
 }
 button.pageNum {
-    width: 50px;
-    background-color: #00cff3;
-    margin-left: 10px;
-    margin-right: 10px;
-    cursor: pointer;
-    border-radius: 20px;
-    transition: 0.5s;
-  }
-  button.pageNum:hover {
-    color: red;
-    background-color: white;
-    transform: scale(1.5);
-  }
+  width: 50px;
+  background-color: #00cff3;
+  margin-left: 10px;
+  margin-right: 10px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+button.pageNum:hover {
+  color: red;
+  background-color: white;
+  transform: scale(1.5);
+}

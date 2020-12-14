@@ -21,8 +21,3 @@ table.content-table
                         input(class='read-only' type='text' name='status', value = request.STATUS, required='', readonly=true)
                     td
                         button(type='method-button' onclick='doneRequest(' + request.ID + ')') Done
-
-div#pageNumber
-    - for(var x = 1; x <= page; x++)
-        button.pageNum(onclick='changePage(' + x + ')') #{x}
-        br

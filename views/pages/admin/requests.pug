@@ -14,15 +14,8 @@ block navBar
    include ../../components/userNavBar
 
 block main
-   section.request-list
+   section#container.request-list
       include ../../components/adminRequestList
-
-      section.control-page
-         h1 Control Board
-         div#pageNumber
-               - for(var x = 1; x <= page; x++)
-                  div.one-page
-                     button.pageNum(onclick='changePage(' + x + ')') #{x}
 
    script(src="https://code.jquery.com/jquery-3.5.1.min.js")
    script(type="text/javascript" src="/javascript/requestList.js")
