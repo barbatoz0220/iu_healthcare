@@ -24,28 +24,30 @@ section.doctor-list
                         button(type="method-button" onclick='deleteDoctor('+doctor.ID+')') Delete
                     td
                         button(type="method-button" class="update-button" onclick='getIndex(' + doctor.ID + ')') Update
-                        //- form(id=doctor.ID, class="update-form" action="/admin/doctor-list/update/" + doctor.ID, method="POST" onsubmit="return submitUpdateForm(this)" enctype="multipart/form-data")
                         tr(id=doctor.ID, class="update-form")
                             td
                                 input(id="uname" + doctor.ID type='text' name='name')
                             td
-                                input(id="udob" + doctor.ID type='text' name='dob')
+                                input(class="datepicker" autocomplete='off' id="udob" + doctor.ID type='text' name='dob')
                             td                        
-                                input(id="ugender" + doctor.ID type='text' name='gender')
+                                select(id="ugender" type='text' name='gender' required='')
+                                    option(value='male') Male
+                                    option(value='female') Female
                             td
                                 input(id="uphone" + doctor.ID type='text' name='phone')
                             td
                                 button(type="method-button" onclick='submitUpdateForm('+ doctor.ID +')') Done  
             tr
                 td
-                    //- form(action="/admin/doctor-list/search" method="POST" onsubmit='return submitSearchForm(this)' enctype="multipart/form-data")  
                     tr  
                         td
                             input(id="sname" type='text' name='name')
                         td
-                            input(id='sdob' type='text' name='dob')
+                            input(class='datepicker' id="sdob" type='text' name='dob' required='' autocomplete="off")
                         td
-                            input(id='sgender' type='text' name='gender')
+                            select(id="sgender" type='text' name='gender' required='')
+                                option(value='male') Male
+                                option(value='female') Female
                         td
                             input(id='sphone' type='text' name='phone')
                         td
@@ -53,18 +55,19 @@ section.doctor-list
             tr
                 td
                     button(class="insert-button" type="method-button" onclick="toggleInsertForm()") Add doctor
-                    //- form(class="insert-form" action="/admin/doctor-list/insert" method="POST" onsubmit="return submitAddForm(this)" enctype="multipart/form-data")
                     tr(class="insert-form")
                         td 
                             input(id="iname" type='text' name='name' required='')
                         td
-                            input(id="idob" type='text' name='dob' required='' autocomplete="off")
+                            input(class='datepicker' id="idob" type='text' name='dob' required='' autocomplete="off")
                         td
-                            input(id="igender" type='text' name='gender' required='')
+                            select(id="igender" type='text' name='gender' required='')
+                                option(value='male') Male
+                                option(value='female') Female
                         td
                             input(id="iphone" type='text' name='phone' required='')
                         td
-                            button(type="method-button" onclick='submitAddForm()') Add  
+                            button(type='button' onclick='submitAddForm()') Add   
 
     section.control-page
         h1 Control Board

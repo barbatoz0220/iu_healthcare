@@ -30,7 +30,7 @@ section.patient-list
                             td
                                 input(id="uname" + patient.ID type='text' name='name')
                             td
-                                input(id="udob" + patient.ID type='text' name='dob')
+                                input(autocomplete='off' class="datepicker" id="udob" + patient.ID type='text' name='dob')
                             td                        
                                 select(id="ugender" + patient.ID type='text' name='gender')
                                     option(value='male') Male
@@ -46,9 +46,11 @@ section.patient-list
                 td
                     input(id="sname" type='text' name='name')
                 td
-                    input(id='sdob' type='text' name='dob')
+                    input(class="datepicker" id='sdob' type='text' name='dob' autocomplete="off")
                 td
-                    input(id='sgender' type='text' name='gender')
+                    select(id="sgender" type='text' name='gender')
+                        option(value='male') Male
+                        option(value='female') Female
                 td
                     input(id='sphone' type='text' name='phone')
                 td
@@ -61,9 +63,12 @@ section.patient-list
                         td 
                             input(id="iname" type='text' name='name' required='')
                         td
-                            input(id="idob" type='text' name='dob' required='' autocomplete="off")
-                        td
-                            input(id="igender" type='text' name='gender' required='')
+                            input(class='datepicker' id="idob" type='text' name='dob' autocomplete="off")
+                        td                        
+                            select(id="igender" type='text' name='gender')
+                                option(value='male') Male
+                                option(value='female') Female
+                            //- input(id="ugender" + patient.ID type='text' name='gender')
                         td
                             input(id="iphone" type='text' name='phone' required='')
                         td
