@@ -16,11 +16,12 @@ table.content-table
                     td
                         input(class='read-only' type='text' name='doctor_id', value = request.DOCTOR_ID, required='', readonly=true) 
                     td
-                        input(class='read-only' type='text' name='content', value = request.CONTENT, required='', readonly=true)
+                        input(class='read-only' type='text' name='content', value = request.CONTENT, required='', readonly=true)               
                     td
                         input(class='read-only' type='text' name='status', value = request.STATUS, required='', readonly=true)
-                    td
-                        button(type='method-button' onclick='doneRequest(' + request.ID + ')') Done
+                    if request.STATUS == 0
+                        td
+                            button(type='method-button' onclick='doneRequest(' + request.ID + ')') Done
 
 div#pageNumber
     - for(var x = 1; x <= page; x++)
