@@ -51,7 +51,7 @@ block main
                         input(autocomplete="off" type='text' required='required' name="name")
                         span Full Name
                     div.inputForm
-                        input(autocomplete="off" type='email, text' required='required' name="email")
+                        input(autocomplete="off" type='email' required='required' name="email" pattern="[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+(\.[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+)*@([a-zA-Z0-9_][-a-zA-Z0-9_]*(\.[-a-zA-Z0-9_]+)*\.([cC][oO][mM]))(:[0-9]{1,5})?")
                         span Email
                     div.inputForm
                         textarea(autocomplete="off" required='required' rows="3" cols="50" name="message")
