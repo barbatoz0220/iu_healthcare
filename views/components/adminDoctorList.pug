@@ -10,6 +10,8 @@ section.doctor-list
                 th Options
                 th
         tbody
+            if result
+                span(id="result") We found #{result} result(s).
             each doctor in doctors
                 tr
                     td
