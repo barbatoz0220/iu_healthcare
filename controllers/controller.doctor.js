@@ -1,5 +1,7 @@
 var doctorModel = require('../models/Doctor');
 var request = require('../models/Request');
+var patient = require('../models/Patient');
+var visit = require('../models/Visit');
 
 module.exports.index = async (req, res) => {
     const doctor = await doctorModel.getDoctorByID(req.session.userid);
@@ -25,4 +27,22 @@ module.exports.getPatients = async (req, res) => {
 module.exports.handleRequest = async (req, res) => {
     await request.addDoctorRequest(req.session.userid, req.body.content);
     res.status(200).json();
+}
+
+module.exports.getPatientVisit = async (req, res) => {
+    const visits = await patient.getVisitsByPatient(req.params.id);
+    res.render('components/doctorPatientsVisitInfo', {
+        visits: visits
+    })
+}
+
+module.exports.getPatientVisitDetail = async (req, res) => {
+    var diseases = await visit.getDisease(req.params.id);
+    var treatments = await visit.getTreatment(req.params.id);
+    var rooms = await visit.getRoom(req.params.id);
+    res.render("components/visitInformation", {
+        diseases: diseases,
+        treatments: treatments,
+        rooms: rooms
+    })
 }
