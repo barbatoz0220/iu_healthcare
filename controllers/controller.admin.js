@@ -41,6 +41,7 @@ module.exports = {
     async searchPatient(req, res) {
         var patientList = await patientModel.searchPatient(req.body.name, req.body.gender, req.body.dob, req.body.phone);
         res.render("components/adminPatientList", {
+            result: ''+patientList.length+'',
             back: "1",
             patients: patientList
         });

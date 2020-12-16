@@ -16,7 +16,7 @@ block main
             p This is our hospital's emergency hotline.
 
         div.option
-            button.btn.option1
+            button.btn.option1(onclick="call()")
                 h1 Option #1:
                     h2 0707353818 
                         i.fas.fa-phone-square-
@@ -36,5 +36,5 @@ block main
                 },
                 function(){
                     alertify.error('Canceled');
-            });
+            }).set({title: "Calling..."}).set('closable', false);
         }
