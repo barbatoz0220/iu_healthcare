@@ -125,6 +125,7 @@ body {
   pointer-events: none;
   transition: 0.5s;
   color: red;
+  transition: 0.5s ease;
   font-weight: 500;
 }
 
@@ -133,9 +134,17 @@ body {
 .contactForm .inputForm textarea:focus ~ span,
 .contactForm .inputForm textarea:valid ~ span {
   color: white;
-  background:#00cff381;
-  padding: 3px;
-  border-radius: 3px;
+  background:#00cff3;
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+
+.contactForm .inputForm input:focus ~ span,
+.contactForm .inputForm input:invalid ~ span,
+.contactForm .inputForm textarea:focus ~ span,
+.contactForm .inputForm textarea:invalid ~ span  {
+  border: 1px solid red;
+  padding: 2px 5px;
 }
 
 .contactForm .inputForm input[type="submit"] {
