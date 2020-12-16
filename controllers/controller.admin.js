@@ -87,6 +87,7 @@ module.exports = {
     async searchDoctor(req, res) {
         var doctorList = await doctorModel.searchDoctor(req.body.name, req.body.gender, req.body.dob, req.body.phone);
         res.render("components/adminDoctorList", {
+            result: ''+doctorList.length+'',
             back: "1",
             doctors: doctorList
         });
