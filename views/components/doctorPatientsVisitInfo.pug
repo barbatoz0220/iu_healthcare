@@ -1,14 +1,15 @@
-div.headlines
-    h2 Checkin
-    h2 Checkout
-    h2 
-    h2 Contents
-div.visitInfo
-each visit in visits
-    div.visit
-        span= visit.CHECKIN
-        span= visit.CHECKOUT
-        button(onclick='viewVisitDetail(' + visit.ID +')') Specific Information
-        div.visit-specific
-            div(class="visit-detail" id="visit-detail" + visit.ID)
+div#visitInfor
+    div#visit-headlines
+        h2 Checkin
+        h2 Checkout
+        h2 
+        h2 Contents
+    div.visitInfo
+    each visit in visits
+        div.patient-visit
+            span= visit.CHECKIN
+            span= visit.CHECKOUT
+            button(onclick='viewVisitDetail(' + visit.ID +')') Specific Information
+            div.visit-specific
+                div(class="visit-detail" id="visit-detail" + visit.ID)
 
