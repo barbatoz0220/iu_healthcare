@@ -31,14 +31,14 @@ div.banner > h1 {
   border: none;
   outline: none;
   background-color:#00cff3;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 3rem;
   cursor: pointer;
   border-radius: 50px;
   transition: 0.5s;
 }
 .admin-option > button:hover {
     background-color: white;
+    transform: scale(1.2);
 }
 button > a {
     font-size: 20px;

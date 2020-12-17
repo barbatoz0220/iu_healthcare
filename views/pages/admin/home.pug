@@ -30,7 +30,9 @@ block main
 
 script(type="text/javascript" src="/javascript/alertify/alertify.min.js")
 script.
-   var reqNo = document.getElementById("rNo").textContent;
-   alertify.alert("You have " + reqNo + " requests waiting for process", function() {
-      alertify.message("Confirmed!");
-   }).set({title: "Welcome"});
+   if (document.getElementById("rNo") != null) {
+      var reqNo = document.getElementById("rNo").textContent;
+      alertify.alert("You have " + reqNo + " requests waiting for process", function() {
+         alertify.message("Confirmed!");
+      }).set({title: "Welcome"});
+   }

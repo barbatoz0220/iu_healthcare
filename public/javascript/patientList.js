@@ -23,28 +23,34 @@ function deletePatient(index) {
 
 
 function submitAddForm() {
-    alertify.confirm('Do you want to insert the patient?', function () {
-        var formData = {
-            'name': document.getElementById("iname").value,
-            'dob': document.getElementById("idob").value,
-            'gender': document.getElementById("igender").value,
-            'phone': document.getElementById("iphone").value,
-        };
-        fetch("/admin/patient-list/insert", {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-        }).then((response) => {
-            return response.text().then((text) => {
-                document.getElementById("container").innerHTML = text;
-                alertify.success("Insert successfully!");
-            });
-        })
-    },
-        function () {
-            alertify.error('Cancel');
-        }
-    ).set({ title: "Be careful" })
+    if(document.getElementById("iname").value == '' || document.getElementById("idob").value == '' || document.getElementById("igender").value == '' || document.getElementById("iphone").value == '') {
+        alertify.alert("Please fill in all the fields!", function() {
+            alertify.message('OK');
+        }).set({title: "Failed"}).set('closable', false);
+    } else {
+        alertify.confirm('Do you want to insert the patient?', function () {
+            var formData = {
+                'name': document.getElementById("iname").value,
+                'dob': document.getElementById("idob").value,
+                'gender': document.getElementById("igender").value,
+                'phone': document.getElementById("iphone").value,
+            };
+            fetch("/admin/patient-list/insert", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            }).then((response) => {
+                return response.text().then((text) => {
+                    document.getElementById("container").innerHTML = text;
+                    alertify.success("Insert successfully!");
+                });
+            })
+        },
+            function () {
+                alertify.error('Cancel');
+            }
+        ).set({ title: "Be careful" })
+    }
 };
 
 function submitUpdateForm(index) {
@@ -89,3 +95,11 @@ function submitSearchForm() {
         });
     });
 };
+
+function returnPageList() {
+    fetch("/admin/patient-list/pagination?page=1").then(function (response) {
+        return response.text().then(function (text) {
+            document.getElementById("container").innerHTML = text;
+        });
+    })
+}

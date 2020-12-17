@@ -7,6 +7,7 @@ block metadata
 
     //CSS script
     script(src='https://kit.fontawesome.com/981d34ebcc.js' crossorigin='anonymous')
+    script(src="/javascript/emailValidation.js")
     link(rel='stylesheet' href='/styles/contacts.css')
     link(rel="stylesheet" href="/styles/navBar.css")
 
@@ -46,12 +47,12 @@ block main
 
             // Contact Form
             div.contactForm
-                form(action="/suggest", method="POST") Suggestion Form
+                form(action="/suggest", method="POST" name="contactsForm" onsubmit="return ValidateEmail(this)") Suggestion Form
                     div.inputForm
                         input(autocomplete="off" type='text' required='required' name="name")
                         span Full Name
                     div.inputForm
-                        input(autocomplete="off" type='email, text' required='required' name="email")
+                        input(autocomplete="off" required='required' name="email")
                         span Email
                     div.inputForm
                         textarea(autocomplete="off" required='required' rows="3" cols="50" name="message")

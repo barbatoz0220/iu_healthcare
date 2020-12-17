@@ -95,7 +95,7 @@ div.action-button > button {
   font-size: 20px;
 }
 div.action-button > button:hover {
-  transform: scale(1.05)
+  transform: scale(1.05);
 }
 
 /* View Patients List */
@@ -112,24 +112,75 @@ div.headlines {
   text-align: center;
   grid-template-columns: [first] 25% [second] 25% [third] 25% [fourth] 25%;
 }
-div.patientInfo {
-  display: grid;
-  color: white;
-  border-radius: 20px;
-  padding: 25px;
-  grid-template-columns: [first] 25% [second] 25% [third] 25% [fourth] 25%;
-  transition: 0.5s;
-  font-size: 16px;
-  text-align: center;
-}
 button.pageNum {
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: white;
+  font-size: 20px;
+  width: 50px;
+  border: none;
+  outline: none;
+  margin: 1%;
+  cursor: pointer;
+  border-radius: 20px;
   transition: 0.5s;
 }
 button.pageNum:hover {
   color: red;
-  background-color: rgb(245, 245, 245);
+  background-color: white;
+  transform: scale(1.1);
+}
+
+/*Patient Info*/
+div.patientInfo {
+  display: grid;
+  color: white;
+  font-weight: 500;
+  border-bottom: 2px solid white;
+  grid-template-columns: [first] 25% [second] 25% [third] 25% [fourth] 25%;
+  transition: 0.5s;
+  font-size: 16px;
+  text-align: center;
+  padding: 20px;
+  margin-top: 2%;
   cursor: pointer;
+}
+div.patientInfo:hover {
+  background-color: #00cff3;
+  transform: scale(1.1);
+}
+
+/*Patient's Visit Info*/
+div#visitInfor {
+  background-color: #1e2124;
+  box-shadow: 5px 5px #00cff3;
+  padding: 25px;
+}
+div#visit-headlines {
+  font-size: 14px;
+  color: #00cff3;
+  display: grid;
+  text-align: center;
+  grid-template-columns: [first] 10% [second] 10% [third] 30% [fourth] 40%;
+}
+div.patient-visit {
+  display: grid;
+  color: white;
+  grid-template-columns: [first] 10% [second] 10% [third] 30% [fourth] 40%;
+  grid-column-gap: 10px;
+  transition: 0.5s;
+  font-size: 14px;
+  border-bottom: 1px solid  #00cff3;
+  padding: 1rem;
+}
+div.patient-visit > button {
+  outline: none;
+  width: 200px;
+  height: 50px;
+  background-color: #00cff3;
+  border-radius: 20px;
+  transition: 0.5s;
+  text-decoration: none;
+  cursor: pointer;
+}
+div.patient-visit > button:hover {
+  color: red;
+  background-color: white;
 }

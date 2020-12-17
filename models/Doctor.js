@@ -13,7 +13,7 @@ module.exports.getDoctorByID = (userid) => {
 module.exports.getPatientsByDoctor = (userid) => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT P.NAME, P.GENDER, DATE_FORMAT(P.DOB,'%d-%m-%Y') as DOB, P.PHONE FROM PATIENT P, DOCTOR D WHERE D.ID = ? AND P.DOCTOR_ID = D.ID", [userid], (error, result) => {
+            "SELECT P.ID, P.NAME, P.GENDER, DATE_FORMAT(P.DOB,'%d-%m-%Y') as DOB, P.PHONE FROM PATIENT P, DOCTOR D WHERE D.ID = ? AND P.DOCTOR_ID = D.ID", [userid], (error, result) => {
                 return error ? reject(error) : resolve(result);
             }
         );
@@ -52,7 +52,7 @@ module.exports.insertDoctor = (name, gender, dob, phone) => {
 
 module.exports.searchDoctor = (name, gender, dob, phone) => {
     var validName = name != '' ? name : "%%";
-    var validGender = gender != '' ? gender : "%%";
+    var validGender = gender != 'none' ? gender : "%%";
     var validDob = dob != '' ? dob : "%%";
     var validPhone = phone != '' ? phone : "%%";
     return new Promise((resolve, reject) => {

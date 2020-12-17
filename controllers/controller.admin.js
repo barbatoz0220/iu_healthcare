@@ -39,13 +39,11 @@ module.exports = {
     },
 
     async searchPatient(req, res) {
-        var page = parseInt(req.query.page) || 1;
-        var perPage = 10;
         var patientList = await patientModel.searchPatient(req.body.name, req.body.gender, req.body.dob, req.body.phone);
         res.render("components/adminPatientList", {
-            at: page,
-            page: Math.round(patientList.length / 10),
-            patients: patientList.slice((page - 1) * perPage, page * perPage)
+            result: ''+patientList.length+'',
+            back: "1",
+            patients: patientList
         });
     },
 
@@ -87,13 +85,11 @@ module.exports = {
 
     // handle doctor requests
     async searchDoctor(req, res) {
-        var page = parseInt(req.query.page) || 1;
-        var perPage = 10;
         var doctorList = await doctorModel.searchDoctor(req.body.name, req.body.gender, req.body.dob, req.body.phone);
         res.render("components/adminDoctorList", {
-            at: page,
-            page: Math.round(doctorList.length / 10),
-            doctors: doctorList.slice((page - 1) * perPage, page * perPage)
+            result: ''+doctorList.length+'',
+            back: "1",
+            doctors: doctorList
         });
     },
 

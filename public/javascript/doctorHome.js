@@ -6,6 +6,14 @@ function changePage(index) {
     });
 }
 
+function changePageVisit(index) {
+    fetch("/doctor/patients/?page=" + index).then(function (response) {
+        return response.text().then(function (text) {
+            document.getElementById("visitInfor").innerHTML = text;
+        });
+    });
+}
+
 function viewPatients() {
     $(".doctor-action").toggle();
     $("#back-button").toggle();
@@ -52,4 +60,24 @@ function back() {
     if (reqform.style.display === "block") {
         $("#request-form").toggle();
     }
+}
+
+function viewHistory(id) {
+    fetch("doctor/patients/" + id).then(function (response) {
+        return response.text().then(function (text) {
+            document.getElementById("visitInfor" + id).innerHTML = text;
+            $("#visitInfor" + id).toggle();
+        });
+    });
+}
+
+function viewVisitDetail(id) {
+    fetch("doctor/patients/visit-detail/" + id, {
+        method: 'GET',
+    }).then(function (response) {
+        return response.text().then(function (text) {
+            document.getElementById("visit-detail" + id).innerHTML = text;
+            $('#visit-detail' + id).toggle();
+        })
+    })
 }

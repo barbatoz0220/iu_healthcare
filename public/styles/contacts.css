@@ -42,7 +42,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 2%;
 }
 
 .contactInfo {
@@ -108,9 +108,9 @@ body {
 .contactForm .inputForm input,
 .contactForm .inputForm textarea {
   width: 100%;
-  padding: 5px 0;
   font-size: 16px;
-  margin: 20px 0;
+  margin: 10px 0;
+  padding: 15px 0;
   border: none;
   color: white;
   background: #283042;
@@ -121,12 +121,11 @@ body {
 .contactForm .inputForm span {
   position: absolute;
   left: 0;
-  padding: 5px 0;
   font-size: 16px;
-  margin: 10px 0;
   pointer-events: none;
   transition: 0.5s;
-  color: #fff;
+  color: red;
+  transition: 0.5s ease;
   font-weight: 500;
 }
 
@@ -134,9 +133,18 @@ body {
 .contactForm .inputForm input:valid ~ span,
 .contactForm .inputForm textarea:focus ~ span,
 .contactForm .inputForm textarea:valid ~ span {
-  color: red;
-  font-size: 20px;
-  transform: translateY(-20px);
+  color: white;
+  background:#00cff3;
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+
+.contactForm .inputForm input:focus ~ span,
+.contactForm .inputForm input:invalid ~ span,
+.contactForm .inputForm textarea:focus ~ span,
+.contactForm .inputForm textarea:invalid ~ span  {
+  border: 1px solid red;
+  padding: 2px 5px;
 }
 
 .contactForm .inputForm input[type="submit"] {
@@ -145,7 +153,7 @@ body {
   color: #fff;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 0.4rem;
   align-items: center;
   font-weight: 500;
