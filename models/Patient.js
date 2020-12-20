@@ -61,7 +61,7 @@ module.exports.insertPatient = (name, gender, dob, phone) => {
 };
 
 module.exports.searchPatient = (name, gender, dob, phone) => {
-    var validName = name != '' ? name : "%%";
+    var validName = '%'+name+'%';
     var validGender = gender != 'none' ? gender : "%%";
     var validDob = dob != '' ? dob : "%%";
     var validPhone = phone != '' ? phone : "%%";
