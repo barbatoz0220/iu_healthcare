@@ -16,7 +16,7 @@ const adminRouter = require('./routes/route.admin');
 
 // set up app and port
 const app = new express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // set up view engine
 app.set('views', './views');
