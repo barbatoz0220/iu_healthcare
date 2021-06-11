@@ -33,21 +33,21 @@ block main
       div.profile
         img.avatar(src="images/patient.png" alt="Avatar")
         each patient in patients
-          h1.name #{patient.NAME}
+          h1.name #{patient.name}
 
       div.info
         each patient in patients
           h2.field_name Gender:
-          span.field= patient.GENDER
+          span.field= patient.gender
           h2.field_name Date of Birth:
-          span.field= patient.DOB
+          span.field= patient.dob
           h2.field_name Telephone:
-          span.field= patient.PHONE
+          span.field= patient.phone
 
     section.content#main
       div.banner
         each patient in patients
-          h1.name Dear #{patient.NAME},
+          h1.name Dear #{patient.name},
           p This is your personal health record. Please select one of the following 
             | options to view your own information.
       div.action-button

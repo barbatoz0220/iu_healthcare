@@ -7,9 +7,9 @@ div#visitInfor
     div.visitInfo
     each visit in visits
         div.patient-visit
-            span= visit.CHECKIN
-            span= visit.CHECKOUT
-            button(onclick='viewVisitDetail(' + visit.ID +')') Specific Information
+            span= visit.checkin
+            span= visit.checkout
+            button(onclick='viewVisitDetail(' + visit.id +')') Specific Information
             div.visit-specific
-                div(class="visit-detail" id="visit-detail" + visit.ID)
+                div(class="visit-detail" id="visit-detail" + visit.id)
 

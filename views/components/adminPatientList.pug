@@ -15,32 +15,32 @@ section.patient-list
             each patient in patients
                 tr(class='data-row')
                     td
-                        input(type='text' name='name', value = patient.NAME, required='', readonly=true)
+                        input(type='text' name='name', value = patient.name, required='', readonly=true)
                     td
-                        input(type='text' name='dob', value = patient.DOB, required='', readonly=true)
+                        input(type='text' name='dob', value = patient.dob, required='', readonly=true)
                     td
-                        input(type='text' name='gender', value = patient.GENDER, required='', readonly=true)
+                        input(type='text' name='gender', value = patient.gender, required='', readonly=true)
                     td
-                        input(type='text' name='phone', value = patient.PHONE, required='', readonly=true)
+                        input(type='text' name='phone', value = patient.phone, required='', readonly=true)
                     td
-                        button(type="method-button" onclick='deletePatient('+patient.ID+')') Delete
+                        button(type="method-button" onclick='deletePatient('+patient.id+')') Delete
                     td
-                        button(type="method-button" class="update-button" onclick='getIndex(' + patient.ID + ')') Update
+                        button(type="method-button" class="update-button" onclick='getIndex(' + patient.id + ')') Update
                         //- form(class="update-form" id=patient.ID action="/admin/patient-list/update/" + patient.ID, method="POST" onsubmit="return submitUpdateForm(this)" enctype="multipart/form-data")
-                        tr(id=patient.ID, class="update-form " + patient.ID)
+                        tr(id=patient.id, class="update-form " + patient.id)
                             td
-                                input(id="uname" + patient.ID type='text' name='name')
+                                input(id="uname" + patient.id type='text' name='name')
                             td
-                                input(autocomplete='off' class="datepicker" id="udob" + patient.ID type='text' name='dob')
-                            td                        
-                                select(id="ugender" + patient.ID type='text' name='gender')
+                                input(autocomplete='off' class="datepicker" id="udob" + patient.id type='text' name='dob')
+                            td                          
+                                select(id="ugender" + patient.id type='text' name='gender')
                                     option(value='male') Male
                                     option(value='female') Female
                                 //- input(id="ugender" + patient.ID type='text' name='gender')
                             td
-                                input(id="uphone" + patient.ID type='text' name='phone')
+                                input(id="uphone" + patient.id type='text' name='phone')
                             td
-                                button(onclick='submitUpdateForm('+ patient.ID +')' type="method-button") Done 
+                                button(onclick='submitUpdateForm('+ patient.id +')' type="method-button") Done 
 
                     //- form(action="/admin/patient-list/search" method="POST" onsubmit='return submitSearchForm(this)' enctype="multipart/form-data")  
             tr  
@@ -50,8 +50,8 @@ section.patient-list
                     input(class="datepicker" id='sdob' type='text' name='dob' autocomplete="off")
                 td
                     select(id="sgender" type='text' name='gender')
-                        option(value='male') Male
-                        option(value='female') Female
+                        option(value='Male') Male
+                        option(value='Female') Female
                         option(value='none') None
                 td
                     input(id='sphone' type='text' name='phone')

@@ -14,12 +14,12 @@ div.content-grid.patient-grid
 
     div.patientsList
         each patient in patients
-            div.patientInfo(onclick='viewHistory('+patient.ID+')')
-                span= patient.NAME
-                span= patient.GENDER
-                span= patient.DOB
-                span= patient.PHONE
-            div(id="visitInfor" + patient.ID style="display: none")
+            div.patientInfo(onclick='viewHistory('+patient.id+')')
+                span= patient.name
+                span= patient.gender
+                span= patient.dob
+                span= patient.phone
+            div(id="visitInfor" + patient.id style="display: none")
 
 script.
     $(document).ready(function() {

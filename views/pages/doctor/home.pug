@@ -21,21 +21,21 @@ block main
       div.profile
         img.avatar(src="images/doctor.png" alt="Avatar")
         each doctor in doctors
-          h1.name #{doctor.NAME}
+          h1.name #{doctor.name}
 
       div.info
         each doctor in doctors
           h2.field_name Gender:
-          span.field= doctor.GENDER
+          span.field= doctor.gender
           h2.field_name Date of Birth:
-          span.field= doctor.DOB
+          span.field= doctor.dob
           h2.field_name Telephone:
-          span.field= doctor.PHONE
+          span.field= doctor.phone
     
     section.content#main
       div.banner
         each doctor in doctors
-          h1.name Dear Dr.#{doctor.NAME},
+          h1.name Dear Dr.#{doctor.name},
           p This is your personal profile. Please select one of the following 
             | options to view your own information.
       div.action-button

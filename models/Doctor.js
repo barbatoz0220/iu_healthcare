@@ -3,8 +3,8 @@ var connection = require('./dbconnection');
 module.exports.getDoctorByID = (userid) => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%d-%m-%Y') as DOB FROM DOCTOR WHERE ID = ?", [userid], (error, result) => {
-                return error ? reject(error) : resolve(result);
+            `SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM DOCTOR WHERE ID = ${userid}`, (error, result) => {
+                return error ? reject(error) : resolve(result.rows);
             }
         );
     });
@@ -13,8 +13,8 @@ module.exports.getDoctorByID = (userid) => {
 module.exports.getPatientsByDoctor = (userid) => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT P.ID, P.NAME, P.GENDER, DATE_FORMAT(P.DOB,'%d-%m-%Y') as DOB, P.PHONE FROM PATIENT P, DOCTOR D WHERE D.ID = ? AND P.DOCTOR_ID = D.ID", [userid], (error, result) => {
-                return error ? reject(error) : resolve(result);
+            `SELECT P.ID, P.NAME, P.GENDER, TO_CHAR(P.DOB,'dd-mm-YYYY') as DOB, P.PHONE FROM PATIENT P, DOCTOR D WHERE D.ID = ${userid} AND P.DOCTOR_ID = D.ID`, (error, result) => {
+                return error ? reject(error) : resolve(result.rows);
             }
         );
     });
@@ -23,8 +23,8 @@ module.exports.getPatientsByDoctor = (userid) => {
 module.exports.getAllDoctor = (limit, offset) => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%d-%m-%Y') as DOB FROM DOCTOR", (err, result) => {
-                return err ? reject(err) : resolve(result);
+            "SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM DOCTOR", (err, result) => {
+                return err ? reject(err) : resolve(result.rows);
             }
         );
     });
@@ -33,8 +33,8 @@ module.exports.getAllDoctor = (limit, offset) => {
 module.exports.deleteDoctorByID = (userid) => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "DELETE FROM DOCTOR WHERE ID = ?", [userid], (err, result) => {
-                return err ? reject(err) : resolve(result);
+            `DELETE FROM DOCTOR WHERE ID = ${userid}`, (err, result) => {
+                return err ? reject(err) : resolve(result.rows);
             }
         );
     });
@@ -43,8 +43,8 @@ module.exports.deleteDoctorByID = (userid) => {
 module.exports.insertDoctor = (name, gender, dob, phone) => {
     return new Promise((resolve, reject) => {
         connection.query(
-            "INSERT INTO DOCTOR(NAME, GENDER, DOB, PHONE) VALUES (?, ?, ?, ?)", [name, gender, dob, phone], (err, result) => {
-                return err ? reject(err) : resolve(result);
+            `INSERT INTO DOCTOR(NAME, GENDER, DOB, PHONE) VALUES ('${name}', '${gender}', '${dob}', '${phone}')`, (err, result) => {
+                return err ? reject(err) : resolve(result.rows);
             }
         );
     });
@@ -55,10 +55,13 @@ module.exports.searchDoctor = (name, gender, dob, phone) => {
     var validGender = gender != 'none' ? gender : "%%";
     var validDob = dob != '' ? dob : "%%";
     var validPhone = phone != '' ? phone : "%%";
+    var queryString =  `SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM DOCTOR WHERE NAME like '${validName}' AND GENDER like '${validGender}' AND DOB::text like '${validDob}' AND PHONE like '${validPhone}'`;
+    console.log(queryString);
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%d-%m-%Y') as DOB FROM DOCTOR WHERE NAME like ? AND GENDER like ? AND DOB like ? AND PHONE like ?", [validName, validGender, validDob, validPhone], (err, result) => {
-                return err ? reject(err) : resolve(result);
+           queryString, (err, result) => {
+                // console.log(result.rows);
+                return err ? reject(err) : resolve(result.rows);
             }
         );
     });
@@ -66,21 +69,21 @@ module.exports.searchDoctor = (name, gender, dob, phone) => {
 
 module.exports.updateDoctorByID = async (id, name, gender, dob, phone) => {
     var doctor = {};
-    connection.query("SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%Y-%m-%d') as DOB FROM DOCTOR WHERE ID = ?", [id], function (error, results, fields) {
-        doctor.name = results[0].NAME,
-        doctor.gender = results[0].GENDER,
-        doctor.dob = results[0].DOB,
-        doctor.phone = results[0].PHONE
+    connection.query(`SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM DOCTOR WHERE ID = ${id}`, function (error, results, fields) {
+        doctor.name = results.rows[0].name,
+        doctor.gender = results.rows[0].gender,
+        doctor.dob = results.rows[0].dob,
+        doctor.phone = results.rows[0].phone
         var validName = name != '' ? name : doctor.name;
         var validGender = gender != '' ? gender : doctor.gender;
         var validDob = dob != '' ? dob : doctor.dob;
         var validPhone = phone != '' ? phone : doctor.phone;
-        connection.query("UPDATE DOCTOR SET NAME=?, GENDER=?, DOB=?, PHONE=? WHERE ID=?", [validName, validGender, validDob, validPhone, id]);
+        connection.query(`UPDATE DOCTOR SET NAME='${validName}', GENDER='${validGender}', DOB='${validDob}', PHONE='${validPhone}' WHERE ID=${id}`);
     });
     return new Promise((resolve, reject) => {
         connection.query(
-            "SELECT ID, NAME, GENDER, PHONE, DATE_FORMAT(DOB,'%d-%m-%Y') as DOB FROM DOCTOR", (err, result) => {
-                return err ? reject(err) : resolve(result);
+            "SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM DOCTOR", (err, result) => {
+                return err ? reject(err) : resolve(result.rows);
             }
         );
     });

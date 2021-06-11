@@ -12,13 +12,13 @@ table.content-table
             each request in requests
                 tr
                     td
-                        input(class='read-only' type='text' name='patient_id', value = request.PATIENT_ID, required='', readonly=true)
+                        input(class='read-only' type='text' name='patient_id', value = request.patient_id, required='', readonly=true)
                     td
-                        input(class='read-only' type='text' name='doctor_id', value = request.DOCTOR_ID, required='', readonly=true) 
+                        input(class='read-only' type='text' name='doctor_id', value = request.doctor_id, required='', readonly=true) 
                     td
-                        input(class='read-only' type='text' name='content', value = request.CONTENT, required='', readonly=true)               
+                        input(class='read-only' type='text' name='content', value = request.content, required='', readonly=true)               
                     td
-                        input(class='read-only' type='text' name='status', value = request.STATUS, required='', readonly=true)
-                    if request.STATUS == 0    
+                        input(class='read-only' type='text' name='status', value = request.status, required='', readonly=true)
+                    if request.status == 0    
                         td
-                            button(type='method-button' onclick='doneRequest(' + request.ID + ')') Done
+                            button(type='method-button' onclick='doneRequest(' + request.id + ')') Done

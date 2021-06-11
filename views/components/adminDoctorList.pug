@@ -15,41 +15,41 @@ section.doctor-list
             each doctor in doctors
                 tr
                     td
-                        input(class='read-only' type='text' name='name', value = doctor.NAME, required='', readonly=true)
+                        input(class='read-only' type='text' name='name', value = doctor.name, required='', readonly=true)
                     td
-                        input(class='read-only' type='text' name='dob', value = doctor.DOB, required='', readonly=true) 
+                        input(class='read-only' type='text' name='dob', value = doctor.dob, required='', readonly=true) 
                     td
-                        input(class='read-only' type='text' name='gender', value = doctor.GENDER, required='', readonly=true)
+                        input(class='read-only' type='text' name='gender', value = doctor.gender, required='', readonly=true)
                     td
-                        input(class='read-only' type='text' name='phone', value = doctor.PHONE, required='', readonly=true)
+                        input(class='read-only' type='text' name='phone', value = doctor.phone, required='', readonly=true)
                     td
-                        button(type="method-button" onclick='deleteDoctor('+doctor.ID+')') Delete
+                        button(type="method-button" onclick='deleteDoctor('+doctor.id+')') Delete
                     td
-                        button(type="method-button" class="update-button" onclick='getIndex(' + doctor.ID + ')') Update
-                        tr(id=doctor.ID, class="update-form")
+                        button(type="method-button" class="update-button" onclick='getIndex(' + doctor.id + ')') Update
+                        tr(id=doctor.id, class="update-form")
                             td
-                                input(id="uname" + doctor.ID type='text' name='name')
+                                input(id="uname" + doctor.id type='text' name='name')
                             td
-                                input(class="datepicker" autocomplete='off' id="udob" + doctor.ID type='text' name='dob')
+                                input(class="datepicker" autocomplete='off' id="udob" + doctor.id type='text' name='dob')
                             td                        
-                                select(id="ugender" + doctor.ID type='text' name='gender' required='')
+                                select(id="ugender" + doctor.id type='text' name='gender' required='')
                                     option(value='Male') Male
                                     option(value='Female') Female
                             td
-                                input(id="uphone" + doctor.ID type='text' name='phone')
+                                input(id="uphone" + doctor.id type='text' name='phone')
                             td
-                                button(type="method-button" onclick='submitUpdateForm('+ doctor.ID +')') Done  
+                                button(type="method-button" onclick='submitUpdateForm('+ doctor.id +')') Done  
             tr
                 td
                     tr  
                         td
                             input(id="sname" type='text' name='name')
                         td
-                            input(class='datepicker' id="sdob" type='text' name='dob' required='' autocomplete="off")
+                            input(class="datepicker" id="sdob" type='text' name='dob' required='' autocomplete="off")
                         td
                             select(id="sgender" type='text' name='gender' required='')
-                                option(value='male') Male
-                                option(value='female') Female
+                                option(value='Male') Male
+                                option(value='Female') Female
                                 option(value='none') None
                         td
                             input(id='sphone' type='text' name='phone')
