@@ -114,7 +114,7 @@ module.exports = {
   async updateDoctor(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    var result = await Doctor.update(
+    await Doctor.update(
       req.params.id,
       req.body.name,
       req.body.gender,

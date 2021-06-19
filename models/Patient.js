@@ -74,26 +74,17 @@ class Patient {
   };
 
   static update = async (id, name, gender, dob, phone) => {
-    var patient = {};
-    
-    await connection.query(
-      `SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM PATIENT WHERE ID = ${id}`,
-      (error, results, fields) => {
-          (patient.name = results.rows[0].name),
-          (patient.gender = results.rows[0].gender),
-          (patient.dob = results.rows[0].dob),
-          (patient.phone = results.rows[0].phone);
-      }
-    );
-    
-    var validName = name != "" ? name : patient.name;
-    var validGender = gender != "" ? gender : patient.gender;
-    var validDob = dob != "" ? dob : patient.dob;
-    var validPhone = phone != "" ? phone : patient.phone;
+    const patient = await this.getByID(id);
+
+    var validName = name != "" ? name : patient[0].name;
+    var validGender = gender != "" ? gender : patient[0].gender;
+    var validDob = dob != "" ? dob : patient[0].dob;
+    var validPhone = phone != "" ? phone : patient[0].phone;
+
     await connection.query(
       `UPDATE PATIENT SET NAME='${validName}', GENDER='${validGender}', DOB='${validDob}', PHONE='${validPhone}' WHERE ID=${id}`
     );
-    
+
     return new Promise((resolve, reject) => {
       connection.query(
         "SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM PATIENT",
