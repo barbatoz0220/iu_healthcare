@@ -2,6 +2,10 @@ const Disease = require("../models/Patient");
 const Precaution = require("../models/Doctor");
 
 module.exports = {
+  async index(req, res) {
+    res.render("./pages/patient/userSearch");
+  },
+
   async searchSymptoms(req, res) {
     // Taking in input symptoms
     const inputSymptoms = req.body.symptoms.split(",").map(value => {
@@ -20,7 +24,7 @@ module.exports = {
     var disease = await Disease.getBySymptoms(condition, symptomCount);
 
     if (disease.errorr) {
-      return res.render("./patient/userSearch", {
+      return res.render("./pages/patient/userSearch", {
         errorMessage:
           "Error when looking for diseases with your input. Try again!",
       });
@@ -37,7 +41,7 @@ module.exports = {
         Object.assign(disease, precautions);
       }
       // Return
-      return res.render("./patient/userSearch", {
+      return res.render("./pages/patient/userSearch", {
         disease: diseaseArray,
       });
     }
