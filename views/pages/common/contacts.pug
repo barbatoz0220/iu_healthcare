@@ -5,12 +5,13 @@ block metadata
     meta(name='viewport' content='width=device-width, initial scale=1.0')
     title Contact Us
 
-    //CSS script
-    script(src='https://kit.fontawesome.com/981d34ebcc.js' crossorigin='anonymous')
-    script(src="/javascript/emailValidation.js")
     link(rel='stylesheet' href='/styles/contacts.css')
     link(rel="stylesheet" href="/styles/navBar.css")
+    link(rel="stylesheet" href="/javascript/alertify/alertify.min.css")
 
+    script(src='https://kit.fontawesome.com/981d34ebcc.js' crossorigin='anonymous')
+    script(type="text/javascript" src="/javascript/alertify/alertify.min.js")
+    script(src="/javascript/emailValidation.js")
 
 block main
     section.contact
@@ -22,7 +23,7 @@ block main
                 |  please let us know by leaving your message in the following form.
                 br
                 strong Your opinion is very much appreciated.
-            
+
         section.container
             // Contact Info
             div.contactInfo
@@ -47,7 +48,7 @@ block main
 
             // Contact Form
             div.contactForm
-                form(action="/suggest", method="POST" name="contactsForm" onsubmit="return ValidateEmail(this)") Suggestion Form
+                form(action="/suggest" method="POST" name="contactsForm" onsubmit="return ValidateEmail(this)") Suggestion Form
                     div.inputForm
                         input(autocomplete="off" type='text' required='required' name="name")
                         span Full Name
@@ -58,5 +59,4 @@ block main
                         textarea(autocomplete="off" required='required' rows="3" cols="50" name="message")
                         span Your message
                     div.inputForm
-                        input(type='submit' value='Submit Your Answer')
-
+                        input(type='submit' value='Submit')

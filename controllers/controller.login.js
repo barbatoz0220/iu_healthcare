@@ -67,7 +67,9 @@ module.exports = {
   },
 
   async contacts(req, res) {
-    res.render("pages/common/contacts.pug");
+    res.render("pages/common/contacts.pug", {
+      context: req.session.context,
+    });
   },
 
   async emergency(req, res) {
@@ -100,7 +102,8 @@ module.exports = {
         res.redirect("/");
       } else {
         console.log("Message sent: " + info.response);
-        res.redirect("/");
+        req.session.context = "sent";
+        res.redirect("/contacts");
       }
     });
   },

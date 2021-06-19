@@ -17,7 +17,7 @@ module.exports = {
   },
 
   async getDoctor(req, res) {
-    const doctors = await Patient.getDoctorByPatient(req.session.userid);
+    const doctors = await Doctor.getDoctorByPatient(req.session.userid);
     res.render("components/patientDoctorInfor", {
       doctors: doctors,
     });
@@ -26,7 +26,7 @@ module.exports = {
   async getVisit(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 5;
-    const visits = await Patient.getVisitsByPatient(req.session.userid);
+    const visits = await Visit.getVisitsByPatient(req.session.userid);
     res.render("components/patientVisitsInfor", {
       page: Math.round(visits.length / 5),
       visits: visits.slice((page - 1) * perPage, page * perPage),
