@@ -34,7 +34,6 @@ module.exports = {
   },
 
   async handleRequest(req, res) {
-    //console.log(req.body.content);
     await Request.addPatientRequest(req.session.userid, req.body.content);
     res.status(200).json();
   },

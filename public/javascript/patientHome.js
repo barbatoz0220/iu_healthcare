@@ -35,7 +35,7 @@ function makeRequest() {
   $("#ta").val("");
 }
 
-function handleRequest(form) {
+function handleRequest() {
   var formData = {
     content: document.getElementById("ta").value,
   };
@@ -85,4 +85,21 @@ function viewSearch() {
       $("#result").toggle();
     });
   });
+}
+
+function search() {
+  var formData = {
+    content: document.getElementById("symptoms").value,
+  };
+  fetch("/patient/search-symptom", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  }).then(response => {
+    return response.text().then(text => {
+    document.getElementById("result").innerHTML = text;
+    $("#result").toggle();
+    })
+  });
+  return false;
 }

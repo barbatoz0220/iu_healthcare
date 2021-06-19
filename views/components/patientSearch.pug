@@ -5,17 +5,14 @@ section.content#main
         h4 Successful search for diseases
     if diseases
         each disease in diseases
-            h3 Disease ID #{diseaseID}
-            h3= diseaseName
-            h3= diseaseDesc
+            h3= disease.id
+            h3= disease.name
+            h3= disease.descr
             h3 Recommended precautions
-            p= precautions 
+            p= disease.precautions 
     div.search_bar
-        form(action='/patient/search-symptom' method='POST')
+        form(action='/patient/search-symptom' method='POST' onsubmit="return search()")
             input#symptoms.form-control(type='text' placeholder='(e.g.`depression, fatigue, cough, etc.`)' name='symptoms')
-            button.search-button(type='submit') Search
-
-    a(href="/logout" class="patient-action")
-        button#logout(type="button") Log out
+            input(id="submit-button" type="Submit" value="Search")
 
 script(type="text/javascript" src="/javascript/patientHome.js")

@@ -11,7 +11,7 @@ class Precaution {
         ON P.ID = DP.ID
         INNER JOIN DISEASE D
         ON D.ID = DP.ID
-        WHERE D.NAME LIKE '${disease.diseaseName}';`,
+        WHERE D.NAME LIKE '${disease.name}';`,
         (error, result) => {
           return error ? reject(error) : resolve(result.rows);
         }

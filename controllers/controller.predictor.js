@@ -8,7 +8,7 @@ module.exports = {
 
   async searchSymptoms(req, res) {
     // Taking in input symptoms
-    const inputSymptoms = req.body.symptoms.split(",").map(value => {
+    const inputSymptoms = req.body.content.split(",").map(value => {
       return value.trim();
     });
     var symptomCount = inputSymptoms.length;
@@ -23,7 +23,7 @@ module.exports = {
 
     var diseaseResults = await Disease.getBySymptoms(condition, symptomCount);
 
-    if (diseaseResults.errorr) {
+    if (diseaseResults.error) {
       return res.render("./components/patientSearch", {
         errorMessage:
           "Error when looking for diseases with your input. Try again!",
@@ -33,6 +33,7 @@ module.exports = {
       var diseaseArray = Object.values(
         JSON.parse(JSON.stringify(diseaseResults))
       );
+
       for (disease of diseaseArray) {
         // Query and extract precautions info
         var precautionResults = await Precaution.getByDisease(disease);
@@ -41,8 +42,9 @@ module.exports = {
         Object.assign(disease, precautions);
       }
       // Return
-      return res.render("./components/patientSearch", {
-        disease: diseaseArray,
+      console.log(diseaseArray[0].precautions);
+      res.render("./components/patientSearch", {
+        diseases: diseaseArray,
       });
     }
   },
@@ -50,7 +52,7 @@ module.exports = {
 
 function extractPrecautions(precautions) {
   var precautionList = [];
-  for (p of precautions) precautionList.push(p.precautionName);
+  for (p of precautions) precautionList.push(p.name);
   var precautionObject = {
     precautions: precautionList.join(", ").toString(),
   };
