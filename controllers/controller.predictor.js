@@ -1,9 +1,9 @@
-const Disease = require("../models/Patient");
-const Precaution = require("../models/Doctor");
+const Disease = require("../models/Disease");
+const Precaution = require("../models/Precaution");
 
 module.exports = {
   async index(req, res) {
-    res.render("./pages/patient/userSearch");
+    res.render("./components/patientSearch");
   },
 
   async searchSymptoms(req, res) {
@@ -15,16 +15,16 @@ module.exports = {
 
     // Input symptom processing to get variable Condition
     var firstSymptom = inputSymptoms.shift();
-    var condition = `("${firstSymptom}"`;
+    var condition = `('${firstSymptom}'`;
     for (symptom of inputSymptoms) {
-      condition += `, "${symptom}"`;
+      condition += `, '${symptom}'`;
     }
     condition += `)`;
 
-    var disease = await Disease.getBySymptoms(condition, symptomCount);
+    var diseaseResults = await Disease.getBySymptoms(condition, symptomCount);
 
-    if (disease.errorr) {
-      return res.render("./pages/patient/userSearch", {
+    if (diseaseResults.errorr) {
+      return res.render("./components/patientSearch", {
         errorMessage:
           "Error when looking for diseases with your input. Try again!",
       });
@@ -35,13 +35,13 @@ module.exports = {
       );
       for (disease of diseaseArray) {
         // Query and extract precautions info
-        var precautionResults = await Precation.getByDisease(disease);
+        var precautionResults = await Precaution.getByDisease(disease);
         var precautions = extractPrecautions(precautionResults);
         // Update a disease to contain all info
         Object.assign(disease, precautions);
       }
       // Return
-      return res.render("./pages/patient/userSearch", {
+      return res.render("./components/patientSearch", {
         disease: diseaseArray,
       });
     }

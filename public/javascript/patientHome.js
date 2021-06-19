@@ -75,3 +75,14 @@ function viewVisitDetail(id) {
     });
   });
 }
+
+function viewSearch() {
+  $(".patient-action").toggle();
+  $("#back-button").toggle();
+  fetch("/patient/search").then(response => {
+    return response.text().then(text => {
+      document.getElementById("result").innerHTML = text;
+      $("#result").toggle();
+    });
+  });
+}

@@ -13,6 +13,7 @@ router.get('/', controller.index);
 router.get('/doctor', controller.getDoctor);
 router.get('/visit', controller.getVisit);
 router.get('/search', predictor.index);
+router.post('/search-symptom', predictor.searchSymptoms);
 router.post('/handle-request', controller.handleRequest);
 router.get('/visit-detail/:id', controller.getVisitDetail);
 
