@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 app.use('/', loginRouter);
 app.use('/patient', authMiddleware.checkPatientLoggedin, patientRouter);
 app.use('/doctor', authMiddleware.checkDoctorLoggedin, doctorRouter);
-app.use('/admin', adminRouter);
+app.use('/admin', authMiddleware.checkAdminLoggedin, adminRouter);
 app.use('*', (req, res) => {
 	res.render('pages/common/404page');
 });

@@ -29,7 +29,6 @@ function viewVisits() {
 }
 
 function makeRequest() {
-  console.log("Hello");
   $(".patient-action").toggle();
   $("#back-button").toggle();
   $("#request-form").toggle();

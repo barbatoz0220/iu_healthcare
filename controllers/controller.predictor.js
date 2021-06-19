@@ -18,7 +18,7 @@ module.exports = {
     condition += `)`;
 
     var disease = await Disease.getBySymptoms(condition, symptomCount);
-    
+
     if (disease.errorr) {
       return res.render("./user/userSearch", {
         errorMessage:
