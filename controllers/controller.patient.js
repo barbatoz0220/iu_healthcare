@@ -1,49 +1,52 @@
-var patientModel = require('../models/Patient');
-var request = require('../models/Request');
-var visit = require('../models/Visit');
+const Patient = require("../models/Patient");
+const Doctor = require("../models/Doctor");
+const Request = require("../models/Request");
+const Visit = require("../models/Visit");
 
-module.exports.index = async (req, res) => {
-    const patient = await patientModel.getPatientByID(req.session.userid);
-    const doctor = await patientModel.getDoctorByPatient(req.session.userid);
-    const visit = await patientModel.getVisitsByPatient(req.session.userid);
-    res.render('pages/patient/home', {
-        name: req.session.username,
-        patients: patient,
-        doctors: doctor,
-        visits: visit
+module.exports = {
+  async index(req, res) {
+    const patient = await Patient.getPatientByID(req.session.userid);
+    const doctor = await Doctor.getDoctorByPatient(req.session.userid);
+    const visit = await Visit.getVisitsByPatient(req.session.userid);
+    res.render("pages/patient/home", {
+      name: req.session.username,
+      patients: patient,
+      doctors: doctor,
+      visits: visit,
     });
-};
+  },
 
-module.exports.getDoctor = async (req, res) => {
-    const doctors = await patientModel.getDoctorByPatient(req.session.userid);
-    res.render('components/patientDoctorInfor', {
-        doctors: doctors
+  async getDoctor(req, res) {
+    const doctors = await Patient.getDoctorByPatient(req.session.userid);
+    res.render("components/patientDoctorInfor", {
+      doctors: doctors,
     });
-};
+  },
 
-module.exports.getVisit = async (req, res) => {
+  async getVisit(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 5;
-    const visits = await patientModel.getVisitsByPatient(req.session.userid);
-    res.render('components/patientVisitsInfor', {
-        page: Math.round(visits.length / 5),
-        visits: visits.slice((page - 1) * perPage, page * perPage)
+    const visits = await Patient.getVisitsByPatient(req.session.userid);
+    res.render("components/patientVisitsInfor", {
+      page: Math.round(visits.length / 5),
+      visits: visits.slice((page - 1) * perPage, page * perPage),
     });
-};
+  },
 
-module.exports.handleRequest = async (req, res) => {
+  async handleRequest(req, res) {
     //console.log(req.body.content);
-    await request.addPatientRequest(req.session.userid, req.body.content);
+    await Request.addPatientRequest(req.session.userid, req.body.content);
     res.status(200).json();
-}
+  },
 
-module.exports.getVisitDetail = async (req, res) => {
+  async getVisitDetail(req, res) {
     var diseases = await visit.getDisease(req.params.id);
     var treatments = await visit.getTreatment(req.params.id);
     var rooms = await visit.getRoom(req.params.id);
     res.render("components/visitInformation", {
-        diseases: diseases,
-        treatments: treatments,
-        rooms: rooms
-    })
-}
+      diseases: diseases,
+      treatments: treatments,
+      rooms: rooms,
+    });
+  },
+};

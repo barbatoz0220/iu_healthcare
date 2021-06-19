@@ -1,5 +1,7 @@
 const Pool = require("pg").Pool;
+
 require("dotenv").config();
+
 const SSL = process.env.NODE_ENV === "production";
 var connection;
 
@@ -9,7 +11,9 @@ const host = process.env.DB_HOST;
 const port = process.env.DB_PORT;
 const database = process.env.DB_DATABASE;
 
-const connectionString = process.env.DATABASE_URL || `postgresql://${user}:${password}@${host}:${port}/${database}` //
+const connectionString =
+  process.env.DATABASE_URL ||
+  `postgresql://${user}:${password}@${host}:${port}/${database}`;
 
 if (!SSL) {
   connection = new Pool({
@@ -23,4 +27,3 @@ if (!SSL) {
 }
 
 module.exports = connection;
-
