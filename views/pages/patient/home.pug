@@ -8,6 +8,7 @@ block metadata
   link(rel="stylesheet" href="/javascript/alertify/default.min.css")
   link(rel="stylesheet" href="/styles/navBar.css")
   link(rel="stylesheet" href="/styles/patientHome.css")
+  link(rel="stylesheet" href="/styles/patientSearch.css")
   link(rel="stylesheet" href="/styles/infoTab.css")
   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.1/css/all.css' integrity='sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp' crossorigin='anonymous')
 
@@ -25,7 +26,7 @@ block metadata
     });
 
 block navBar
-  include ../../components/patientNavBar
+  include ../../components/userNavBar
 
 block main
   main.container
@@ -58,7 +59,7 @@ block main
         button(type="button" class="patient-action" onclick="makeRequest()") Make Request 
           i.far.fa-copy
         button(type="button" class="patient-action" onclick="viewSearch()") Search 
-          i.far.fa-search
+          i.fas.fa-search
 
       a(href="/logout" class="patient-action")
         button#logout(type="button") Log out

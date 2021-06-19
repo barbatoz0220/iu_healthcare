@@ -62,7 +62,7 @@ span.field:hover {
 section.content {
   font-size: 14px;
   color: white;
-  margin-top: 10%;
+  margin-top: 5%;
   max-width: 80vw;
   width: 1080px;
   height: auto;
@@ -87,8 +87,8 @@ h1 {
 }
 div.action-button {
   display: grid;
-  grid-template-columns: [first] auto [second] auto [third] auto;
-  grid-template-rows: [first] auto [second] auto [third] auto;
+  grid-template-columns: [first] auto [second] auto;
+  grid-template-rows: [first] auto [second] auto;
 }
 div.action-button > button {
   font-size: 20px;

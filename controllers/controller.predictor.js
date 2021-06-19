@@ -33,7 +33,7 @@ module.exports = {
       var diseaseArray = Object.values(
         JSON.parse(JSON.stringify(diseaseResults))
       );
-
+      console.log(diseaseArray);
       for (disease of diseaseArray) {
         // Query and extract precautions info
         var precautionResults = await Precaution.getByDisease(disease);
@@ -43,6 +43,7 @@ module.exports = {
       }
       // Return
       res.render("./components/patientSearch", {
+        successMessage: "Your search was successful!",
         diseases: diseaseArray,
       });
     }

@@ -1,19 +1,28 @@
-section.content#main
-    if errorMessage
-        h4= errorMessage
-    if !disease
-        h1 Disease not found
-    else if diseases
-        h4 Successful search for diseases
-        each disease in diseases
-            h3= disease.id
-            h3= disease.name
-            h3= disease.descr
-            h3 Recommended precautions
-            p= disease.precautions 
+section.search_symptom
+    div.search_results
+        if (errorMessage)
+            h2= errorMessage
+        if (!diseases)
+            h2 Currently there are no results for your search
+        else
+            if (diseases.length == 0)
+                h2 No results matched the symptom you were looking for
+            else
+                h2= successMessage
+                each disease in diseases
+                    h3 Disease ID:
+                    p= disease.id
+                    h3 Disease Name:
+                    p= disease.name
+                    h3 Description:
+                    p= disease.descr
+                    h3 Recommended precautions:
+                    p= disease.precautions 
     div.search_bar
         form(action='/patient/search-symptom' method='POST' onsubmit="return search()")
-            input#symptoms.form-control(type='text' placeholder='(e.g.`depression, fatigue, cough, etc.`)' name='symptoms')
-            input(id="submit-button" type="Submit" value="Search")
+            input#symptoms.form-control(type='text'
+                placeholder='Enter a symptom that you are experiencing, for example: `depression, fatigue, cough, etc.`' name='symptoms')
+            div.submit
+                input(id="submit-button" type="Submit" value="Search")
 
 script(type="text/javascript" src="/javascript/patientHome.js")

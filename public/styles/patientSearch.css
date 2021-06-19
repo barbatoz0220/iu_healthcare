@@ -1,0 +1,29 @@
+section.search_symptom {
+    margin: 2%;
+}
+div.search_results > h2 {
+    font-size: 36px;
+    color: white;
+}
+div.search_results > h3 {
+    font-size: 24px;
+    color: #00cff3;
+}
+div.search_results > p {
+    font-size: 20px;
+}
+input#symptoms {
+    width: 100%;
+    font-size: 20px;
+    margin: 10px 0;
+    padding: 15px 0;
+    border: none;
+    color: red;
+    background: #283042;
+    border-bottom: 2px solid #00cff3;
+    outline: none;
+}
+
+input#symptoms::placeholder {
+    color: rgba(255, 35, 35, 0.61);
+}
