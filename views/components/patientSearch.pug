@@ -1,9 +1,10 @@
 section.content#main
     if errorMessage
         h4= errorMessage
-    if diseases
+    if !disease
+        h1 Disease not found
+    else if diseases
         h4 Successful search for diseases
-    if diseases
         each disease in diseases
             h3= disease.id
             h3= disease.name

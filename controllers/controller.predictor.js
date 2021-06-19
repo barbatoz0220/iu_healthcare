@@ -42,7 +42,6 @@ module.exports = {
         Object.assign(disease, precautions);
       }
       // Return
-      console.log(diseaseArray[0].precautions);
       res.render("./components/patientSearch", {
         diseases: diseaseArray,
       });

@@ -98,7 +98,6 @@ function search() {
   }).then(response => {
     return response.text().then(text => {
     document.getElementById("result").innerHTML = text;
-    $("#result").toggle();
     })
   });
   return false;
