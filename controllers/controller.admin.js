@@ -185,6 +185,7 @@ module.exports = {
     var perPage = 10;
     var requestList = await Request.getAll();
     res.render("pages/admin/requests", {
+      at: page,
       page: Math.round(requestList.length / 10),
       requests: requestList.slice((page - 1) * perPage, page * perPage),
     });
@@ -195,6 +196,7 @@ module.exports = {
     var perPage = 10;
     var requestList = await Request.getAll();
     res.render("components/adminRequestList", {
+      at: page,
       page: Math.round(requestList.length / 10),
       requests: requestList.slice((page - 1) * perPage, page * perPage),
     });
@@ -206,6 +208,7 @@ module.exports = {
     var perPage = 10;
     var requestList = await Request.getAll();
     res.render("components/adminRequestList", {
+      at: page,
       page: Math.round(requestList.length / 10),
       requests: requestList.slice((page - 1) * perPage, page * perPage),
     });
