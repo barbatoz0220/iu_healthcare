@@ -4,7 +4,7 @@ const Request = require("../models/Request");
 
 module.exports = {
   async index(req, res) {
-    var requestList = await Request.getUnfinishdeRequest();
+    var requestList = await Request.getUnfinishedRequests();
     if (req.session.count == 1) {
       res.render("pages/admin/home", {
         reqNos: requestList,
@@ -17,7 +17,7 @@ module.exports = {
   async patientList(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    var patientList = await Patient.getAllPatient();
+    var patientList = await Patient.getAll();
     res.render("pages/admin/patients", {
       at: page,
       page: Math.round(patientList.length / 10),
@@ -28,7 +28,7 @@ module.exports = {
   async patientPagination(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    var patientList = await Patient.getAllPatient();
+    var patientList = await Patient.getAll();
     res.render("components/adminPatientList", {
       at: page,
       page: Math.round(patientList.length / 10),
@@ -36,8 +36,8 @@ module.exports = {
     });
   },
 
-  async searchPatient(req, res) {
-    var patientList = await Patient.searchPatient(
+  async search(req, res) {
+    var patientList = await Patient.search(
       req.body.name,
       req.body.gender,
       req.body.dob,
@@ -53,8 +53,8 @@ module.exports = {
   async deletePatient(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    await Patient.deletePatientByID(req.params.id);
-    var patientList = await Patient.getAllPatient();
+    await Patient.delete(req.params.id);
+    var patientList = await Patient.getAll();
     res.render("components/adminPatientList", {
       at: page,
       page: Math.round(patientList.length / 10),
@@ -62,16 +62,16 @@ module.exports = {
     });
   },
 
-  async insertPatient(req, res) {
+  async insert(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    await Patient.insertPatient(
+    await Patient.insert(
       req.body.name,
       req.body.gender,
       req.body.dob,
       req.body.phone
     );
-    var patientList = await Patient.getAllPatient();
+    var patientList = await Patient.getAll();
     res.render("components/adminPatientList", {
       at: page,
       page: Math.round(patientList.length / 10),
@@ -82,14 +82,14 @@ module.exports = {
   async updatePatient(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    await Patient.updatePatientByID(
+    await Patient.update(
       req.params.id,
       req.body.name,
       req.body.gender,
       req.body.dob,
       req.body.phone
     );
-    var patientList = await Patient.getAllPatient();
+    var patientList = await Patient.getAll();
     res.render("components/adminPatientList", {
       at: page,
       page: Math.round(patientList.length / 10),
@@ -97,8 +97,8 @@ module.exports = {
     });
   },
 
-  async searchDoctor(req, res) {
-    var doctorList = await Doctor.searchDoctor(
+  async search(req, res) {
+    var doctorList = await Doctor.search(
       req.body.name,
       req.body.gender,
       req.body.dob,
@@ -114,14 +114,14 @@ module.exports = {
   async updateDoctor(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    await Doctor.updateDoctorByID(
+    var result = await Doctor.update(
       req.params.id,
       req.body.name,
       req.body.gender,
       req.body.dob,
       req.body.phone
     );
-    var doctorList = await Doctor.getAllDoctor();
+    var doctorList = await Doctor.getAll();
     res.render("components/adminDoctorList", {
       at: page,
       page: Math.round(doctorList.length / 10),
@@ -132,8 +132,8 @@ module.exports = {
   async deleteDoctor(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    await Doctor.deleteDoctorByID(req.params.id);
-    var doctorList = await Doctor.getAllDoctor();
+    await Doctor.delete(req.params.id);
+    var doctorList = await Doctor.getAll();
     res.render("components/adminDoctorList", {
       at: page,
       page: Math.round(doctorList.length / 10),
@@ -141,16 +141,16 @@ module.exports = {
     });
   },
 
-  async insertDoctor(req, res) {
+  async insert(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    await Doctor.insertDoctor(
+    await Doctor.insert(
       req.body.name,
       req.body.gender,
       req.body.dob,
       req.body.phone
     );
-    var doctorList = await Doctor.getAllDoctor();
+    var doctorList = await Doctor.getAll();
     res.render("components/adminDoctorList", {
       at: page,
       page: Math.round(doctorList.length / 10),
@@ -161,7 +161,7 @@ module.exports = {
   async doctorList(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    var doctorList = await Doctor.getAllDoctor();
+    var doctorList = await Doctor.getAll();
     res.render("pages/admin/doctors", {
       at: page,
       page: Math.round(doctorList.length / 10),
@@ -172,7 +172,7 @@ module.exports = {
   async doctorPagination(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    var doctorList = await Doctor.getAllDoctor();
+    var doctorList = await Doctor.getAll();
     res.render("components/adminDoctorList", {
       at: page,
       page: Math.round(doctorList.length / 10),
@@ -183,7 +183,7 @@ module.exports = {
   async getRequest(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    var requestList = await Request.getAllRequest();
+    var requestList = await Request.getAll();
     res.render("pages/admin/requests", {
       page: Math.round(requestList.length / 10),
       requests: requestList.slice((page - 1) * perPage, page * perPage),
@@ -193,7 +193,7 @@ module.exports = {
   async requestPagination(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    var requestList = await Request.getAllRequest();
+    var requestList = await Request.getAll();
     res.render("components/adminRequestList", {
       page: Math.round(requestList.length / 10),
       requests: requestList.slice((page - 1) * perPage, page * perPage),
@@ -201,10 +201,10 @@ module.exports = {
   },
 
   async doneRequest(req, res) {
-    await Request.updateRequest(req.params.id);
+    await Request.update(req.params.id);
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
-    var requestList = await Request.getAllRequest();
+    var requestList = await Request.getAll();
     res.render("components/adminRequestList", {
       page: Math.round(requestList.length / 10),
       requests: requestList.slice((page - 1) * perPage, page * perPage),

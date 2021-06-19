@@ -17,7 +17,7 @@ module.exports = {
     var username = req.body.username;
     var password = req.body.password;
     if (username && password) {
-      const userAccount = await Account.getUser(username);
+      const userAccount = await Account.get(username);
       if (userAccount.length > 0) {
         if (userAccount[0].password == md5(password)) {
           switch (userAccount[0].role) {

@@ -1,7 +1,7 @@
 const connection = require("../database/connection");
 
 class Account {
-  static getUser(username) {
+  static get(username) {
     return new Promise((resolve, reject) => {
       connection.query(
         `SELECT * FROM ACCOUNT WHERE USERNAME = '${username}'`,

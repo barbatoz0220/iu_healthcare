@@ -5,8 +5,8 @@ const Visit = require("../models/Visit");
 
 module.exports = {
   async index(req, res) {
-    const doctor = await Doctor.getDoctorByID(req.session.userid);
-    const patient = await Patient.getPatientsByDoctor(req.session.userid);
+    const doctor = await Doctor.getByID(req.session.userid);
+    const patient = await Patient.getByDoctor(req.session.userid);
 
     res.render("pages/doctor/home", {
       name: req.session.username,
@@ -18,7 +18,7 @@ module.exports = {
   async getPatients(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 5;
-    const patients = await Patient.getPatientsByDoctor(req.session.userid);
+    const patients = await Patient.getByDoctor(req.session.userid);
     res.render("components/doctorPatientsInfor.pug", {
       page: Math.round(patients.length / 5),
       patients: patients.slice((page - 1) * perPage, page * perPage),
@@ -31,7 +31,7 @@ module.exports = {
   },
 
   async getPatientVisit(req, res) {
-    const visits = await Visit.getVisitsByPatient(req.params.id);
+    const visits = await Visit.getByPatient(req.params.id);
     res.render("components/doctorPatientsVisitInfo", {
       visits: visits,
     });

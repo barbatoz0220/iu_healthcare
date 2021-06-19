@@ -12,10 +12,10 @@ class Visit {
     });
   };
 
-  static getVisitsByPatient = userid => {
+  static getByPatient = id => {
     return new Promise((resolve, reject) => {
       connection.query(
-        `SELECT V.ID, TO_CHAR(V.CHECKIN,'dd-mm-YYYY') as CHECKIN, TO_CHAR(V.CHECKOUT,'dd-mm-YYYY') as CHECKOUT FROM PATIENT P, VISIT V WHERE P.ID = ${userid} AND V.PATIENT_ID = P.ID`,
+        `SELECT V.ID, TO_CHAR(V.CHECKIN,'dd-mm-YYYY') as CHECKIN, TO_CHAR(V.CHECKOUT,'dd-mm-YYYY') as CHECKOUT FROM PATIENT P, VISIT V WHERE P.ID = ${id} AND V.PATIENT_ID = P.ID ORDER BY V.ID`,
         (err, result) => {
           return err ? reject(err) : resolve(result.rows);
         }

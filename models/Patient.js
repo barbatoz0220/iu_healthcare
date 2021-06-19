@@ -1,10 +1,10 @@
 const connection = require("../database/connection");
 
 class Patient {
-  static getPatientByID = userid => {
+  static getByID = id => {
     return new Promise((resolve, reject) => {
       connection.query(
-        `SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM PATIENT WHERE ID = ${userid}`,
+        `SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM PATIENT WHERE ID = ${id}`,
         (err, result) => {
           return err ? reject(err) : resolve(result.rows);
         }
@@ -12,10 +12,10 @@ class Patient {
     });
   };
 
-  static getPatientsByDoctor = userid => {
+  static getByDoctor = id => {
     return new Promise((resolve, reject) => {
       connection.query(
-        `SELECT P.ID, P.NAME, P.GENDER, TO_CHAR(P.DOB,'dd-mm-YYYY') as DOB, P.PHONE FROM PATIENT P, DOCTOR D WHERE D.ID = ${userid} AND P.DOCTOR_ID = D.ID`,
+        `SELECT P.ID, P.NAME, P.GENDER, TO_CHAR(P.DOB,'dd-mm-YYYY') as DOB, P.PHONE FROM PATIENT P, DOCTOR D WHERE D.ID = ${id} AND P.DOCTOR_ID = D.ID`,
         (error, result) => {
           return error ? reject(error) : resolve(result.rows);
         }
@@ -23,10 +23,10 @@ class Patient {
     });
   };
 
-  static getAllPatient = () => {
+  static getAll = () => {
     return new Promise((resolve, reject) => {
       connection.query(
-        "SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB, 'dd-mm-YYYY') as DOB FROM PATIENT",
+        "SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB, 'dd-mm-YYYY') as DOB FROM PATIENT ORDER BY ID",
         (err, result) => {
           return err ? reject(err) : resolve(result.rows);
         }
@@ -34,10 +34,10 @@ class Patient {
     });
   };
 
-  static deletePatientByID = userid => {
+  static delete = id => {
     return new Promise((resolve, reject) => {
       connection.query(
-        `DELETE FROM PATIENT WHERE ID = ${userid}`,
+        `DELETE FROM PATIENT WHERE ID = ${id}`,
         (err, result) => {
           return err ? reject(err) : resolve(result.rows);
         }
@@ -45,7 +45,7 @@ class Patient {
     });
   };
 
-  static insertPatient = (name, gender, dob, phone) => {
+  static insert = (name, gender, dob, phone) => {
     return new Promise((resolve, reject) => {
       connection.query(
         `INSERT INTO PATIENT(NAME, GENDER, DOB, PHONE) VALUES ('${name}', '${gender}', '${dob}', ${phone})`,
@@ -56,7 +56,7 @@ class Patient {
     });
   };
 
-  static searchPatient = (name, gender, dob, phone) => {
+  static search = (name, gender, dob, phone) => {
     var validName = "%" + name + "%";
     var validGender = gender != "none" ? gender : "%%";
     console.log(validGender);
@@ -73,24 +73,27 @@ class Patient {
     });
   };
 
-  static updatePatientByID = (id, name, gender, dob, phone) => {
+  static update = async (id, name, gender, dob, phone) => {
     var patient = {};
-    connection.query(
+    
+    await connection.query(
       `SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM PATIENT WHERE ID = ${id}`,
-      function (error, results, fields) {
-        (patient.name = results.rows[0].name),
+      (error, results, fields) => {
+          (patient.name = results.rows[0].name),
           (patient.gender = results.rows[0].gender),
           (patient.dob = results.rows[0].dob),
           (patient.phone = results.rows[0].phone);
-        var validName = name != "" ? name : patient.name;
-        var validGender = gender != "" ? gender : patient.gender;
-        var validDob = dob != "" ? dob : patient.dob;
-        var validPhone = phone != "" ? phone : patient.phone;
-        connection.query(
-          `UPDATE PATIENT SET NAME='${validName}', GENDER='${validGender}', DOB='${validDob}', PHONE='${validPhone}' WHERE ID=${id}`
-        );
       }
     );
+    
+    var validName = name != "" ? name : patient.name;
+    var validGender = gender != "" ? gender : patient.gender;
+    var validDob = dob != "" ? dob : patient.dob;
+    var validPhone = phone != "" ? phone : patient.phone;
+    await connection.query(
+      `UPDATE PATIENT SET NAME='${validName}', GENDER='${validGender}', DOB='${validDob}', PHONE='${validPhone}' WHERE ID=${id}`
+    );
+    
     return new Promise((resolve, reject) => {
       connection.query(
         "SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM PATIENT",

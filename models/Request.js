@@ -1,7 +1,7 @@
 var connection = require("../database/connection");
 
 class Request {
-  static getUnfinishdeRequest = () => {
+  static getUnfinishedRequests = () => {
     return new Promise((resolve, reject) => {
       connection.query(
         "SELECT COUNT(*) as NUMBER FROM REQUEST WHERE STATUS = 0",
@@ -34,7 +34,7 @@ class Request {
     });
   };
 
-  static getAllRequest = () => {
+  static getAll = () => {
     return new Promise((resolve, reject) => {
       connection.query(
         "SELECT * FROM REQUEST ORDER BY STATUS, ID DESC",
@@ -45,7 +45,7 @@ class Request {
     });
   };
 
-  static updateRequest = id => {
+  static update = id => {
     return new Promise((resolve, reject) => {
       connection.query(
         `UPDATE REQUEST SET STATUS = 1 WHERE ID = ${id}`,
