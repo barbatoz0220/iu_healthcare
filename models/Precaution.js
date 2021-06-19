@@ -12,9 +12,8 @@ class Precaution {
         INNER JOIN DISEASE D
         ON D.ID = DP.ID
         WHERE D.NAME LIKE '${disease.diseaseName}';`,
-        (error, precautionResults) => {
-          if (error) reject(error);
-          else resolve(precautionResults);
+        (error, result) => {
+          return error ? reject(error) : resolve(result.rows);
         }
       );
     });
