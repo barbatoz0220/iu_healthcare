@@ -20,7 +20,7 @@ module.exports = {
     var disease = await Disease.getBySymptoms(condition, symptomCount);
 
     if (disease.errorr) {
-      return res.render("./user/userSearch", {
+      return res.render("./patient/userSearch", {
         errorMessage:
           "Error when looking for diseases with your input. Try again!",
       });
@@ -37,7 +37,7 @@ module.exports = {
         Object.assign(disease, precautions);
       }
       // Return
-      return res.render("./user/userSearch", {
+      return res.render("./patient/userSearch", {
         disease: diseaseArray,
       });
     }

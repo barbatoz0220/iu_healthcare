@@ -3,6 +3,7 @@ const express = require('express');
 
 // import controller
 const controller = require('../controllers/controller.patient');
+const predictor = require("../controllers/controller.predictor");
 
 // set up router
 const router = express.Router();
@@ -11,6 +12,7 @@ const router = express.Router();
 router.get('/', controller.index);
 router.get('/doctor', controller.getDoctor);
 router.get('/visit', controller.getVisit);
+router.get('/search', predictor.searchSymptoms)
 router.post('/handle-request', controller.handleRequest);
 router.get('/visit-detail/:id', controller.getVisitDetail);
 
