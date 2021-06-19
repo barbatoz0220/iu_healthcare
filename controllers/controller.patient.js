@@ -40,9 +40,9 @@ module.exports = {
   },
 
   async getVisitDetail(req, res) {
-    var diseases = await visit.getDisease(req.params.id);
-    var treatments = await visit.getTreatment(req.params.id);
-    var rooms = await visit.getRoom(req.params.id);
+    var diseases = await Visit.getDisease(req.params.id);
+    var treatments = await Visit.getTreatment(req.params.id);
+    var rooms = await Visit.getRoom(req.params.id);
     res.render("components/visitInformation", {
       diseases: diseases,
       treatments: treatments,

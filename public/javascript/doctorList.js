@@ -1,6 +1,6 @@
 function changePage(index) {
-    fetch("/admin/doctor-list/pagination?page=" + index).then(function (response) {
-        return response.text().then(function (text) {
+    fetch(`/admin/doctor-list/pagination?page=${index}`).then(response => {
+        return response.text().then(text => {
             document.getElementById("container").innerHTML = text;
         });
     });
