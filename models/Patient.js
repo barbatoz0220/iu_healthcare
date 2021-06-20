@@ -67,7 +67,7 @@ class Patient {
     console.log(validPhone);
     return new Promise((resolve, reject) => {
       connection.query(
-        `SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM PATIENT WHERE NAME like '${validName}' AND GENDER = '${validGender}' AND DOB::text like '${validDob}' AND PHONE like '${validPhone}'`,
+        `SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM PATIENT WHERE NAME like '${validName}' AND GENDER like '${validGender}' AND DOB::text like '${validDob}' AND PHONE like '${validPhone}'`,
         (err, result) => {
           return err ? reject(err) : resolve(result.rows);
         }
