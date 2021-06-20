@@ -57,7 +57,7 @@ class Doctor {
     var validName = "%" + name + "%";
     var validGender = gender != "none" ? gender : "%%";
     var validDob = dob != "" ? dob : "%%";
-    var validPhone = phone != "" ? phone : "%%";    
+    var validPhone = phone != "" ? phone : "%%"; 
     var queryString = `SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM DOCTOR WHERE NAME like '${validName}' AND GENDER = '${validGender}' AND DOB::text like '${validDob}' AND PHONE like '${validPhone}'`;
     return new Promise((resolve, reject) => {
       connection.query(queryString, (err, result) => {
@@ -73,14 +73,11 @@ class Doctor {
     var validGender = gender != "" ? gender : doctor[0].gender;
     var validDob = dob != "" ? dob : doctor[0].dob;
     var validPhone = phone != "" ? phone : doctor[0].phone;
-    console.log(validName);
-    console.log(validGender);
-    console.log(validDob);
-    console.log(validPhone);
-    console.log(id);
-    await connection.query(
-      `UPDATE DOCTOR SET NAME='${validName}', GENDER='${validGender}', DOB='${validDob}', PHONE='${validPhone}' WHERE ID=${id}`
-    );
+
+    var queryString = `UPDATE DOCTOR SET NAME='${validName}', GENDER='${validGender}', DOB='${validDob}', PHONE='${validPhone}' WHERE ID=${id}`
+    console.log(queryString);
+    
+    await connection.query(queryString);
 
     return new Promise((resolve, reject) => {
       connection.query(

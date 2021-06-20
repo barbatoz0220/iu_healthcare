@@ -62,7 +62,7 @@ module.exports = {
     });
   },
 
-  async insert(req, res) {
+  async insertPatient(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
     await Patient.insert(
@@ -141,7 +141,7 @@ module.exports = {
     });
   },
 
-  async insert(req, res) {
+  async insertDoctor(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 10;
     await Doctor.insert(
