@@ -83,9 +83,10 @@ class Patient {
     var validDob = dob != "" ? dob : patient[0].dob;
     var validPhone = phone != "" ? phone : patient[0].phone;
 
-    await connection.query(
-      `UPDATE PATIENT SET NAME='${validName}', GENDER='${validGender}', DOB='${validDob}', PHONE='${validPhone}' WHERE ID=${id}`
-    );
+    var queryString = `UPDATE PATIENT SET NAME='${validName}', GENDER='${validGender}', DOB='${validDob}', PHONE='${validPhone}' WHERE ID=${id}`
+    console.log(queryString);
+
+    await connection.query(queryString);
 
     return new Promise((resolve, reject) => {
       connection.query(
