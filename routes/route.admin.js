@@ -18,12 +18,12 @@ router.get('/patient-list/pagination', controller.patientPagination);
 router.get('/patient-list/delete/:id', controller.deletePatient);
 router.post('/patient-list/insert', controller.insert);
 router.post('/patient-list/update/:id', controller.updatePatient);
-router.post('/patient-list/search', controller.search);
+router.post('/patient-list/search', controller.searchPatient);
 
 router.get('/doctor-list/delete/:id', controller.deleteDoctor);
 router.post('/doctor-list/insert', controller.insert);
 router.post('/doctor-list/update/:id', controller.updateDoctor);
-router.post('/doctor-list/search', controller.search);
+router.post('/doctor-list/search', controller.searchDoctor);
 
 router.get('/request-list', controller.getRequest);
 router.get('/request-list/pagination', controller.requestPagination);

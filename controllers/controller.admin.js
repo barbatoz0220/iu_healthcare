@@ -36,7 +36,7 @@ module.exports = {
     });
   },
 
-  async search(req, res) {
+  async searchPatient(req, res) {
     var patientList = await Patient.search(
       req.body.name,
       req.body.gender,
@@ -97,7 +97,7 @@ module.exports = {
     });
   },
 
-  async search(req, res) {
+  async searchDoctor(req, res) {
     var doctorList = await Doctor.search(
       req.body.name,
       req.body.gender,

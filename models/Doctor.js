@@ -57,7 +57,7 @@ class Doctor {
     var validName = "%" + name + "%";
     var validGender = gender != "none" ? gender : "%%";
     var validDob = dob != "" ? dob : "%%";
-    var validPhone = phone != "" ? phone : "%%";
+    var validPhone = phone != "" ? phone : "%%";    
     var queryString = `SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM DOCTOR WHERE NAME like '${validName}' AND GENDER = '${validGender}' AND DOB::text like '${validDob}' AND PHONE like '${validPhone}'`;
     return new Promise((resolve, reject) => {
       connection.query(queryString, (err, result) => {

@@ -58,11 +58,13 @@ class Patient {
 
   static search = (name, gender, dob, phone) => {
     var validName = "%" + name + "%";
-    var validGender = gender != "none" ? gender : "%%";
-    console.log(validGender);
-    console.log(validName);
+    var validGender = gender != "none" ? gender : "%%";  
     var validDob = dob != "" ? dob : "%%";
     var validPhone = phone != "" ? phone : "%%";
+    console.log(validGender);
+    console.log(validName);
+    console.log(validDob);
+    console.log(validPhone);
     return new Promise((resolve, reject) => {
       connection.query(
         `SELECT ID, NAME, GENDER, PHONE, TO_CHAR(DOB,'dd-mm-YYYY') as DOB FROM PATIENT WHERE NAME like '${validName}' AND GENDER = '${validGender}' AND DOB::text like '${validDob}' AND PHONE like '${validPhone}'`,

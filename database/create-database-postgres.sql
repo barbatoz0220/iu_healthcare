@@ -15416,3 +15416,5 @@ values
         (704, null, 'sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum', 1),
         (133, null, 'turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci', 1),
         (542, null, 'molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec', 0);
+
+SET datestyle = dmy;
