@@ -73,7 +73,11 @@ class Doctor {
     var validGender = gender != "" ? gender : doctor[0].gender;
     var validDob = dob != "" ? dob : doctor[0].dob;
     var validPhone = phone != "" ? phone : doctor[0].phone;
-
+    console.log(validName);
+    console.log(validGender);
+    console.log(validDob);
+    console.log(validPhone);
+    console.log(id);
     await connection.query(
       `UPDATE DOCTOR SET NAME='${validName}', GENDER='${validGender}', DOB='${validDob}', PHONE='${validPhone}' WHERE ID=${id}`
     );
