@@ -1,7 +1,7 @@
 create table if not exists PATIENT (
 	ID serial,
     NAME varchar(255) not null,
-    GENDER char(6) not null,
+    GENDER varchar(255) not null,
     DOB date not null,
     PHONE varchar(255) not null,
     DOCTOR_ID int,
